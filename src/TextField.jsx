@@ -11,6 +11,9 @@ export default class Text extends Component {
         <section className="section--completed">
           {this.props.completedWords.join(" ")}{" "}
         </section>
+        <section className="section--current">
+          {this.props.currentWord}{" "}
+        </section>
         <section className="section--uncompleted">
           {this.props.uncompletedWords.join(" ")}
         </section>

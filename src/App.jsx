@@ -8,8 +8,9 @@ import "./style.css";
 class App extends Component {
   state = {
     hideTime: false,
-    completedWords: ["hello", "world"],
-    uncompletedWords: sampleText.split(" "),
+    completedWords: [],
+    uncompletedWords: sampleText.split(" ").slice(1),
+    currentWord: sampleText.split(" ")[0],
   };
   // constructor() {
   //   super();
@@ -25,6 +26,14 @@ class App extends Component {
   };
 
   onInputChange = (str) => {
+    console.log(this.state.currentWord);
+    if (this.state.currentWord === str) {
+      this.setState((prevState) => ({
+        completedWords: [...prevState.completedWords, str],
+        uncompletedWords: prevState.uncompletedWords.slice(1),
+        currentWord: prevState.uncompletedWords[0],
+      }));
+    }
     // this.setState((prevState) => ({
     //   writtenWords: [...prevState.writtenWords, str],
     // }));
@@ -37,6 +46,7 @@ class App extends Component {
           <Text
             completedWords={this.state.completedWords}
             uncompletedWords={this.state.uncompletedWords}
+            currentWord={this.state.currentWord}
           />
         </div>
         <div className="content__lower">

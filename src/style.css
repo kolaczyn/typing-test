@@ -42,6 +42,8 @@ body {
   padding: 0.8rem;
   margin-left: 1rem;
   margin-right: 1rem;
+  /* make the input box scale down, if there's not enough room */
+  /* flex-shrink: 10; */
 }
 
 .element {
