@@ -30,7 +30,6 @@ body {
 
 .text-field {
   margin-top: 3rem;
-  font-size: 1.75rem;
   margin-bottom: 1rem;
   padding: 1rem;
 }
@@ -43,22 +42,24 @@ body {
   padding: 0.8rem;
   margin-left: 1rem;
   margin-right: 1rem;
-  font-size: 1.75rem;
 }
 
 .element {
+  font-size: 1.75rem;
   color: #fff;
   background-color: #222;
-  border-radius: 1rem;
+  border-radius: 0.6rem;
 }
 
 button {
-  font-size: 1.5rem;
   border: none;
   cursor: pointer;
   padding-right: 1rem;
   padding-left: 1rem;
   min-width: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .refresh-icon {
@@ -66,4 +67,20 @@ button {
     brightness(103%) contrast(106%);
   /* credit: */
   /* https://stackoverflow.com/questions/22252472/how-to-change-the-color-of-an-svg-element */
+}
+
+img {
+  height: 1.75rem;
+}
+
+section {
+  display: inline;
+}
+
+.section--completed {
+  color: greenyellow;
+}
+
+.section--uncompleted {
+  color: bisque;
 }

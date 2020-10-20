@@ -8,7 +8,12 @@ export default class Text extends Component {
   render() {
     return (
       <div className="element text-field">
-        <p>Test</p>
+        <section className="section--completed">
+          {this.props.completedWords.join(" ")}{" "}
+        </section>
+        <section className="section--uncompleted">
+          {this.props.uncompletedWords.join(" ")}
+        </section>
       </div>
     );
   }
