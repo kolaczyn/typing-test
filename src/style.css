@@ -17,24 +17,22 @@ body {
   margin: 0 auto;
 }
 
-.big-text {
-  margin-top: 3rem;
+.content__upper {
   margin-bottom: 1rem;
-  border-radius: 0.75rem;
-  padding: 0.5rem;
-  font-size: 2rem;
+  margin-top: 1rem;
 }
 
-.input-div {
+.content__lower {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   height: auto;
-  /* font-size: 2rem; */
 }
 
-em {
-  color: teal;
+.text-field {
+  margin-top: 3rem;
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
 }
 
 .input-element {
@@ -42,24 +40,25 @@ em {
   max-width: 350px;
   display: block;
   border: none;
-  padding: 0.25rem;
+  padding: 0.8rem;
   margin-left: 1rem;
   margin-right: 1rem;
-  font-size: 2rem;
+  font-size: 1.75rem;
 }
 
 .element {
   color: #fff;
   background-color: #222;
+  border-radius: 1rem;
 }
 
 button {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   border: none;
   cursor: pointer;
   padding-right: 1rem;
   padding-left: 1rem;
-  min-width: 3rem;
+  min-width: 4.5rem;
 }
 
 .refresh-icon {
