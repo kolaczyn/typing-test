@@ -4,8 +4,6 @@
 
 ### MVP
 
-1. Basic setup - input box and text which is being updated as you write words.
-1. Timer.
 1. You see stats after each playthrough.
 1. You can see stats being updated as you complete the test.
 

@@ -80,9 +80,17 @@ section {
 }
 
 .section--completed {
-  color: greenyellow;
+  color: #55efc4;
 }
 
 .section--uncompleted {
   color: bisque;
+}
+
+.section--good {
+  color: #fff;
+}
+
+.section--wrong {
+  color: #e17055;
 }
