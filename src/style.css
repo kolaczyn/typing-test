@@ -65,8 +65,7 @@ button {
 }
 
 .refresh-icon {
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(147deg)
-    brightness(103%) contrast(106%);
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(147deg) brightness(103%) contrast(106%);
   /* credit: */
   /* https://stackoverflow.com/questions/22252472/how-to-change-the-color-of-an-svg-element */
 }
@@ -79,18 +78,18 @@ section {
   display: inline;
 }
 
-.section--completed {
+.text--completed {
   color: #55efc4;
 }
 
-.section--uncompleted {
+.text--uncompleted {
   color: bisque;
 }
 
-.section--good {
+.text--good {
   color: #fff;
 }
 
-.section--wrong {
+.text--wrong {
   color: #e17055;
 }

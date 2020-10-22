@@ -7,30 +7,36 @@ import "./style.css";
 
 class App extends Component {
   state = {
-    hideTime: false,
+    isTimeHidden: false,
     completedWords: [],
-    uncompletedWords: sampleText.split(" ").slice(1),
-    currentWord: sampleText.split(" ")[0],
+    uncompletedWords: [],
+    currentWord: "",
     writtenChars: "",
   };
-  // constructor() {
-  //   super();
-  // }
-  onTimesUp = () => {
-    this.setState({ hideTime: false });
+  componentDidMount() {
+    this.setState({
+      uncompletedWords: sampleText.split(" ").slice(1),
+      currentWord: sampleText.split(" ")[0],
+    })
+  }
+
+  handleTimesUp = () => {
+    this.setState({ isTimeHidden: false });
   };
-  onRefresh = () => {};
-  handleTimeVisibility = () => {
+
+  handleRefresh = () => { };
+
+  handleTimeToggle = () => {
     this.setState((prevState) => ({
-      hideTime: !prevState.hideTime,
+      isTimeHidden: !prevState.isTimeHidden,
     }));
   };
 
-  onNextChar = (str) => {
+  handleNextChar = (str) => {
     this.setState({ writtenChars: str });
   };
 
-  onNextWord = (str) => {
+  handleNextWord = (str) => {
     console.log(this.state.currentWord);
     if (this.state.currentWord === str) {
       this.setState((prevState) => ({
@@ -43,6 +49,7 @@ class App extends Component {
   };
 
   render() {
+    const initialTime = 60
     return (
       <div className="content">
         <div className="content__upper">
@@ -54,18 +61,18 @@ class App extends Component {
           />
         </div>
         <div className="content__lower">
-          <button className="element" onClick={this.handleTimeVisibility}>
+          <button className="element" onClick={this.handleTimeToggle}>
             <Timer
-              initialTime={60}
-              onTimesUp={this.onTimesUp}
-              hideTime={this.state.hideTime}
+              initialTime={initialTime}
+              onTimesUp={this.handleTimesUp}
+              hideTime={this.state.isTimeHidden}
             />
           </button>
           <InputField
-            onNextWord={this.onNextWord}
-            onNextChar={this.onNextChar}
+            onNextWord={this.handleNextWord}
+            onNextChar={this.handleNextChar}
           />
-          <button className="element" onClick={this.onRefresh}>
+          <button className="element" onClick={this.handleRefresh}>
             <img src="refresh.svg" className="refresh-icon" alt="" />
           </button>
         </div>

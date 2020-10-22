@@ -7,14 +7,13 @@ class InputField extends Component {
       text: "",
     };
   }
-  // I know, two methods from two different function
-  // share a name. I'll proabably fix that.
-  onInputChange = (event) => {
+
+  handleInputChange = event => {
     const str = event.target.value;
     // we clear the input filed on space press
     if (str.slice(str.length - 1) === " ") {
       this.props.onNextWord(str.slice(0, -1));
-      this.setState({ text: "" });
+      this.setState({ text: '' });
     } else {
       this.props.onNextChar(str);
       this.setState({ text: str });
@@ -26,7 +25,7 @@ class InputField extends Component {
         type="text"
         className="input-element element"
         value={this.state.text}
-        onChange={this.onInputChange}
+        onChange={this.handleInputChange}
       />
     );
   }
