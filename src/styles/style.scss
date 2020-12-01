@@ -1,0 +1,132 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+}
+
+.content {
+  max-width: 768px;
+  padding: 1rem;
+  margin: 0 auto;
+  
+  &__upper {
+  }
+  
+  &__lower {
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+}
+
+.text-field {
+  margin-top: 2rem;
+  padding: 1rem;
+  text-align: justify;
+  
+}
+
+.input-element {
+  font-family: inherit;
+  border: none;
+  text-align: center;
+  padding: 0.8rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  flex-grow: 1;
+  border: transparent solid 1px;
+
+  &:focus {
+    outline: none;
+    border: bisque solid 1px;
+    }
+}
+
+
+.element {
+  font-size: 1.75rem;
+  color: #fff;
+  background-color: #222;
+  border-radius: 0.6rem;
+}
+
+button {
+  flex-basis: 5rem;
+  border: none;
+  cursor: pointer;
+  // padding-right: 1rem;
+  // padding-left: 1rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:focus {
+    outline-color: bisque;
+  }
+}
+
+.refresh-icon {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(147deg) brightness(103%) contrast(106%);
+  /* credit: */
+  /* https://stackoverflow.com/questions/22252472/how-to-change-the-color-of-an-svg-element */
+  // width: min(1rem, 30%);
+  max-height: 1.75rem;
+}
+
+section {
+  // display: inline;
+}
+
+.text {
+  &--completed {
+    color: #55efc4;
+  }
+  
+  &--uncompleted {
+    color: bisque;
+  }
+  
+  &--good {
+    color: #fff;
+  }
+  
+  &--wrong {
+    color: #e17055;
+  }
+
+}
+
+.stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &__element {
+    text-align: center;
+    flex: 1 1 0px;
+    padding: .5rem;
+    // width: 18%;
+    padding-top:1rem;
+    padding-bottom:1rem;
+
+    &:not(:first-child){
+      margin-left: 1rem;;
+    }
+
+    h6 {
+      font-weight: 100;
+      font-size: 1rem;
+    }
+  }
+}
+

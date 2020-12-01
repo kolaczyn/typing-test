@@ -8,17 +8,7 @@ class Timer extends Component {
       time: this.props.initialTime,
     };
   }
-  // I should probably format it or use a library to do that for me
-  componentDidMount() {
-    this.interval = setInterval(() => {
-      if (this.state.time > 0)
-        this.setState((prevState) => ({ time: prevState.time - 1 }));
-      else {
-        clearInterval(this.interval);
-        this.props.onTimesUp();
-      }
-    }, 1000);
-  }
+
 
   formatTime = () => {
     if (this.props.hideTime) return null;
@@ -26,7 +16,8 @@ class Timer extends Component {
   };
 
   render() {
-    return <button className="element" onClick={this.props.handleClick}>{this.formatTime()}</button>
+    const {handleClick} = this.props;
+    return <button className="element" onClick={handleClick}>{this.props.currentTime}</button>
   }
 }
 
