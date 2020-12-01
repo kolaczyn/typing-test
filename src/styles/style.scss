@@ -1,3 +1,5 @@
+@import "variables";
+
 *,
 *::before,
 *::after {
@@ -7,32 +9,27 @@
 }
 
 body {
-  background-color: #333;
-  color: #fff;
+  background-color: $clr-bg;
+  color: $clr-white;
   font-family: "Montserrat", sans-serif;
 }
 
 .content {
-  max-width: 768px;
+  max-width: $content-width;
   padding: 1rem;
   margin: 0 auto;
-  
-  &__upper {
-  }
-  
+
   &__lower {
     display: flex;
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
-
 }
 
 .text-field {
   margin-top: 2rem;
   padding: 1rem;
   text-align: justify;
-  
 }
 
 .input-element {
@@ -47,63 +44,53 @@ body {
 
   &:focus {
     outline: none;
-    border: bisque solid 1px;
-    }
+    border: $clr-gray solid 1px;
+  }
 }
-
 
 .element {
   font-size: 1.75rem;
-  color: #fff;
-  background-color: #222;
-  border-radius: 0.6rem;
+  color: inherit;
+  background-color: $clr-bg-element;
+  border-radius: 0.75rem;
 }
 
 button {
   flex-basis: 5rem;
   border: none;
   cursor: pointer;
-  // padding-right: 1rem;
-  // padding-left: 1rem;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
 
   &:focus {
-    outline-color: bisque;
+    outline: none;
+    border: $clr-gray solid 2px;
   }
 }
 
 .refresh-icon {
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(147deg) brightness(103%) contrast(106%);
-  /* credit: */
-  /* https://stackoverflow.com/questions/22252472/how-to-change-the-color-of-an-svg-element */
-  // width: min(1rem, 30%);
   max-height: 1.75rem;
-}
-
-section {
-  // display: inline;
 }
 
 .text {
   &--completed {
-    color: #55efc4;
-  }
-  
-  &--uncompleted {
-    color: bisque;
-  }
-  
-  &--good {
-    color: #fff;
-  }
-  
-  &--wrong {
-    color: #e17055;
+    color: $clr-green;
   }
 
+  &--uncompleted {
+    color: $clr-gray;
+  }
+
+  &--good {
+    color: $clr-white;
+  }
+
+  &--wrong {
+    color: $clr-red;
+  }
 }
 
 .stats {
@@ -114,13 +101,13 @@ section {
   &__element {
     text-align: center;
     flex: 1 1 0px;
-    padding: .5rem;
+    padding: 0.5rem;
     // width: 18%;
-    padding-top:1rem;
-    padding-bottom:1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 
-    &:not(:first-child){
-      margin-left: 1rem;;
+    &:not(:first-child) {
+      margin-left: 1rem;
     }
 
     h6 {
@@ -129,4 +116,3 @@ section {
     }
   }
 }
-

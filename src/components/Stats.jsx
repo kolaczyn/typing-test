@@ -2,10 +2,10 @@ import React from 'react'
 
 export default function Stats({timePassed, keystrokes, correctWords}) {
     const correctWordsLetters = correctWords.reduce((count, word)=> count + word.length, 0) + correctWords.length - 1;
-    const wpm = timePassed && Math.floor(correctWordsLetters / 5 * 60 / timePassed);
+    const wpm =  timePassed && Math.floor(correctWordsLetters / 5 * 60 / timePassed);
     // const wpm = timePassed
 
-    const accuracy = timePassed && `${Math.floor(correctWordsLetters / keystrokes * 100)}%` ;
+    const accuracy = timePassed ? `${Math.floor(correctWordsLetters / keystrokes * 100)}%` : '0%' ;
     const wrongWords = 0
 
     const data = [

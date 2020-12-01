@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import InputField from "../components/InputField";
 import TextField from "../components/TextField";
-import Timer from "../components/Timer";
 import Stats from '../components/Stats'
 import sampleText from "../static/sampleText";
 import "../styles/style.scss";
-import {Helmet} from 'react-helmet'
+import { Helmet } from 'react-helmet'
 
 import favicon from '../static/favicon.ico'
 import refreshIcon from '../static/refresh.svg'
@@ -15,7 +14,6 @@ const INITIAL_TIME = 60;
 
 class App extends Component {
   state = {
-    isTimeHidden: false,
     isTimeStarted: false,
     completedWords: [],
     uncompletedWords: [],
@@ -55,13 +53,9 @@ class App extends Component {
     }, 1000)
   }
 
-  handleTimesUp = () => {
-    this.setState({ isTimeHidden: false });
-  };
 
   handleRefresh = () => {
     this.setState({
-      isTimeHidden: false,
       isTimeStarted: false,
 
 
@@ -75,11 +69,6 @@ class App extends Component {
     })
   }
 
-  handleTimeToggle = () => {
-    this.setState(({ isTimeHidden }) => ({
-      isTimeHidden: !isTimeHidden,
-    }));
-  };
 
   handleNextChar = (str) => {
     this.setState(({ keystrokes }) => ({ keystrokes: keystrokes + 1 }))
@@ -103,7 +92,7 @@ class App extends Component {
   };
 
   render() {
-    const { completedWords, uncompletedWords, currentWord, writtenChars, isTimeHidden, currentTime } = this.state;
+    const { completedWords, uncompletedWords, currentWord, writtenChars, currentTime } = this.state;
 
 
     return (
@@ -113,31 +102,26 @@ class App extends Component {
           <link rel="icon" type="image/png" href={favicon} sizes="64x64" />
         </Helmet>
 
-          <div className="content__upper">
-            <TextField
-              completedWords={completedWords}
-              uncompletedWords={uncompletedWords}
-              currentWord={currentWord}
-              writtenChars={writtenChars}
-            />
-          </div>
-          <div className="content__lower">
-            <Timer
-              handleClick={this.handleTimeToggle}
-              currentTime={currentTime}
-              onTimesUp={this.handleTimesUp}
-              hideTime={isTimeHidden}
-            />
-            <InputField
-              onNextWord={this.handleNextWord}
-              onNextChar={this.handleNextChar}
-            />
-            <button className="element" onClick={this.handleRefresh}>
-              <img src={refreshIcon} className="refresh-icon" alt="Refresh" />
-            </button>
-          </div>
-          <Stats keystrokes={this.state.keystrokes} correctWords={this.state.completedWords} timePassed={INITIAL_TIME - this.state.currentTime} />
-    </div>
+        <div className="content__upper">
+          <TextField
+            completedWords={completedWords}
+            uncompletedWords={uncompletedWords}
+            currentWord={currentWord}
+            writtenChars={writtenChars}
+          />
+        </div>
+        <div className="content__lower">
+          <button className="element">{currentTime}</button>
+          <InputField
+            onNextWord={this.handleNextWord}
+            onNextChar={this.handleNextChar}
+          />
+          <button className="element" onClick={this.handleRefresh}>
+            <img src={refreshIcon} className="refresh-icon" alt="Refresh" />
+          </button>
+        </div>
+        <Stats keystrokes={this.state.keystrokes} correctWords={this.state.completedWords} timePassed={INITIAL_TIME - this.state.currentTime} />
+      </div>
     );
   }
 }
