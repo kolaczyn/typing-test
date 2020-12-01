@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from "react";
 
 class Timer extends Component {
@@ -18,13 +19,19 @@ class Timer extends Component {
       }
     }, 1000);
   }
+
   formatTime = () => {
     if (this.props.hideTime) return null;
     return this.state.time;
   };
+
   render() {
-    return <section>{this.formatTime()}</section>;
+    return <button className="element" onClick={this.props.handleClick}>{this.formatTime()}</button>
   }
+}
+
+Timer.propTypes = {
+  handleclick: PropTypes.func.isRequired
 }
 
 export default Timer;

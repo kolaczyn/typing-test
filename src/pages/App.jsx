@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import Timer from "./Timer";
-import InputField from "./InputField";
-import TextField from "./TextField";
-import sampleText from "./sampleText";
-import "./style.css";
+import InputField from "../components/InputField";
+import TextField from "../components/TextField";
+import Timer from "../components/Timer";
+import sampleText from "../static/sampleText";
+import "../styles/style.css";
+
+// I'm leaving this here for now
+const INITIAL_TIME = 60;
 
 class App extends Component {
   state = {
@@ -12,12 +15,19 @@ class App extends Component {
     uncompletedWords: [],
     currentWord: "",
     writtenChars: "",
+    interval: null,
+    currentTime: INITIAL_TIME
   };
   componentDidMount() {
     this.setState({
       uncompletedWords: sampleText.split(" ").slice(1),
       currentWord: sampleText.split(" ")[0],
     })
+  }
+
+  // start timer from INITIAL_TIME to 0, you don't use  this method
+  // after stopping time, 'cause it will overwrite current timer's progress
+  startTimer() {
   }
 
   handleTimesUp = () => {
@@ -49,7 +59,6 @@ class App extends Component {
   };
 
   render() {
-    const initialTime = 60
     return (
       <div className="content">
         <div className="content__upper">
@@ -61,13 +70,12 @@ class App extends Component {
           />
         </div>
         <div className="content__lower">
-          <button className="element" onClick={this.handleTimeToggle}>
-            <Timer
-              initialTime={initialTime}
-              onTimesUp={this.handleTimesUp}
-              hideTime={this.state.isTimeHidden}
-            />
-          </button>
+          <Timer
+            handleClick={this.handleTimeToggle}
+            initialTime={INITIAL_TIME}
+            onTimesUp={this.handleTimesUp}
+            hideTime={this.state.isTimeHidden}
+          />
           <InputField
             onNextWord={this.handleNextWord}
             onNextChar={this.handleNextChar}
