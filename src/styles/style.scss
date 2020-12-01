@@ -23,6 +23,16 @@ body {
     display: flex;
     margin-top: 1rem;
     margin-bottom: 1rem;
+
+    @media only screen and (max-width: 650px) {
+      button {
+        display: none;
+      }
+      .input-element {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }    
   }
 }
 
@@ -116,3 +126,4 @@ button {
     }
   }
 }
+

@@ -9,21 +9,25 @@ import { Helmet } from 'react-helmet'
 import favicon from '../static/favicon.ico'
 import refreshIcon from '../static/refresh.svg'
 
-// I'm leaving this here for now
 const INITIAL_TIME = 60;
 
+const initialState = {
+  isTimeStarted: false,
+  completedWords: [],
+  uncompletedWords: [],
+  currentWord: "",
+  writtenChars: "",
+  interval: null,
+  isFirstChar: true,
+  currentTime: INITIAL_TIME,
+  keystrokes: 0,
+  inputFieldContent: '',
+}
+
+// I'm leaving this here for now
+
 class App extends Component {
-  state = {
-    isTimeStarted: false,
-    completedWords: [],
-    uncompletedWords: [],
-    currentWord: "",
-    writtenChars: "",
-    interval: null,
-    isFirstChar: true,
-    currentTime: INITIAL_TIME,
-    keystrokes: 0,
-  };
+  state = { ...initialState }; // we don't want to make a shallow copy of the object
   componentDidMount() {
     this.setState({
       uncompletedWords: sampleText.split(" ").slice(1),
@@ -51,22 +55,36 @@ class App extends Component {
         // passing in interval here works? Didn't expect that
         resetTime(interval);
     }, 1000)
+    this.setState({
+      interval
+    })
+  }
+
+  handleTimesUp = () => {
+    console.log('times up!')
   }
 
 
   handleRefresh = () => {
+    clearInterval(this.state.interval)
     this.setState({
-      isTimeStarted: false,
-
-
-      interval: null,
-      currentTime: INITIAL_TIME,
-
-      writtenChars: "",
-      completedWords: [],
+      ...initialState,
       uncompletedWords: sampleText.split(" ").slice(1),
       currentWord: sampleText.split(" ")[0],
     })
+  }
+
+  handleInputChange = event => {
+    const str = event.target.value;
+    console.log(this)
+    // we clear the input filed on space press
+    if (str.slice(str.length - 1) === " ") {
+      this.handleNextWord(str.slice(0, -1));
+      this.setState({ inputFieldContent: '' });
+    } else {
+      this.handleNextChar(str);
+      this.setState({ inputFieldContent: str });
+    }
   }
 
 
@@ -92,7 +110,7 @@ class App extends Component {
   };
 
   render() {
-    const { completedWords, uncompletedWords, currentWord, writtenChars, currentTime } = this.state;
+    const { completedWords, uncompletedWords, currentWord, writtenChars, currentTime, inputFieldContent } = this.state;
 
 
     return (
@@ -113,8 +131,8 @@ class App extends Component {
         <div className="content__lower">
           <button className="element">{currentTime}</button>
           <InputField
-            onNextWord={this.handleNextWord}
-            onNextChar={this.handleNextChar}
+            inputFieldContent={inputFieldContent}
+            handleInputChange={this.handleInputChange}
           />
           <button className="element" onClick={this.handleRefresh}>
             <img src={refreshIcon} className="refresh-icon" alt="Refresh" />
