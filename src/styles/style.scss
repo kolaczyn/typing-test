@@ -19,10 +19,12 @@ body {
   padding: 1rem;
   margin: 0 auto;
 
+  > :not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
   &__lower {
     display: flex;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
 
     @media only screen and (max-width: 650px) {
       button {
@@ -127,3 +129,26 @@ button {
   }
 }
 
+.ranking {
+  padding: 1rem;
+  table {
+    width: 100%;
+    text-align: center;
+  }
+  thead {
+    color: rgba(255,255,255, .65)
+  }
+
+  &__place {
+    width: 15%;
+  }
+  &__wpm {
+    width: 35%;
+  }
+  &__accuracy {
+    width: 35%;
+  }
+  &__time {
+    width: 15%;
+  }
+}

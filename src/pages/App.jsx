@@ -8,8 +8,9 @@ import { Helmet } from 'react-helmet'
 
 import favicon from '../static/favicon.ico'
 import refreshIcon from '../static/refresh.svg'
+import Ranking from "../components/Ranking";
 
-const INITIAL_TIME = 60;
+const INITIAL_TIME = 6;
 
 const initialState = {
   isTimeStarted: false,
@@ -22,16 +23,43 @@ const initialState = {
   currentTime: INITIAL_TIME,
   keystrokes: 0,
   inputFieldContent: '',
+  scores: [
+    // {
+    //   wpm: 80,
+    //   accuracy: '89%',
+    //   timeAgo: '2h',
+    // },
+    // {
+    //   wpm: 60,
+    //   accuracy: '89%',
+    //   timeAgo: '2h',
+    // },
+    // {
+    //   wpm: 81,
+    //   accuracy: '90%',
+    //   timeAgo: '3h',
+    // },
+    // {
+    //   wpm: 120,
+    //   accuracy: '100%',
+    //   timeAgo: '5h',
+    // },
+  ]
 }
 
 // I'm leaving this here for now
 
 class App extends Component {
-  state = { ...initialState }; // we don't want to make a shallow copy of the object
+  constructor(props) {
+    super(props);
+    this.state = { ...initialState }
+  }
   componentDidMount() {
+    const scores = JSON.parse(localStorage.getItem('scores'));
     this.setState({
       uncompletedWords: sampleText.split(" ").slice(1),
       currentWord: sampleText.split(" ")[0],
+      scores
     })
   }
 
@@ -61,6 +89,19 @@ class App extends Component {
   }
 
   handleTimesUp = () => {
+    const cachedScores = JSON.parse(localStorage.getItem('scores'));
+    localStorage.setItem('scores',
+      JSON.stringify(
+        [
+          ...cachedScores,
+          {
+            wpm: 80,
+            accuracy: '89%',
+            timeAgo: '2h',
+          },
+        ]
+      )
+    )
     console.log('times up!')
   }
 
@@ -75,6 +116,7 @@ class App extends Component {
   }
 
   handleInputChange = event => {
+    this.setState(({ keystrokes }) => ({ keystrokes: keystrokes + 1 }))
     const str = event.target.value;
     console.log(this)
     // we clear the input filed on space press
@@ -89,7 +131,6 @@ class App extends Component {
 
 
   handleNextChar = (str) => {
-    this.setState(({ keystrokes }) => ({ keystrokes: keystrokes + 1 }))
     if (this.state.isFirstChar) {
       this.startTimer();
       this.setState({ isFirstChar: false })
@@ -131,14 +172,16 @@ class App extends Component {
         <div className="content__lower">
           <button className="element">{currentTime}</button>
           <InputField
-            inputFieldContent={inputFieldContent}
+            active={currentTime}
+            inputFieldContent={currentTime ? inputFieldContent : 'Time\'s up!'}
             handleInputChange={this.handleInputChange}
           />
           <button className="element" onClick={this.handleRefresh}>
             <img src={refreshIcon} className="refresh-icon" alt="Refresh" />
           </button>
         </div>
-        <Stats keystrokes={this.state.keystrokes} correctWords={this.state.completedWords} timePassed={INITIAL_TIME - this.state.currentTime} />
+        <Stats keystrokes={this.state.keystrokes} correctWords={this.state.completedWords} wrongWords={0} timePassed={INITIAL_TIME - this.state.currentTime} />
+        <Ranking scores={this.state.scores} />
       </div>
     );
   }
