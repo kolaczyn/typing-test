@@ -1,19 +1,25 @@
 import React, { Component } from "react";
+import { Helmet } from 'react-helmet';
+
 import InputField from "../components/InputField";
-import TextField from "../components/TextField";
-import Stats from '../components/Stats'
-import sampleText from "../static/sampleText";
-import "../styles/style.scss";
-import { Helmet } from 'react-helmet'
-
-import favicon from '../static/favicon.ico'
-import refreshIcon from '../static/refresh.svg'
 import Ranking from "../components/Ranking";
-import LocalStorageManager from '../static/LocalStorageManager'
-import calculateStats from "../static/calculateStats";
+import Stats from '../components/Stats';
+import TextField from "../components/TextField";
 
-const INITIAL_TIME = 60;
+import LocalStorageManager from '../helpers/LocalStorageManager';
+import calculateStats from "../helpers/calculateStats";
+import Timer from '../helpers/Timer'
+
+import sampleText from "../static/sampleText";
+import favicon from '../static/favicon.ico';
+import refreshIcon from '../static/refresh.svg';
+
+import "../styles/style.scss";
+
+
+const INITIAL_TIME = 10;
 const localStorageManager = new LocalStorageManager('scores');
+const timer = new Timer(INITIAL_TIME)
 
 const initialState = {
   isTimeStarted: false,
@@ -21,7 +27,6 @@ const initialState = {
   uncompletedWords: [],
   currentWord: "",
   writtenChars: "",
-  interval: null,
   isFirstChar: true,
   currentTime: INITIAL_TIME,
   keystrokes: 0,
@@ -48,26 +53,13 @@ class App extends Component {
   // start timer from INITIAL_TIME to 0, you don't use  this method
   // after stopping time, 'cause it will overwrite current timer's progress
   startTimer = () => {
-    const decreaseTime = () => {
-      this.setState(prevState => ({
-        currentTime: prevState.currentTime - 1
-      }))
+    timer.intervalCallback = () => {
+      this.setState({ currentTime: timer.remainingSeconds });
     }
-    const resetTime = (inter) => {
-      clearInterval(inter);
-      this.handleTimesUp();
-    }
-    const interval = setInterval(() => {
-      const { currentTime } = this.state;
-      if (currentTime > 0)
-        decreaseTime();
-      else
-        // passing in interval here works? Didn't expect that
-        resetTime(interval);
-    }, 1000)
-    this.setState({
-      interval
-    })
+    timer.lastIntervalCallback = () => {
+      this.handleTimesUp()
+    };
+    timer.start();
   }
 
   handleTimesUp = () => {
@@ -78,28 +70,29 @@ class App extends Component {
     const newScore = {
       wpm,
       accuracy,
-      timeAgo: 'just now',
+      timeAgo: 'now',
     };
 
     localStorageManager.append(newScore)
     const scores = localStorageManager.value;
-    this.setState({scores})
+    this.setState({ scores })
   }
 
 
   handleRefresh = () => {
-    clearInterval(this.state.interval)
+    timer.stop();
+    const scores = localStorageManager.value;
     this.setState({
       ...initialState,
       uncompletedWords: sampleText.split(" ").slice(1),
       currentWord: sampleText.split(" ")[0],
+      scores
     })
   }
 
   handleInputChange = event => {
     this.setState(({ keystrokes }) => ({ keystrokes: keystrokes + 1 }))
     const str = event.target.value;
-    console.log(this)
     // we clear the input filed on space press
     if (str.slice(str.length - 1) === " ") {
       this.handleNextWord(str.slice(0, -1));

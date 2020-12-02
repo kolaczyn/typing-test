@@ -1,5 +1,5 @@
 import React from 'react'
-import calculateStats from '../static/calculateStats'
+import calculateStats from '../helpers/calculateStats'
 
 export default function Stats({ timePassed, keystrokes, correctWords, wrongWords }) {
 
