@@ -9,8 +9,11 @@ import { Helmet } from 'react-helmet'
 import favicon from '../static/favicon.ico'
 import refreshIcon from '../static/refresh.svg'
 import Ranking from "../components/Ranking";
+import LocalStorageManager from '../static/LocalStorageManager'
+import calculateStats from "../static/calculateStats";
 
-const INITIAL_TIME = 6;
+const INITIAL_TIME = 60;
+const localStorageManager = new LocalStorageManager('scores');
 
 const initialState = {
   isTimeStarted: false,
@@ -23,28 +26,7 @@ const initialState = {
   currentTime: INITIAL_TIME,
   keystrokes: 0,
   inputFieldContent: '',
-  scores: [
-    // {
-    //   wpm: 80,
-    //   accuracy: '89%',
-    //   timeAgo: '2h',
-    // },
-    // {
-    //   wpm: 60,
-    //   accuracy: '89%',
-    //   timeAgo: '2h',
-    // },
-    // {
-    //   wpm: 81,
-    //   accuracy: '90%',
-    //   timeAgo: '3h',
-    // },
-    // {
-    //   wpm: 120,
-    //   accuracy: '100%',
-    //   timeAgo: '5h',
-    // },
-  ]
+  scores: [],
 }
 
 // I'm leaving this here for now
@@ -55,7 +37,7 @@ class App extends Component {
     this.state = { ...initialState }
   }
   componentDidMount() {
-    const scores = JSON.parse(localStorage.getItem('scores'));
+    const scores = localStorageManager.value;
     this.setState({
       uncompletedWords: sampleText.split(" ").slice(1),
       currentWord: sampleText.split(" ")[0],
@@ -89,20 +71,19 @@ class App extends Component {
   }
 
   handleTimesUp = () => {
-    const cachedScores = JSON.parse(localStorage.getItem('scores'));
-    localStorage.setItem('scores',
-      JSON.stringify(
-        [
-          ...cachedScores,
-          {
-            wpm: 80,
-            accuracy: '89%',
-            timeAgo: '2h',
-          },
-        ]
-      )
-    )
-    console.log('times up!')
+    const { currentTime, keystrokes, completedWords } = this.state
+    const stats = calculateStats(INITIAL_TIME - currentTime, keystrokes, completedWords);
+    const { wpm, accuracy, timeAgo } = stats;
+
+    const newScore = {
+      wpm,
+      accuracy,
+      timeAgo: 'just now',
+    };
+
+    localStorageManager.append(newScore)
+    const scores = localStorageManager.value;
+    this.setState({scores})
   }
 
 
