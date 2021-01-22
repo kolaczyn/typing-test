@@ -1,21 +1,25 @@
 import React, { Component } from "react";
 import { Helmet } from 'react-helmet';
 
-import InputField from "../components/InputField";
-import Ranking from "../components/Ranking";
-import Stats from '../components/Stats';
-import TextField from "../components/TextField";
+import InputField from "./components/inputField";
+import Ranking from "./components/ranking";
+import Stats from './components/stats';
+import TextField from "./components/textField";
 
-import LocalStorageManager from '../helpers/LocalStorageManager';
-import calculateStats from "../helpers/calculateStats";
-import Timer from '../helpers/Timer'
+import { ThemeProvider } from 'styled-components';
+import Body from './components/ui/Body';
+import Container from './components/ui/Container';
+import Button from './components/ui/Button';
 
-import sampleText from "../static/sampleText";
-import favicon from '../static/favicon.ico';
-import refreshIcon from '../static/refresh.svg';
+import LocalStorageManager from './helpers/LocalStorageManager';
+import darkTheme from './themes/darkTheme';
+import calculateStats from "./helpers/calculateStats";
+import Timer from './helpers/Timer'
 
-import "../styles/style.scss";
-
+import sampleText from "./static/sampleText";
+import favicon from "./static/favicon.ico";
+import Box from "./components/ui/Box";
+import InputSection from "./components/InputSection";
 
 const INITIAL_TIME = 10;
 const localStorageManager = new LocalStorageManager('scores');
@@ -134,28 +138,31 @@ class App extends Component {
           <title>Test Your Typing Speed</title>
           <link rel="icon" type="image/png" href={favicon} sizes="64x64" />
         </Helmet>
-
-        <div className="content__upper">
-          <TextField
-            completedWords={completedWords}
-            uncompletedWords={uncompletedWords}
-            currentWord={currentWord}
-            writtenChars={writtenChars}
-          />
-        </div>
-        <div className="content__lower">
-          <button className="element">{currentTime}</button>
-          <InputField
-            active={currentTime}
-            inputFieldContent={currentTime ? inputFieldContent : 'Time\'s up!'}
-            handleInputChange={this.handleInputChange}
-          />
-          <button className="element" onClick={this.handleRefresh}>
-            <img src={refreshIcon} className="refresh-icon" alt="Refresh" />
-          </button>
-        </div>
-        <Stats keystrokes={this.state.keystrokes} correctWords={this.state.completedWords} wrongWords={0} timePassed={INITIAL_TIME - this.state.currentTime} />
-        <Ranking scores={this.state.scores} />
+        <ThemeProvider theme={darkTheme}>
+          <Body>
+            <Container>
+              <Box>
+                <TextField
+                  completedWords={completedWords}
+                  uncompletedWords={uncompletedWords}
+                  currentWord={currentWord}
+                  writtenChars={writtenChars}
+                />
+              </Box>
+              <InputSection>
+                <Button>{currentTime}</Button>
+                <InputField
+                  active={currentTime}
+                  inputFieldContent={currentTime ? inputFieldContent : 'Time\'s up!'}
+                  handleInputChange={this.handleInputChange}
+                />
+                <Button onClick={this.handleRefresh}>Re</Button>
+              </InputSection>
+              <Stats keystrokes={this.state.keystrokes} correctWords={this.state.completedWords} wrongWords={0} timePassed={INITIAL_TIME - this.state.currentTime} />
+              <Ranking scores={this.state.scores} />
+            </Container>
+          </Body>
+        </ThemeProvider>
       </div>
     );
   }

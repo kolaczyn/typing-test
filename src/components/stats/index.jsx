@@ -1,5 +1,8 @@
 import React from 'react'
-import calculateStats from '../helpers/calculateStats'
+import calculateStats from '../../helpers/calculateStats'
+import Box from '../ui/Box';
+
+import { Wrapper, Element } from './styles';
 
 export default function Stats({ timePassed, keystrokes, correctWords, wrongWords }) {
 
@@ -14,13 +17,13 @@ export default function Stats({ timePassed, keystrokes, correctWords, wrongWords
     ]
     return (
         // should this be ul and li?
-        <div className="stats">
-            {data.map(({ number, desc }, idx) =>
-                <div key={idx} className="stats__element element">
-                    <h2>{number}</h2>
-                    <h6>{desc}</h6>
-                </div>
-            )}
-        </div>
+            <Wrapper>
+                {data.map(({ number, desc }, idx) =>
+                    <Element key={idx} className="stats__element element">
+                        <h2>{number}</h2>
+                        <h6>{desc}</h6>
+                    </Element>
+                )}
+            </Wrapper>
     )
 }
