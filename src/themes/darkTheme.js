@@ -1,4 +1,4 @@
-export default {
+const darkTheme = {
   palette: {
     box: '#222',
     background: '#303030',
@@ -8,4 +8,7 @@ export default {
     text: '#fff',
   },
   containerWidth: '768px',
+  borderRadius: '0.75rem',
 };
+
+export default darkTheme;

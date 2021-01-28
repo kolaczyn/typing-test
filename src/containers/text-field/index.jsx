@@ -11,11 +11,11 @@ const formatWord = (word, writtenChars) => {
 
 const TextField = ({ completedWords, uncompletedWords, currentWord, writtenChars }) => {
   return (
-    <div className="element text-field">
+    <>
       <Completed>{completedWords.join(' ')}</Completed>
       {formatWord(currentWord, writtenChars)}
       <Uncompleted>{uncompletedWords.join(' ')}</Uncompleted>
-    </div>
+    </>
   );
 }
 

@@ -1,14 +1,25 @@
 import React from "react";
 import Input from './styles';
 
+import * as actions from '../../reducers/typingActions';
+
 export default function InputField(props) {
-  const { inputFieldContent, handleInputChange, active, autoFocus } = props;
+  const { value, active, autoFocus, fieldName, dispatch } = props;
+
+  const handleChange = (e) => {
+    dispatch({
+      type: actions.KEYSTROKE,
+      fieldName,
+      payload: e.currentTarget.value,
+    })
+  }
 
   return (
     <Input
+      // TODO: add properties like autocorrect="off", autocomplete="off", just like on https://10fastfingers.com
       autoFocus={autoFocus}
-      value={inputFieldContent}
-      onChange={active && handleInputChange}
+      value={value}
+      onChange={active && handleChange}
     />
   );
 }
