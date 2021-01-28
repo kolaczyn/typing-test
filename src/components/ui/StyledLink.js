@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const transitionDuration = '115ms';
 
-const StyledLink = styled(Link)`
+const StylesWrapper = styled(Link)`
 position: relative;
 &::after {
   bottom: -2px;
@@ -25,5 +25,6 @@ position: relative;
   transform-origin: right; 
 }
 `;
+ const StyledLink = (props) => <StylesWrapper {...props} />
 
-export default (props) => <StyledLink {...props} />
+export default StyledLink;

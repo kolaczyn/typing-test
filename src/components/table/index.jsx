@@ -1,5 +1,5 @@
 import React from 'react'
-import Box from '../ui/Box';
+import Box from '../box';
 
 import StyledTable, { Thead } from './styles';
 

@@ -1,9 +1,8 @@
-import React, { createElement } from 'react'
+import React from 'react';
 
-import { Header, Nav } from './styles';
 import Logo from '../logo';
-
 import StyledLink from '../ui/StyledLink';
+import { Header, Nav } from './styles';
 
 const NavLink = ({ children, ...restProps }) => {
   return (
@@ -13,26 +12,28 @@ const NavLink = ({ children, ...restProps }) => {
       </StyledLink>
     </li>
   );
-
 }
+
+const navbarData = [
+  { label: 'play now', link: '/' },
+  { label: 'ranking', link: '/ranking' },
+  { label: 'github', link: '/github' },
+  { label: 'settings', link: '/settings' },
+];
 
 export default function Navbar() {
   return (
     <Header>
       <Logo />
       <Nav>
-        <NavLink to="/">
-          test
-        </NavLink>
-        <NavLink to="/ranking">
-          ranking
-        </NavLink>
-        <NavLink to="/about">
-          about
-          </NavLink>
-        <NavLink to="/github" target="_blank">
-          github
-          </NavLink>
+        {navbarData.map(({ label, link, ...rest }) => (
+          <NavLink
+            key={label}
+            to={link}
+            {...rest}
+          >
+            {label}
+          </NavLink>))}
       </Nav>
     </Header>
   )

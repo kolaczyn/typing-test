@@ -1,9 +1,8 @@
 import React from 'react'
-
-import Box from '../components/ui/Box';
+import Box from '../components/box'
 
 export default function Ranking() {
   return (
-    <Box>Welcome to ranking!</Box>
+    <Box title="Ranking">Welcome to ranking!</Box>
   )
 }

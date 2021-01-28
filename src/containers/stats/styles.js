@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import Box from '../../components/ui/Box';
+import Box from '../../components/Box';
 
 export const Wrapper = styled.ul`
   list-style-type: none;

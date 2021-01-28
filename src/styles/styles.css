@@ -6,13 +6,16 @@
   padding: 0;
   /* TODO: I'm not sure if I should actually put it in * selector or another one for performance reasons */
   list-style-type: none;
+  /* for transition when changing the theme. */
+  /* TODO see if you can make it so only background color and color get changed*/
+  transition: background-color 200ms ease-in;
 }
-a {
 
+a {
     text-decoration: none;
     color: inherit;
-
 }
-    a:focus, a:hover, a:visited, a:link, a:active {
-        text-decoration: none;
-    }
+
+a:focus, a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+}
