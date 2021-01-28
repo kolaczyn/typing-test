@@ -4,4 +4,15 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  /* TODO: I'm not sure if I should actually put it in * selector or another one for performance reasons */
+  list-style-type: none;
 }
+a {
+
+    text-decoration: none;
+    color: inherit;
+
+}
+    a:focus, a:hover, a:visited, a:link, a:active {
+        text-decoration: none;
+    }

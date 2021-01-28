@@ -1,4 +1,4 @@
-import * as actions from './typingActions';
+import * as actions from './actions';
 import { produce } from 'immer';
 
 const typingReducer = (state, action) => {
@@ -11,6 +11,11 @@ const typingReducer = (state, action) => {
     case actions.START_TIMER: {
       return produce(state, draft => {
         // TODO: implement
+      })
+    }
+    case actions.TOGGLE_ZEN_MODE: {
+      return produce(state, draft => {
+        draft.isZenModeOn = !draft.isZenModeOn;
       })
     }
     default:

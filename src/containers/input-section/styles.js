@@ -6,10 +6,10 @@ export default styled.section`
 
   & > :first-child, & > :last-child {
     /* flex-basis:  */
-    flex: 1 1 15%;
+    flex: 1 1 10%;
   }
   
   & > :nth-child(2) {
-    flex: 1 1 70%;
+    flex: 1 1 80%;
   }
 `;

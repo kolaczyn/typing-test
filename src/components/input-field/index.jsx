@@ -1,7 +1,7 @@
 import React from "react";
 import Input from './styles';
 
-import * as actions from '../../reducers/typingActions';
+import { actions } from '../../reducers/typing';
 
 export default function InputField(props) {
   const { value, active, autoFocus, fieldName, dispatch } = props;
