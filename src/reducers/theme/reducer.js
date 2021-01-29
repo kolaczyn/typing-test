@@ -6,13 +6,13 @@ import killItWithFire from '../../themes/killItWithFire';
 
 const typingReducer = (state, action) => {
   switch (action.type) {
-    case actions.SET_LIGHT_THEME: {
+    case actions.LIGHT_THEME: {
       return lightTheme;
     }
-    case actions.SET_DARK_THEME: {
+    case actions.DARK_THEME: {
       return darkTheme;
     }
-    case actions.SET_KILL_IT_WITH_FIRE: {
+    case actions.KILL_IT_WITH_FIRE: {
       return killItWithFire;
     }
     default:

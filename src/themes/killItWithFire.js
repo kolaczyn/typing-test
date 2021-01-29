@@ -1,3 +1,4 @@
+import { KILL_IT_WITH_FIRE } from '../reducers/theme/actions'
 const darkTheme = {
   palette: {
     box: 'green',
@@ -9,6 +10,7 @@ const darkTheme = {
   },
   containerWidth: '768px',
   borderRadius: '0.75rem',
+  themeName: KILL_IT_WITH_FIRE,
 };
 
 export default darkTheme;

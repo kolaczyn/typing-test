@@ -1,3 +1,4 @@
+import { DARK_THEME } from '../reducers/theme/actions'
 const darkTheme = {
   palette: {
     box: '#222',
@@ -9,6 +10,7 @@ const darkTheme = {
   },
   containerWidth: '768px',
   borderRadius: '0.75rem',
+  themeName: DARK_THEME,
 };
 
 export default darkTheme;
