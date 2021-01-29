@@ -6,7 +6,7 @@ import { DARK_THEME, KILL_IT_WITH_FIRE, LIGHT_THEME } from '../reducers/theme/ac
 
 export default function Settings() {
   const { state, dispatch } = useContext(ThemeContext);
-  const [checkedOption, setCheckedOption] = useState(null)
+  const [checkedOption, setCheckedOption] = useState(() => state.themeName);
   const isChecked = (label) => checkedOption === label;
   const onValueChange = (e) => {
     setCheckedOption(e.target.value);
@@ -14,10 +14,6 @@ export default function Settings() {
       type: e.target.value,
     })
   };
-
-  useEffect(() => { 
-    setCheckedOption(state.themeName);
-  }, [state.themeName])
 
   return (
     <Box title="Settings">
