@@ -1,31 +1,27 @@
 import React from 'react'
-import Box from '../box';
 
 import StyledTable, { Thead } from './styles';
 
-export default function Table({ labels, data, ranked }) {
+export default function Table({ labels, data }) {
 
   return data.length && (
-    <Box>
-      <StyledTable>
-        <Thead>
-          <tr>
-            {ranked && <td></td>}
-            {labels.map(label => <td>{label}</td>)}
+    <StyledTable>
+      <Thead>
+        <tr>
+          <td></td>
+          {labels.map(label => <td key={label}>{label}</td>)}
+        </tr>
+      </Thead>
+      <tbody>
+        {data.map((data, idx) =>
+          <tr key={data.username}>
+            <td>{`${idx + 1}.`}</td>
+            <td>{data.username}</td>
+            <td>{data.wpm}</td>
+            <td>{data.when}</td>
           </tr>
-        </Thead>
-        <tbody>
-          {data.map((data, idx) =>
-            <tr>
-              {ranked && <td>{`${idx + 1}.`}</td>}
-              {/* looping through the provided data */}
-              {Object.keys(data).map((item) => (
-                <td>{data[item]}</td>
-              ))}
-            </tr>
-          )}
-        </tbody>
-      </StyledTable>
-    </Box>
+        )}
+      </tbody>
+    </StyledTable>
   );
 }

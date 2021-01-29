@@ -1,4 +1,4 @@
-import sampleText from '../../static/sampleText';
+import sampleText from '../../fixtures/sampleText';
 
 const [currentWord, ...unfinished] = sampleText.split(' ');
 

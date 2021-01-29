@@ -15,3 +15,8 @@ export const Header = styled.header`
   margin-bottom: .4rem;
   border-bottom: 1px solid ${props => props.theme.palette.background};
 `;
+
+
+// TODO
+// clean up the styles files
+// follow the conventions from the Netflix course

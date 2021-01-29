@@ -4,6 +4,7 @@ import Container from '../ui/Container';
 import Logo from '../logo';
 import StyledLink from '../ui/StyledLink';
 import { Header, Nav } from './styles';
+import { navbarData } from '../../fixtures/navbarLinks';
 
 const NavLink = ({ children, ...restProps }) => {
   return (
@@ -14,12 +15,6 @@ const NavLink = ({ children, ...restProps }) => {
     </li>
   );
 }
-
-const navbarData = [
-  { label: 'play now', link: '/' },
-  { label: 'ranking', link: '/ranking' },
-  { label: 'settings', link: '/settings' },
-];
 
 export default function Navbar() {
   return (
