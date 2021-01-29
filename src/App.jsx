@@ -3,8 +3,7 @@ import { Helmet } from 'react-helmet';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Navbar from './components/navbar';
-import Body from './components/ui/Body';
-import Container from './components/ui/Container';
+import { Body, UpperBody, OuterBody } from './components/ui/Body';
 
 import TypingTest from './pages/TypingTest';
 import Ranking from './pages/Ranking';
@@ -13,6 +12,7 @@ import Settings from './pages/Settings';
 import CustomThemeProvider from './providers/CustomThemeProvider';
 
 import favicon from "./static/favicon.ico";
+import Footer from './components/footer';
 
 export default function App() {
   return (
@@ -22,18 +22,21 @@ export default function App() {
         <link rel="icon" type="image/png" href={favicon} sizes="64x64" />
       </Helmet>
       <CustomThemeProvider>
-        <Body>
-          <Router>
-            <Container>
-              <Navbar />
-              <Switch>
-                <Route path="/" exact component={TypingTest} />
-                <Route path="/ranking" component={Ranking} />
-                <Route path="/settings" component={Settings} />
-              </Switch>
-            </Container>
-          </Router>
-        </Body>
+        <Router>
+          <Body>
+            <OuterBody>
+              <UpperBody>
+                <Navbar />
+                <Switch>
+                  <Route path="/" exact component={TypingTest} />
+                  <Route path="/ranking" component={Ranking} />
+                  <Route path="/settings" component={Settings} />
+                </Switch>
+              </UpperBody>
+              <Footer />
+            </OuterBody>
+          </Body>
+        </Router>
       </CustomThemeProvider>
     </>
   )

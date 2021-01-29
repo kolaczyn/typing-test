@@ -17,7 +17,9 @@ export default function InputSection() {
   }, [dispatch])
 
   useEffect(() => {
-    const f5KeyCode = 116;
+  // TODO uncomment this in production
+    // const f5KeyCode = 116;
+    const f5KeyCode = -1;
     document.onkeydown = (e) => {
       // solve the depracation issue
       if (e.keyCode === f5KeyCode) {
@@ -37,7 +39,9 @@ export default function InputSection() {
         fieldName="typingInput"
         value={inputValue}
       />
-      <Button onClick={handleRestart}>Re</Button>
+      <Button onClick={handleRestart}>
+        <i className="fas fa-redo-alt"></i>
+      </Button>
     </InputSectionWrapper>
   )
 }
