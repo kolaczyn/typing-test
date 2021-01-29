@@ -9,8 +9,7 @@ const TextField = () => {
   const { finished, current, unfinished, isOkay } = state.text;
 
   return (
-    // TODO remove the ability to select the text
-    <Box style={{ textAlign: 'justify' }}>
+    <Box style={{ textAlign: 'justify', userSelect: 'none' }} unselectable="on">
       <Completed>{finished.join(' ')}</Completed>
       {' '}
       {isOkay ? <Good>{current}</Good> : <Wrong>{current}</Wrong>}

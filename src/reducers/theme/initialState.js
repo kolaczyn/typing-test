@@ -3,7 +3,7 @@ import darkTheme from '../../themes/darkTheme';
 
 const getInitialState = () => {
   const themeName = localStorage.getItem('theme');
-  // default to darkTheme is the theme is not yet set
+  // default to darkTheme
   return themeName ? nameToTheme[themeName] : darkTheme
 }
 export default getInitialState;

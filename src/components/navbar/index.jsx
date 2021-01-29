@@ -17,7 +17,6 @@ const NavLink = ({ children, ...restProps }) => {
 const navbarData = [
   { label: 'play now', link: '/' },
   { label: 'ranking', link: '/ranking' },
-  { label: 'github', link: '/github' },
   { label: 'settings', link: '/settings' },
 ];
 

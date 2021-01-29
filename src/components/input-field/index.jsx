@@ -16,7 +16,10 @@ export default function InputField(props) {
 
   return (
     <Input
-      // TODO: add properties like autocorrect="off", autocomplete="off", just like on https://10fastfingers.com
+      autoComplete="off"
+      spellCheck="false"
+      autoCorrect="off"
+      autoCapitalize="off"
       autoFocus={autoFocus}
       value={value}
       onChange={active && handleChange}

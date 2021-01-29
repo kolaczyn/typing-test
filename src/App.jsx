@@ -9,7 +9,6 @@ import Container from './components/ui/Container';
 import TypingTest from './pages/TypingTest';
 import Ranking from './pages/Ranking';
 import Settings from './pages/Settings';
-import RedirectToGithub from './pages/RedirectToGithub';
 
 import CustomThemeProvider from './providers/CustomThemeProvider';
 
@@ -31,7 +30,6 @@ export default function App() {
                 <Route path="/" exact component={TypingTest} />
                 <Route path="/ranking" component={Ranking} />
                 <Route path="/settings" component={Settings} />
-                <Route path="/github" component={RedirectToGithub} />
               </Switch>
             </Container>
           </Router>

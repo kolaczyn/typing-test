@@ -6,7 +6,6 @@ export const Container = styled.section`
   border-radius: ${props => props.theme.borderRadius};
   box-shadow: rgba(10, 10, 10, 0.12) 0px 8px 24px;
   padding: .8rem;
-  // TODO: add drop shadow
 `;
 
 export const Header = styled.header`
