@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import Box from '../components/box';
 import ThemeContext from '../contexts/themeContext';

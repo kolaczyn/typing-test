@@ -6,10 +6,10 @@ import Navbar from './components/navbar';
 import Body from './components/ui/Body';
 import Container from './components/ui/Container';
 
-import Ranking from './pages/Ranking';
-import RedirectToGithub from './pages/RedirectToGithub';
-import Settings from './pages/Settings';
 import TypingTest from './pages/TypingTest';
+import Ranking from './pages/Ranking';
+import Settings from './pages/Settings';
+import RedirectToGithub from './pages/RedirectToGithub';
 
 import CustomThemeProvider from './providers/CustomThemeProvider';
 

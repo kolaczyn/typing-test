@@ -1,21 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
+import Box from "../../components/box";
 
+import TypingContext from '../../contexts/typingContext';
 import { Completed, Uncompleted, Good, Wrong } from './styles';
 
-const formatWord = (word, writtenChars) => {
-  const Component = word.startsWith(writtenChars) ? Good : Wrong;
-  return <Component> {word}
-    {' '}
-  </Component>;
-}
 
-const TextField = ({ completedWords, uncompletedWords, currentWord, writtenChars }) => {
+const TextField = () => {
+  const { state, dispatch } = useContext(TypingContext)
+  const { finished, current, unfinished, isOkay } = state.text;
+
+  const WordComponent = () => {
+    const Component = isOkay ? Good : Wrong;
+    return <Component> {current}
+      {' '}
+    </Component>;
+  }
   return (
-    <>
-      <Completed>{completedWords.join(' ')}</Completed>
-      {formatWord(currentWord, writtenChars)}
-      <Uncompleted>{uncompletedWords.join(' ')}</Uncompleted>
-    </>
+    <Box style={{ textAlign: 'justify' }}>
+      <Completed>{finished.join(' ')}</Completed>
+      <WordComponent />
+      <Uncompleted>{unfinished.join(' ')}</Uncompleted>
+    </Box>
   );
 }
 
