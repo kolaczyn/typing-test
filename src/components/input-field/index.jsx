@@ -10,7 +10,7 @@ export default function InputField(props) {
     dispatch({
       type: actions.KEYSTROKE,
       fieldName,
-      payload: e.currentTarget.value,
+      payload: e.target.value,
     })
   }
 

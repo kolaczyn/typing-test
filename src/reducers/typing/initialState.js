@@ -10,7 +10,7 @@ const initialState = {
     finished: [],
     current: currentWord,
     unfinished,
-    isOkay: false,
+    isOkay: true,
   },
 };
 
