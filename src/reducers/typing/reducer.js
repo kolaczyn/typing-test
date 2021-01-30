@@ -14,6 +14,9 @@ const typingReducer = (state, action) => {
         const isWordFinished = state.text.current === writtenWord;
         const isOkay = state.text.current.startsWith(writtenWord);
 
+        // TODO make it only count characters like a-zA-Z, etc, not backspace
+        draft.stats.typedCharacters++;
+
         // FIXME app throws an error when the test is finished
         if (isSpacePressed) {
           // don't do anything if the user keep pressing space when the input is empty

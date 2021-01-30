@@ -1,28 +1,45 @@
-import React from 'react'
-import calculateStats from '../../helpers/calculateStats'
+import React, { useContext } from 'react';
 
 import { Wrapper, Element } from './styles';
+import TypingContext from '../../contexts/typingContext';
+// import calculateStats from '../../utils/calculateStats';
 
-export default function Stats({ timePassed, keystrokes, correctWords, wrongWords }) {
+// TODO tell the user what's the difference between gross and net wpm. Reference:
+// https://www.100utils.com/how-to-calculate-typing-speed-wpm-and-accuracy/
 
-  const { accuracy, wpm, } = calculateStats(timePassed, keystrokes, correctWords, wrongWords)
+export default function Stats() {
+  const { state } = useContext(TypingContext);
+
+  const { typedCharacters, correctCharacters, uncorrectedErrors } = state.stats;
+  const { currentTime } = state;
+
+  // const { grossWpm, netWpm, accuracy } = calculateStats({ ...state.stats });
+  // const data = [
+  //   { number: typedCharacters, label: 'Keystrokes' },
+  //   {
+  //     number: accuracy,
+  //     label: 'Accuracy',
+  //   },
+  //   { number: grossWpm, label: 'Gross WPM' },
+  //   { number: netWpm, label: 'Net WPM' },
+  // ];
+
+  // for debugging
   const data = [
-    { number: keystrokes, desc: 'keystrokes' },
-    { number: accuracy, desc: 'accuracy' },
-    { number: wpm, desc: 'WPM' },
-    { number: correctWords.length, desc: 'correct words' },
-    { number: wrongWords, desc: 'wrong words' },
+    { number: typedCharacters, label: 'typedCharacters' },
+    { number: correctCharacters, label: 'correctCharacters' },
+    { number: uncorrectedErrors, label: 'uncorrectedErrors' },
+    { number: currentTime, label: 'currentTime' },
   ];
 
   return (
-    // should this be ul and li?
     <Wrapper>
-      {data.map(({ number, desc }) =>
-        <Element as="li" key={desc}>
+      {data.map(({ number, label }) => (
+        <Element key={label}>
           <h4>{number}</h4>
-          <h6>{desc}</h6>
+          <h6>{label}</h6>
         </Element>
-      )}
+      ))}
     </Wrapper>
   );
 }

@@ -1,11 +1,13 @@
-import React, { useReducer } from "react";
+import React, { useReducer } from 'react';
 
 import TextField from '../containers/text-field';
-import InputSection from "../containers/input-section";
+import InputSection from '../containers/input-section';
 import TypingTestContainer from '../containers/TypingTest';
+import Container from '../components/ui/Container';
+import Stats from '../containers/stats';
+
 import TypingContext from '../contexts/typingContext';
 import { initialState, reducer } from '../reducers/typing';
-import Container from "../components/ui/Container";
 
 export default function TypingTest() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -18,8 +20,9 @@ export default function TypingTest() {
         <TypingContext.Provider value={{ state, dispatch }}>
           <InputSection />
           <TextField />
+          <Stats />
         </TypingContext.Provider>
       </TypingTestContainer>
     </Container>
   );
-};
+}

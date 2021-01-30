@@ -17,6 +17,13 @@ const initialState = {
     // tells if the player has maybe any error in the current word
     isOkay: true,
   },
+  // some of the values are cached
+  // so you don't have to loop through all the typed words on every single keystroke
+  stats: {
+    typedCharacters: 0,
+    correctCharacters: 0,
+    uncorrectedErrors: 0,
+  },
 };
 
 export default initialState;
