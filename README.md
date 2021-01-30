@@ -4,6 +4,7 @@
 
 ### MVP
 
+1. The game actually works
 1. You see stats after each playthrough.
 1. You can see stats being updated as you complete the test.
 
@@ -11,6 +12,7 @@
 
 1. Text is fetched from the Internet.
 1. Different themes you can choose from.
+1. Zen mode - no distraction (no header, footer, visible timer. only input and text)
 
 ### Bonus features
 
