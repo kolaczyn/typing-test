@@ -1,25 +1,26 @@
 export const footerLinksData = [
   {
     href: 'https://github.com/kolaczyn/typing-test',
-    classes: 'fab fa-github',
+    icon: 'fab fa-github',
     label: 'github',
     target: "_blank",
   },
   {
     href: 'https://twitter.com/kolaczyn',
-    classes: 'fab fa-twitter',
+    icon: 'fab fa-twitter',
     label: 'twitter',
     target: "_blank",
   },
   {
     href: 'mailto:kolaczyn@protonmail.com',
-    classes: 'fas fa-envelope',
+    icon: 'fas fa-envelope',
     label: 'email',
   },
   {
     href: 'https://kolaczyn.com',
-    classes: "fas fa-code",
+    icon: "fas fa-code",
     label: 'website',
     target: "_blank",
   },
 ]
+

@@ -2,19 +2,9 @@ import React from 'react';
 
 import Container from '../../common/Container';
 import Logo from '../../common/logo';
-import StyledLink from '../../common/StyledLink';
+import UnderlinedLink from '../../common/underlined-link';
 import { Header, Nav } from './styles';
 import { navbarData } from '../../../static/fixtures/navbarLinks';
-
-const NavLink = ({ children, ...restProps }) => {
-  return (
-    <li>
-      <StyledLink {...restProps}>
-        {children}
-      </StyledLink>
-    </li>
-  );
-}
 
 export default function Navbar() {
   return (
@@ -22,14 +12,13 @@ export default function Navbar() {
       <Header>
         <Logo />
         <Nav>
-          {navbarData.map(({ label, link, ...rest }) => (
-            <NavLink
+          {navbarData.map(({ label, to }) => (
+            <UnderlinedLink
               key={label}
-              to={link}
-              {...rest}
+              to={to}
             >
               {label}
-            </NavLink>))}
+            </UnderlinedLink>))}
         </Nav>
       </Header>
     </Container>

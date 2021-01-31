@@ -1,5 +1,5 @@
 export const navbarData = [
-  { label: 'play now', link: '/' },
-  { label: 'ranking', link: '/ranking' },
-  { label: 'settings', link: '/settings' },
+  { label: 'play now', to: '/' },
+  { label: 'ranking', to: '/ranking' },
+  { label: 'settings', to: '/settings' },
 ];
