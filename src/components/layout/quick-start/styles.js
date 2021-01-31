@@ -3,7 +3,7 @@ import styled from 'styled-components/macro';
 import Box from '../../common/box';
 import CloseButton from '../../common/close-button/styles';
 
-export const Wrapper = styled(Box)`
+export default styled(Box)`
   position: relative;
 
   ${CloseButton} {

@@ -21,6 +21,6 @@ const typingReducer = (state, action) => {
     default:
       return state;
   }
-}
+};
 
 export default typingReducer;

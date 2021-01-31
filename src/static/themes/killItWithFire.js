@@ -1,4 +1,5 @@
-import { KILL_IT_WITH_FIRE } from '../../reducers/theme/actions'
+import { KILL_IT_WITH_FIRE } from '../../reducers/theme/actions';
+
 const darkTheme = {
   palette: {
     box: 'green',

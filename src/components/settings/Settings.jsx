@@ -5,7 +5,7 @@ import ChooseTheme from './choose-theme';
 
 export default function Settings() {
   return (
-    <Box title='Settings'>
+    <Box title="Settings">
       <ChooseTheme />
     </Box>
   );

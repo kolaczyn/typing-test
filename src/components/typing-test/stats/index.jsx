@@ -8,6 +8,8 @@ import TypingContext from '../../../contexts/typingContext';
 // https://www.100utils.com/how-to-calculate-typing-speed-wpm-and-accuracy/
 
 export default function Stats() {
+  // TODO add show more button to show info on how is the stat calculated (formula)
+  // maybe also show the history of the stat?
   const { state } = useContext(TypingContext);
 
   const { typedCharacters, correctCharacters, uncorrectedErrors } = state.stats;

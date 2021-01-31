@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 export default styled.button`
   font-size: 1.75rem;
-  border-radius: ${props => props.theme.borderRadius};
+  border-radius: ${(props) => props.theme.borderRadius};
   box-shadow: rgba(10, 10, 10, 0.12) 0px 8px 24px;
 
   border: none;
@@ -14,8 +14,8 @@ export default styled.button`
   align-items: center;
   justify-content: center;
 
-  background-color: ${props => props.theme.palette.box};
-  color: ${props => props.theme.palette.text};
+  background-color: ${(props) => props.theme.palette.box};
+  color: ${(props) => props.theme.palette.text};
 
   &:focus {
     outline: none;

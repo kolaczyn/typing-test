@@ -1,6 +1,7 @@
 // TODO yeah, it's a pretty dumb name. Change it to something better
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Body, UpperBody, OuterBody } from './styles';
 import QuickStart from '../quick-start';
@@ -21,3 +22,7 @@ export default function GeneralLayout({ children }) {
     </Body>
   );
 }
+
+GeneralLayout.propTypes = {
+  children: PropTypes.node.isRequired,
+};

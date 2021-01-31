@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-param-reassign */
 import { produce } from 'immer';
 
 import * as actions from './actions';
@@ -8,7 +10,8 @@ const typingReducer = (state, action) => {
   switch (action.type) {
     case actions.KEYSTROKE: {
       return produce(state, (draft) => {
-        // split is there in case somebody moves cursor to the middle of the written word and presses space
+        // split is there in case somebody moves
+        // cursor to the middle of the written word and presses space
         const [writtenWord, ...rest] = action.payload.trim().split(' ');
         const isSpacePressed = action.payload.includes(' ');
         const isWordFinished = state.text.current === writtenWord;

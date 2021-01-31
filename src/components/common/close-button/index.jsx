@@ -5,7 +5,7 @@ import StyledButton from './styles';
 export default function CloseButton({ ...props }) {
   return (
     <StyledButton {...props}>
-      <span className='material-icons'>clear</span>
+      <span className="material-icons">clear</span>
     </StyledButton>
   );
 }

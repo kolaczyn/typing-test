@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-import Box from '../../../components/common/box';
+import Box from '../../common/box';
 
 // TODO make Wrapper ul and element li
 

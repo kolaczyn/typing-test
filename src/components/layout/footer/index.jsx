@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { footerLinksData } from '../../../static/fixtures/footerLinksData';
-import { copyrightNotice } from '../../../static/fixtures/copyrightNotice';
+import footerLinksData from '../../../static/fixtures/footerLinksData';
+import copyrightNotice from '../../../static/fixtures/copyrightNotice';
 
 import Container from '../../common/Container';
 import UnderlinkedLink from '../../common/underlined-link';
@@ -17,7 +17,8 @@ export default function Footer() {
         <section>{copyrightNotice}</section>
         <LinksWrapper>
           {footerLinksData.map((linkData) => (
-            // FIXME {...linkData} causes me to pass linkData.label as a props, though it is not needed
+            // FIXME {...linkData} causes me to pass
+            // linkData.label as a props, though it is not needed
             <UnderlinkedLink key={linkData.label} {...linkData}>
               {linkData.label}
             </UnderlinkedLink>

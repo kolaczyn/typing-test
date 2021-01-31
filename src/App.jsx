@@ -10,7 +10,7 @@ import {
 import TypingTest from './components/typing-test/TypingTest';
 import Ranking from './components/ranking/Ranking';
 import Settings from './components/settings/Settings';
-import NotFound from './components/not-found/';
+import NotFound from './components/not-found';
 
 import GeneralLayout from './components/layout/general-layout';
 
@@ -23,17 +23,17 @@ export default function App() {
     <>
       <Helmet>
         <title>Test Your Typing Speed</title>
-        <link rel='icon' type='image/png' href={favicon} sizes='64x64' />
+        <link rel="icon" type="image/png" href={favicon} sizes="64x64" />
       </Helmet>
       <CustomThemeProvider>
         <Router>
           <GeneralLayout>
             <Switch>
-              <Route path='/' exact component={TypingTest} />
-              <Route path='/ranking' component={Ranking} />
-              <Route path='/settings' component={Settings} />
-              <Route path='/not-found' component={NotFound} />
-              <Redirect from='/' to='/not-found' />
+              <Route path="/" exact component={TypingTest} />
+              <Route path="/ranking" component={Ranking} />
+              <Route path="/settings" component={Settings} />
+              <Route path="/not-found" component={NotFound} />
+              <Redirect from="/" to="/not-found" />
             </Switch>
           </GeneralLayout>
         </Router>

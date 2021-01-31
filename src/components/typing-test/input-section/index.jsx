@@ -5,7 +5,7 @@ import TimerButton from '../timer-button';
 import Button from '../../common/Button';
 import InputSectionWrapper from './styles';
 import TypingContext from '../../../contexts/typingContext';
-import { actions } from '../../../reducers/typing';
+import * as actions from '../../../reducers/typing/actions';
 
 export default function InputSection() {
   const { state, dispatch } = useContext(TypingContext);
@@ -37,11 +37,11 @@ export default function InputSection() {
         dispatch={dispatch}
         autoFocus
         active
-        fieldName='typingInput'
+        fieldName="typingInput"
         value={inputValue}
       />
       <Button onClick={handleRestart}>
-        <span className='material-icons'>refresh</span>
+        <span className="material-icons">refresh</span>
       </Button>
     </InputSectionWrapper>
   );

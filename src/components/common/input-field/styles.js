@@ -8,12 +8,12 @@ export default styled.input`
   flex-grow: 1;
   border: transparent solid 1px;
   color: inherit;
-  background-color: ${props => props.theme.palette.box};
-  border-radius: ${props => props.theme.borderRadius};
+  background-color: ${(props) => props.theme.palette.box};
+  border-radius: ${(props) => props.theme.borderRadius};
   box-shadow: rgba(10, 10, 10, 0.12) 0px 8px 24px;
 
   &:focus {
     outline: none;
-    border: ${props => props.theme.palette.box} solid 1px;
+    border: ${(props) => props.theme.palette.box} solid 1px;
   }
 `;

@@ -1,18 +1,12 @@
 import styled from 'styled-components/macro';
 
-import Box from '../../../components/common/box';
+import Box from '../../common/box';
 
-const StyledWrapper = styled(Box)`
+export const StyledWrapper = styled(Box)`
   text-align: justify;
   user-select: none;
   line-height: 1.3;
 `;
-
-export const Wrapper = ({ children, ...props }) => (
-  <StyledWrapper unselectable='on' {...props}>
-    {children}
-  </StyledWrapper>
-);
 
 export const Completed = styled.span`
   color: ${(props) => props.theme.palette.green};
@@ -38,7 +32,6 @@ export const WordWrapper = styled.span`
     width: 100%;
     height: 2px;
     transition: background-color 0ms ease-in;
-    background-color: ${(props) =>
-      props.isOkay ? props.theme.palette.green : props.theme.palette.red};
+    background-color: ${(props) => (props.isOkay ? props.theme.palette.green : props.theme.palette.red)};
   }
 `;

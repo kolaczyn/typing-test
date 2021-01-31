@@ -1,4 +1,4 @@
-import { LIGHT_THEME } from '../../reducers/theme/actions'
+import { LIGHT_THEME } from '../../reducers/theme/actions';
 
 const darkTheme = {
   palette: {

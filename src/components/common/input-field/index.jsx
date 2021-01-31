@@ -1,10 +1,14 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import Input from './styles';
 
-import { actions } from '../../../reducers/typing';
+import * as actions from '../../../reducers/typing/actions';
 
 export default function InputField(props) {
-  const { value, active, autoFocus, fieldName, dispatch } = props;
+  const {
+    value, active, autoFocus, fieldName, dispatch,
+  } = props;
 
   const handleChange = (e) => {
     // FIXME This is too speficic to be a generic input field
@@ -13,8 +17,8 @@ export default function InputField(props) {
       type: actions.KEYSTROKE,
       fieldName,
       payload: e.target.value,
-    })
-  }
+    });
+  };
 
   return (
     <Input
@@ -28,3 +32,15 @@ export default function InputField(props) {
     />
   );
 }
+
+InputField.propTypes = {
+  value: PropTypes.string.isRequired,
+  active: PropTypes.bool.isRequired,
+  autoFocus: PropTypes.bool,
+  dispatch: PropTypes.func.isRequired,
+  fieldName: PropTypes.string.isRequired,
+};
+
+InputField.defaultProps = {
+  autoFocus: false,
+};
