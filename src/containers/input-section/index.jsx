@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useCallback } from 'react';
 
 import InputField from '../../components/input-field';
+import TimerButton from '../../components/timer-button';
 import Button from '../../components/ui/Button';
 import InputSectionWrapper from './styles';
 import TypingContext from '../../contexts/typingContext';
@@ -31,9 +32,7 @@ export default function InputSection() {
 
   return (
     <InputSectionWrapper>
-    <Button>
-      60
-    </Button>
+      <TimerButton />
       <InputField
         dispatch={dispatch}
         autoFocus

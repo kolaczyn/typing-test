@@ -1,5 +1,6 @@
 import { DARK_THEME } from '../reducers/theme/actions'
 const darkTheme = {
+  // TODO start using gradients inspired by WaniKani's website
   palette: {
     box: '#222',
     background: '#303030',
