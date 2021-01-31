@@ -1,8 +1,8 @@
 import * as actions from './actions';
 
-import lightTheme from '../../themes/lightTheme';
-import darkTheme from '../../themes/darkTheme';
-import killItWithFire from '../../themes/killItWithFire';
+import lightTheme from '../../static/themes/lightTheme';
+import darkTheme from '../../static/themes/darkTheme';
+import killItWithFire from '../../static/themes/killItWithFire';
 
 const typingReducer = (state, action) => {
   switch (action.type) {

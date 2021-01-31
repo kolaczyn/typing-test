@@ -1,5 +1,5 @@
-import nameToTheme from '../../themes';
-import darkTheme from '../../themes/darkTheme';
+import nameToTheme from '../../static/themes';
+import darkTheme from '../../static/themes/darkTheme';
 
 const getInitialState = () => {
   const themeName = localStorage.getItem('theme');

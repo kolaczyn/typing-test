@@ -1,0 +1,25 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: background-color 200ms ease-in;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:focus,
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
+}
