@@ -1,10 +1,16 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 
 import TypingTest from './components/typing-test/TypingTest';
 import Ranking from './components/ranking/Ranking';
 import Settings from './components/settings/Settings';
+import NotFound from './components/not-found/';
 
 import GeneralLayout from './components/layout/general-layout';
 
@@ -19,7 +25,6 @@ export default function App() {
         <title>Test Your Typing Speed</title>
         <link rel='icon' type='image/png' href={favicon} sizes='64x64' />
       </Helmet>
-      {/* TODO add 404 page */}
       <CustomThemeProvider>
         <Router>
           <GeneralLayout>
@@ -27,6 +32,8 @@ export default function App() {
               <Route path='/' exact component={TypingTest} />
               <Route path='/ranking' component={Ranking} />
               <Route path='/settings' component={Settings} />
+              <Route path='/not-found' component={NotFound} />
+              <Redirect from='/' to='/not-found' />
             </Switch>
           </GeneralLayout>
         </Router>
