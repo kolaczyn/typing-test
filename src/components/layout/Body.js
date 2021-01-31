@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import Container from './Container';
+import Container from '../common/Container';
 
 // TODO figure out a better names for these components
 export const Body = styled.div`
