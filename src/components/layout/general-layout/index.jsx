@@ -2,7 +2,8 @@
 
 import React from 'react';
 
-import { Body, UpperBody, OuterBody } from '../Body';
+import { Body, UpperBody, OuterBody } from './styles';
+import QuickStart from '../quick-start';
 import Navbar from '../navbar';
 import Footer from '../footer';
 
@@ -12,6 +13,7 @@ export default function GeneralLayout({ children }) {
       <OuterBody>
         <UpperBody>
           <Navbar />
+          <QuickStart />
           {children}
         </UpperBody>
         <Footer />

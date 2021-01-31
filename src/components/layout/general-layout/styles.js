@@ -1,11 +1,11 @@
 import styled from 'styled-components/macro';
-import Container from '../common/Container';
+import Container from '../../common/Container';
 
 // TODO figure out a better names for these components
 export const Body = styled.div`
-  background-color: ${props => props.theme.palette.background};
-  color: ${props => props.theme.palette.text};
-  font-family: "Montserrat", sans-serif;
+  background-color: ${(props) => props.theme.palette.background};
+  color: ${(props) => props.theme.palette.text};
+  font-family: 'Montserrat', sans-serif;
 `;
 
 export const OuterBody = styled.div`
@@ -18,8 +18,9 @@ export const OuterBody = styled.div`
 `;
 
 export const UpperBody = styled(Container)`
-width: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 1.85rem;
   /* align-items: stretch; */
 `;
