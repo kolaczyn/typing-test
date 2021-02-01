@@ -1,4 +1,4 @@
-import { calculateGrossWpm, calculateNetWpm, calculateAccuracy } from '../../utils/calculateStats';
+import calculateStats, { calculateGrossWpm, calculateNetWpm, calculateAccuracy } from '../../utils/calculateStats';
 
 describe('calculateGrossWpm', () => {
   it('correctly calculates gross wpm', () => {
@@ -89,8 +89,10 @@ describe('calculateNetWpm', () => {
       },
     ];
 
-    testingData.forEach(({ typedChars, time, expectedResult }) => {
-      expect(calculateGrossWpm(typedChars, time)).toBe(expectedResult);
+    testingData.forEach(({
+      typedChars, time, uncorrectedErrors, expectedResult,
+    }) => {
+      expect(calculateNetWpm(typedChars, time, uncorrectedErrors)).toBe(expectedResult);
     });
   });
 });
@@ -127,10 +129,30 @@ describe('calculateAccuracy', () => {
         totalChars: 60,
         expectedResult: 0,
       },
+      {
+        typedChars: 0,
+        totalChars: 0,
+        expectedResult: 0,
+      },
     ];
 
     testingData.forEach(({ typedChars, totalChars, expectedResult }) => {
       expect(calculateAccuracy(typedChars, totalChars)).toBe(expectedResult);
     });
+  });
+});
+
+describe('calculate stats', () => {
+  it('correctly calculates all the stats', () => {
+    const input = {
+      typedCharacters: 800,
+      time: 120,
+      uncorrectedErrors: 8,
+    };
+
+    const { grossWpm, netWpm, accuracy } = calculateStats(input);
+    expect(grossWpm).toBe(80);
+    expect(netWpm).toBe(76);
+    expect(accuracy).toBe(99);
   });
 });

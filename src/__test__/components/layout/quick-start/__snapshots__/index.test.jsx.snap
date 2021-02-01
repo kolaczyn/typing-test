@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<QuickStart /> checks if closing works correctly 1`] = `null`;
+
+exports[`<QuickStart /> renders <QuickStart /> 1`] = `
+<section
+  class="styles__Container-sc-9qjjy7-0 dsJXrG styles-oh4xco-0 eyiePF"
+  title="11"
+>
+  <header
+    class="styles__Header-sc-9qjjy7-1 ejqAhC"
+  >
+    Quick Start
+  </header>
+  <button
+    class="button-sc-16cxp6v-0 styles-w4qo46-0 bGmkNd fZzkFu"
+    data-testid="close-button"
+  >
+    <span
+      class="material-icons"
+    >
+      clear
+    </span>
+  </button>
+  Welcome! Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita provident reprehenderit maiores non, quisquam et laudantium beatae eaque dicta, consectetur impedit explicabo fuga autem pariatur distinctio, placeat est?
+</section>
+`;

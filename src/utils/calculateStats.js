@@ -4,7 +4,7 @@
 // the time is in seconds
 export const calculateGrossWpm = (typedChars, time) => (time ? (12 * typedChars) / time : 0);
 
-export const calculateNetWpm = (typedChars, time, uncorrectedErrors) => (time
+export const calculateNetWpm = (typedChars, time, uncorrectedErrors) => (time && typedChars
   ? calculateGrossWpm(typedChars, time) - ((60 * uncorrectedErrors) / time)
   : 0);
 
@@ -17,12 +17,10 @@ export default function calculateStats({
   typedCharacters,
   time,
   uncorrectedErrors,
-  correctCharacters,
-  totalCharacters,
 }) {
   return {
     grossWpm: calculateGrossWpm(typedCharacters, time),
     netWpm: calculateNetWpm(typedCharacters, time, uncorrectedErrors),
-    accuracy: calculateAccuracy(correctCharacters, totalCharacters),
+    accuracy: calculateAccuracy(typedCharacters - uncorrectedErrors, typedCharacters),
   };
 }

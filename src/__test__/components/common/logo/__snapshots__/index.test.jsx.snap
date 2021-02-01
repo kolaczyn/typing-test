@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Ranking /> renders <Ranking /> 1`] = `
+exports[`<Logo /> renders <Logo /> 1`] = `
 <a
   href="/"
 >

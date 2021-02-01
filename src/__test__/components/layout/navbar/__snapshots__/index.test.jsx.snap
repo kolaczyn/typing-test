@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar /> renders <Navbar /> 1`] = `
+<header
+  class="styles__Header-sc-1t99mi9-0 cgsMYw"
+>
+  <a
+    href="/"
+  >
+    <h2
+      class="styles-sc-1oia5aj-0 haoxBK"
+    >
+      TypingTest
+    </h2>
+  </a>
+  <nav>
+    <nav
+      class="styles__Ul-sc-1t99mi9-1 TAkAl"
+    >
+      <li>
+        <a
+          class="styles-ja41pm-0 epeoBL"
+          href="/"
+        >
+          
+          <p>
+            play now
+          </p>
+        </a>
+      </li>
+      <li>
+        <a
+          class="styles-ja41pm-0 epeoBL"
+          href="/ranking"
+        >
+          
+          <p>
+            ranking
+          </p>
+        </a>
+      </li>
+      <li>
+        <a
+          class="styles-ja41pm-0 epeoBL"
+          href="/settings"
+        >
+          
+          <p>
+            settings
+          </p>
+        </a>
+      </li>
+      <li>
+        <a
+          class="styles-ja41pm-0 epeoBL"
+          href="/sign-up"
+        >
+          
+          <p>
+            sign up
+          </p>
+        </a>
+      </li>
+    </nav>
+  </nav>
+</header>
+`;

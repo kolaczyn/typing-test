@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar /> renders <Navbar /> 1`] = `
+<footer
+  class="styles__Wrapper-yt96dg-0 iYiSqY"
+>
+  <div
+    class="container-tfwxup-0 PjAJF"
+    style="margin: 0px auto;"
+  >
+    <section>
+      © 2021 created by Paweł Kołaczyński
+    </section>
+    <ul
+      class="styles__LinksWrapper-yt96dg-1 bJMsKe"
+    >
+      <li>
+        <a
+          class="styles-ja41pm-0 bnUlAN"
+          href="https://github.com/kolaczyn/typing-test"
+          label="github"
+          target="_blank"
+          to=""
+        >
+          <i
+            class="fab fa-github"
+          />
+          <p>
+            github
+          </p>
+        </a>
+      </li>
+      <li>
+        <a
+          class="styles-ja41pm-0 bnUlAN"
+          href="https://twitter.com/kolaczyn"
+          label="twitter"
+          target="_blank"
+          to=""
+        >
+          <i
+            class="fab fa-twitter"
+          />
+          <p>
+            twitter
+          </p>
+        </a>
+      </li>
+      <li>
+        <a
+          class="styles-ja41pm-0 bnUlAN"
+          href="mailto:kolaczyn@protonmail.com"
+          label="email"
+          to=""
+        >
+          <i
+            class="fas fa-envelope"
+          />
+          <p>
+            email
+          </p>
+        </a>
+      </li>
+      <li>
+        <a
+          class="styles-ja41pm-0 bnUlAN"
+          href="https://kolaczyn.com"
+          label="website"
+          target="_blank"
+          to=""
+        >
+          <i
+            class="fas fa-code"
+          />
+          <p>
+            website
+          </p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>
+`;
