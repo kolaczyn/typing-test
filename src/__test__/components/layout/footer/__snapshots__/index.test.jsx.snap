@@ -8,15 +8,23 @@ exports[`<Navbar /> renders <Navbar /> 1`] = `
     class="container-tfwxup-0 PjAJF"
     style="margin: 0px auto;"
   >
-    <section>
-      © 2021 created by Paweł Kołaczyński
+    <section
+      class="styles__Copyright-yt96dg-2 jraqFv"
+    >
+      <span>
+        © 2021
+      </span>
+       
+      <span>
+        created by Paweł Kołaczyński
+      </span>
     </section>
     <ul
-      class="styles__LinksWrapper-yt96dg-1 bJMsKe"
+      class="styles__LinksWrapper-yt96dg-1 WAOqC"
     >
       <li>
         <a
-          class="styles-ja41pm-0 bnUlAN"
+          class="styles-ja41pm-0 elKeK"
           href="https://github.com/kolaczyn/typing-test"
           label="github"
           target="_blank"
@@ -32,7 +40,7 @@ exports[`<Navbar /> renders <Navbar /> 1`] = `
       </li>
       <li>
         <a
-          class="styles-ja41pm-0 bnUlAN"
+          class="styles-ja41pm-0 elKeK"
           href="https://twitter.com/kolaczyn"
           label="twitter"
           target="_blank"
@@ -48,7 +56,7 @@ exports[`<Navbar /> renders <Navbar /> 1`] = `
       </li>
       <li>
         <a
-          class="styles-ja41pm-0 bnUlAN"
+          class="styles-ja41pm-0 elKeK"
           href="mailto:kolaczyn@protonmail.com"
           label="email"
           to=""
@@ -63,7 +71,7 @@ exports[`<Navbar /> renders <Navbar /> 1`] = `
       </li>
       <li>
         <a
-          class="styles-ja41pm-0 bnUlAN"
+          class="styles-ja41pm-0 elKeK"
           href="https://kolaczyn.com"
           label="website"
           target="_blank"

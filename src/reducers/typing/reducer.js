@@ -5,10 +5,13 @@ import { produce } from 'immer';
 import * as actions from './actions';
 import initialState from './initialState';
 import shiftToRight from '../../utils/shiftToRight';
+import countCorrectCharacters from '../../utils/countCorrectChars';
+import countIncorrectCharacters from '../../utils/countIncorrectChars';
 
 const typingReducer = (state, action) => {
   switch (action.type) {
     case actions.KEYSTROKE: {
+      // TODO this action seems a little bloated, I should do something about it
       return produce(state, (draft) => {
         // split is there in case somebody moves
         // cursor to the middle of the written word and presses space
@@ -22,6 +25,7 @@ const typingReducer = (state, action) => {
           // don't do anything if the user keep pressing space when the input is empty
           if (writtenWord === '') return;
 
+          // move forward with the words
           const { finished, current: currentWord, unfinished } = state.text;
           const current = {
             word: currentWord,
@@ -36,6 +40,15 @@ const typingReducer = (state, action) => {
 
           draft.inputValue = rest.join('');
           draft.text.isOkay = true;
+
+          draft.stats.correctCharacters += countCorrectCharacters(
+            currentWord,
+            writtenWord,
+          );
+          draft.stats.uncorrectedErrors += countIncorrectCharacters(
+            currentWord,
+            writtenWord,
+          );
         } else {
           draft.text.isOkay = isOkay;
           draft.inputValue = writtenWord;

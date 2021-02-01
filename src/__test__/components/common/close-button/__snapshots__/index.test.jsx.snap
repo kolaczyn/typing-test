@@ -2,7 +2,7 @@
 
 exports[`<CloseButton /> renders <CloseButton /> 1`] = `
 <button
-  class="button-sc-16cxp6v-0 styles-w4qo46-0 bGmkNd fZzkFu"
+  class="button-sc-16cxp6v-0 styles-w4qo46-0 eYCEva fZzkFu"
   data-testid="close-button"
 >
   <span

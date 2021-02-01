@@ -2,7 +2,7 @@
 
 exports[`<Navbar /> renders <Navbar /> 1`] = `
 <header
-  class="styles__Header-sc-1t99mi9-0 cgsMYw"
+  class="styles__Header-sc-1t99mi9-1 cOzRNy"
 >
   <a
     href="/"
@@ -15,11 +15,11 @@ exports[`<Navbar /> renders <Navbar /> 1`] = `
   </a>
   <nav>
     <nav
-      class="styles__Ul-sc-1t99mi9-1 TAkAl"
+      class="styles__Ul-sc-1t99mi9-0 gGEcrE"
     >
       <li>
         <a
-          class="styles-ja41pm-0 epeoBL"
+          class="styles-ja41pm-0 cYqeyQ"
           href="/"
         >
           
@@ -30,7 +30,7 @@ exports[`<Navbar /> renders <Navbar /> 1`] = `
       </li>
       <li>
         <a
-          class="styles-ja41pm-0 epeoBL"
+          class="styles-ja41pm-0 cYqeyQ"
           href="/ranking"
         >
           
@@ -41,7 +41,7 @@ exports[`<Navbar /> renders <Navbar /> 1`] = `
       </li>
       <li>
         <a
-          class="styles-ja41pm-0 epeoBL"
+          class="styles-ja41pm-0 cYqeyQ"
           href="/settings"
         >
           
@@ -52,7 +52,7 @@ exports[`<Navbar /> renders <Navbar /> 1`] = `
       </li>
       <li>
         <a
-          class="styles-ja41pm-0 epeoBL"
+          class="styles-ja41pm-0 cYqeyQ"
           href="/sign-up"
         >
           

@@ -40,7 +40,9 @@ export default function InputSection() {
     const prev = state.inputValue;
     const curr = e.target.value;
     const delta = curr.length - prev.length;
-    if (delta > 0) {
+    // I need to check if the curr !== ' ', because nothing should happen if
+    // the user keeps pressing space
+    if (delta > 0 && curr !== ' ') {
       dispatch({
         type: actions.INCREMENT_TYPED_CHARS,
         payload: delta,

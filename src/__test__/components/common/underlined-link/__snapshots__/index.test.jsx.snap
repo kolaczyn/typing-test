@@ -3,7 +3,7 @@
 exports[`<UnderlinedLink /> renders <UnderlinedLink /> with an icon as <a /> tag 1`] = `
 <li>
   <a
-    class="styles-ja41pm-0 bnUlAN"
+    class="styles-ja41pm-0 elKeK"
     href="https://reactjs.org/"
     to=""
   >
@@ -20,7 +20,7 @@ exports[`<UnderlinedLink /> renders <UnderlinedLink /> with an icon as <a /> tag
 exports[`<UnderlinedLink /> renders <UnderlinedLink /> without icon as react-router-dom's <Link /> tag 1`] = `
 <li>
   <a
-    class="styles-ja41pm-0 epeoBL"
+    class="styles-ja41pm-0 cYqeyQ"
     href="/log-in"
   >
     
