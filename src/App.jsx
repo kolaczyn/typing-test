@@ -7,7 +7,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-import TypingTest from './components/typing-test/TypingTest';
+import TypingTest from './components/typing-test';
 import Ranking from './components/ranking';
 import Settings from './components/settings';
 import NotFound from './components/not-found';

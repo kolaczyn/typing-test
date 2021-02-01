@@ -1,3 +1,10 @@
-const sampleText = 'React also known as Reactjs or ReactJS is an open-source front end JavaScript library for building user interfaces or UI components It is maintained by Facebook and a community of individual developers and companies React can be used as a base in the development of single-page or mobile applications';
+const sampleText = 'Typing is the process of writing or inputting text by';
+// 'pressing keys on a typewriter, computer keyboard, cell',
+// 'phone, or calculator. It can be distinguished from other',
+// 'means of text input, such as handwriting and speech',
+// 'recognition. Text can be in the form of letters, numbers',
+// "and other symbols. The world's first typist was Lillian",
+// 'Sholes from Wisconsin the daughter of Christopher Sholes',
+// 'who invented the first practical typewriter',
 
 export default sampleText;
