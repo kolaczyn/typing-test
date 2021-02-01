@@ -23,12 +23,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject"
   },
   "jest": {
     "collectCoverageFrom": [
       "<rootDir>/src/components/**/*.*",
+      "<rootDir>/src/utils/**/*.*",
       "<rootDir>/src/App.jsx",
       "<rootDir>/src/index.jsx"
     ],

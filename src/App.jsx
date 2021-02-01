@@ -8,8 +8,8 @@ import {
 } from 'react-router-dom';
 
 import TypingTest from './components/typing-test/TypingTest';
-import Ranking from './components/ranking/Ranking';
-import Settings from './components/settings/Settings';
+import Ranking from './components/ranking';
+import Settings from './components/settings';
 import NotFound from './components/not-found';
 
 import GeneralLayout from './components/layout/general-layout';

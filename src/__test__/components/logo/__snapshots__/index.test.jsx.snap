@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Ranking /> renders <Ranking /> 1`] = `
+<a
+  href="/"
+>
+  <h2
+    class="styles-sc-1oia5aj-0 haoxBK"
+  >
+    TypingTest
+  </h2>
+</a>
+`;
