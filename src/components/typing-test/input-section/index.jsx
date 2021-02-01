@@ -30,15 +30,23 @@ export default function InputSection() {
     };
   }, [handleRestart]);
 
+  const handleChange = (e) => {
+    dispatch({
+      type: actions.KEYSTROKE,
+      fieldName: 'typingInput',
+      payload: e.target.value,
+    });
+  };
+
   return (
     <InputSectionWrapper>
       <TimerButton />
       <InputField
-        dispatch={dispatch}
-        autoFocus
-        active
-        fieldName="typingInput"
         value={inputValue}
+        active
+        autoFocus
+        onChange={handleChange}
+        noCorrection
       />
       <Button onClick={handleRestart}>
         <span className="material-icons">refresh</span>
