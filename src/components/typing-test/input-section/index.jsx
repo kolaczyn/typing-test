@@ -31,11 +31,21 @@ export default function InputSection() {
   }, [handleRestart]);
 
   const handleChange = (e) => {
+    // console.log(curr.length === 1 + prev.length && curr.replace(prev, ''));
     dispatch({
       type: actions.KEYSTROKE,
-      fieldName: 'typingInput',
       payload: e.target.value,
     });
+
+    const prev = state.inputValue;
+    const curr = e.target.value;
+    const delta = curr.length - prev.length;
+    if (delta > 0) {
+      dispatch({
+        type: actions.INCREMENT_TYPED_CHARS,
+        payload: delta,
+      });
+    }
   };
 
   return (
