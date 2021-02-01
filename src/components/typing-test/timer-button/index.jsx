@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import TypingContext from '../../../contexts/typingContext';
-import Button from '../../common/Button';
+import Button from '../../common/button';
 // import { actions } from '../../reducers/typing'
 
 export default function TimerButton() {

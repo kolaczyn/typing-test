@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NotFound /> renders <NotFound /> 1`] = `
+<section
+  class="styles__Container-sc-9qjjy7-0 dsJXrG"
+  title="26"
+>
+  <header
+    class="styles__Header-sc-9qjjy7-1 ejqAhC"
+  >
+    404 Error — Page Not Found
+  </header>
+  The page no longer exists or the provided link is invalid.
+</section>
+`;

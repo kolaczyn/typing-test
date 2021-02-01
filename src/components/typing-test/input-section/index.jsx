@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useCallback } from 'react';
 
 import InputField from '../../common/input-field';
 import TimerButton from '../timer-button';
-import Button from '../../common/Button';
+import Button from '../../common/button';
 import InputSectionWrapper from './styles';
 import TypingContext from '../../../contexts/typingContext';
 import * as actions from '../../../reducers/typing/actions';

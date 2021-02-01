@@ -3,7 +3,7 @@ import React from 'react';
 import footerLinksData from '../../../static/fixtures/footerLinksData';
 import copyrightNotice from '../../../static/fixtures/copyrightNotice';
 
-import Container from '../../common/Container';
+import Container from '../../common/container';
 import UnderlinkedLink from '../../common/underlined-link';
 
 import { Wrapper, LinksWrapper } from './styles';

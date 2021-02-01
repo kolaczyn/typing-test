@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-import Button from '../Button';
+import Button from '../button';
 
 // TODO make it look decent on light mode; fix these hardcoded values
 export default styled(Button)`
