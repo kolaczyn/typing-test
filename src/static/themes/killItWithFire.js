@@ -3,6 +3,7 @@ import { KILL_IT_WITH_FIRE } from '../../reducers/theme/actions';
 const darkTheme = {
   palette: {
     box: 'green',
+    border: 'pink',
     background: 'orangered',
     lightGray: 'bisque',
     green: '#55efc4',

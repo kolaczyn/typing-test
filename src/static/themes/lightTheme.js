@@ -3,6 +3,7 @@ import { LIGHT_THEME } from '../../reducers/theme/actions';
 const darkTheme = {
   palette: {
     box: '#fbf1c7',
+    border: 'white',
     background: '#f9f5d7',
     lightGray: '929374',
     green: '#689d6a',

@@ -21,4 +21,13 @@ export default styled.button`
     outline: none;
   }
 
+  &:focus,
+  &:hover {
+    transform: translateY(-1px);
+    background-color: ${(props) => props.theme.palette.border};
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
 `;

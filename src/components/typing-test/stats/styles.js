@@ -8,9 +8,15 @@ export const Wrapper = styled.section`
   // FIXME I kinda hard-coded the gap between the stats and the section directly above here.
   /* I should move it somewhere else in the future */
   margin-top: 1rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 0.75rem;
-  justify-content: space-around;
+  @media only screen and (max-width: 680px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media only screen and (max-width: 400px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const Element = styled(Box)`

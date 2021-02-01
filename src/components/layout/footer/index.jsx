@@ -5,8 +5,7 @@ import copyrightNotice from '../../../static/fixtures/copyrightNotice';
 
 import Container from '../../common/container';
 import UnderlinkedLink from '../../common/underlined-link';
-
-import { Wrapper, LinksWrapper } from './styles';
+import { Wrapper, Copyright, LinksWrapper } from './styles';
 
 // TODO seperate this into few seperate files
 
@@ -14,7 +13,11 @@ export default function Footer() {
   return (
     <Wrapper>
       <Container style={{ margin: '0 auto' }}>
-        <section>{copyrightNotice}</section>
+        <Copyright>
+          <span>{copyrightNotice[0]}</span>
+          {' '}
+          <span>{copyrightNotice[1]}</span>
+        </Copyright>
         <LinksWrapper>
           {footerLinksData.map((linkData) => (
             // FIXME {...linkData} causes me to pass

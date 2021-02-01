@@ -12,5 +12,22 @@ export const Wrapper = styled.footer`
 export const LinksWrapper = styled.ul`
   display: flex;
   justify-content: space-evenly;
-  margin-top: .85rem;
+  margin-top: 0.85rem;
+  @media only screen and (max-width: 425px) {
+    // hide the icons
+    justify-content: space-between;
+    i {
+      display: none;
+    }
+  }
+`;
+
+export const Copyright = styled.section`
+  @media only screen and (max-width: 345px) {
+    display: flex;
+    flex-direction: column;
+    > *:first-child {
+      margin-bottom: .25rem;
+    }
+  }
 `;

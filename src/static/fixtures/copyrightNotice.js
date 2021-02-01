@@ -1,1 +1,4 @@
-export default `© ${new Date().getFullYear()} created by Paweł Kołaczyński`;
+export default [
+  `© ${new Date().getFullYear()}`,
+  'created by Paweł Kołaczyński',
+];

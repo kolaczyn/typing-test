@@ -4,6 +4,7 @@ const darkTheme = {
   // TODO start using gradients inspired by WaniKani's website
   palette: {
     box: '#222',
+    border: '#101113',
     background: '#303030',
     lightGray: 'bisque',
     green: '#55efc4',

@@ -9,6 +9,10 @@ export default styled.a`
   display: flex;
   align-items: center;
 
+  &:focus {
+    outline: none;
+  }
+
   & > i {
     margin-right: 0.5rem;
   }
@@ -31,7 +35,8 @@ export default styled.a`
     transform-origin: left;
   }
 
-  &:hover > p::after {
+  &:hover > p::after,
+  &:focus > p::after {
     transition: all ${transitionDuration} ease-out;
     transform: scaleX(1);
     transform-origin: right;
