@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 
 import { Wrapper, Element } from './styles';
-import TypingContext from '../../../contexts/typingContext';
+import TypingStateContext from '../../../contexts/TypingStateContext';
 import calculateStats from '../../../utils/calculateStats';
 
 export default function Stats() {
   // TODO add show more button to show info on how is the stat calculated (formula)
   // maybe also show the history of the stat?
-  const { state } = useContext(TypingContext);
+  const state = useContext(TypingStateContext);
   const { typedCharacters, uncorrectedErrors, correctCharacters } = state.stats;
 
   // const { typedCharacters, correctCharacters, uncorrectedErrors } = state.stats;

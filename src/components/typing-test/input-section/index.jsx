@@ -6,12 +6,14 @@ import InputField from '../../common/input-field';
 import TimerButton from '../timer-button';
 import Button from '../../common/button';
 import InputSectionWrapper from './styles';
-import TypingContext from '../../../contexts/typingContext';
+import TypingStateContext from '../../../contexts/TypingStateContext';
+import TypingDispatchContext from '../../../contexts/TypingDispatchContext';
 import * as actions from '../../../reducers/typing/actions';
 import startTimer from '../../../utils/startTimer';
 
 export default function InputSection() {
-  const { state, dispatch } = useContext(TypingContext);
+  const state = useContext(TypingStateContext);
+  const dispatch = useContext(TypingDispatchContext);
   const inputRef = useRef(null);
   const { inputValue } = state;
   const { currentTime } = state.timer;

@@ -2,12 +2,14 @@
 import React, { useState, useContext } from 'react';
 
 import * as actions from '../../../reducers/typing/actions';
-import TypingContext from '../../../contexts/typingContext';
+import TypingStateContext from '../../../contexts/TypingStateContext';
+import TypingDispatchContext from '../../../contexts/TypingDispatchContext';
 import Button from '../../common/button';
 import InputField from '../../common/input-field';
 
 export default function TypingOptions() {
-  const { state, dispatch } = useContext(TypingContext);
+  const state = useContext(TypingStateContext);
+  const dispatch = useContext(TypingDispatchContext);
   console.log(state);
   const [value, setValue] = useState(() => state.timer.startingTime);
   const handleChange = (e) => {

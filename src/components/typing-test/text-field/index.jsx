@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {
   StyledWrapper, Completed, Uncompleted, Wrong, WordWrapper,
 } from './styles';
-import TypingContext from '../../../contexts/typingContext';
+import TypingStateContext from '../../../contexts/TypingStateContext';
 
 export const Wrapper = ({ children, ...props }) => (
   <StyledWrapper unselectable="on" {...props}>
@@ -18,7 +18,7 @@ Wrapper.propTypes = {
 };
 
 const TextField = () => {
-  const { state } = useContext(TypingContext);
+  const state = useContext(TypingStateContext);
   const { inputValue } = state;
   const {
     finished, current, unfinished, isOkay,

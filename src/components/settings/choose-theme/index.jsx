@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext, useState } from 'react';
 
-import ThemeContext from '../../../contexts/themeContext';
+import ThemeContext from '../../../contexts/ThemeContext';
 import {
   DARK_THEME,
   KILL_IT_WITH_FIRE,

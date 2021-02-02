@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import { Wrapper, Element } from '../stats/styles';
-import TypingContext from '../../../contexts/typingContext';
+import TypingStateContext from '../../../contexts/TypingStateContext';
 // import calculateStats from '../../utils/calculateStats';
 
 // TODO tell the user what's the difference between gross and net wpm. Reference:
@@ -10,7 +10,7 @@ import TypingContext from '../../../contexts/typingContext';
 export default function DebugStats() {
   // TODO add show more button to show info on how is the stat calculated (formula)
   // maybe also show the history of the stat?
-  const { state } = useContext(TypingContext);
+  const state = useContext(TypingStateContext);
   const { typedCharacters, correctCharacters, uncorrectedErrors } = state.stats;
 
   const currentTime = state.timer.currentTime === null

@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
-import ThemeContext from '../contexts/themeContext';
+import ThemeContext from '../contexts/ThemeContext';
 import { initialState, reducer } from '../reducers/theme';
 
 export default function CustomThemeProvider({ children }) {

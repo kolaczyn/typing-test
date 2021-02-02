@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 
-import TypingContext from '../../../contexts/typingContext';
+import TypingStateContext from '../../../contexts/TypingStateContext';
 import Button from '../../common/button';
 
 export default function TimerButton() {
   const [isLabelVisible, setIsLabelVisible] = useState(true);
-  const { state } = useContext(TypingContext);
+  const state = useContext(TypingStateContext);
 
   const toggleIsLabelVisible = () => setIsLabelVisible((old) => !old);
   const currentTime = state.timer.currentTime === null

@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import {
   BrowserRouter as Router,
@@ -15,14 +15,12 @@ import NotFound from './components/not-found';
 import GeneralLayout from './components/layout/general-layout';
 
 import CustomThemeProvider from './providers/CustomThemeProvider';
-import TypingContext from './contexts/typingContext';
-import { initialState, reducer } from './reducers/typing';
 
 import favicon from './static/favicon.ico';
 import siteDescription from './static/fixtures/siteDescription';
+import TypingContextProvider from './providers/TypingContextProvider';
 
 export default function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <>
       <Helmet>
@@ -31,9 +29,7 @@ export default function App() {
         <link rel="icon" type="image/png" href={favicon} sizes="64x64" />
       </Helmet>
       <CustomThemeProvider>
-        {/* TODO: improve performance:
-        https://hswolff.com/blog/how-to-usecontext-with-usereducer/#performance-concerns */}
-        <TypingContext.Provider value={{ state, dispatch }}>
+        <TypingContextProvider>
           <Router>
             <GeneralLayout>
               <Switch>
@@ -45,7 +41,7 @@ export default function App() {
               </Switch>
             </GeneralLayout>
           </Router>
-        </TypingContext.Provider>
+        </TypingContextProvider>
       </CustomThemeProvider>
     </>
   );
