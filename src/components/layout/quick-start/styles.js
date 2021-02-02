@@ -26,7 +26,6 @@ export default styled(Box)`
 
   // the collapse button
   ${ExpandButton} {
-    background-color: ${(props) => props.theme.palette.background};
     position: relative;
     left: 50%;
     transform: translateX(-50%);

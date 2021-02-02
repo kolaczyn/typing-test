@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 export const Wrapper = styled.footer`
   padding-top: 1rem;
   padding-bottom: 1rem;
+  border: ${(props) => props.theme.palette.border} solid 1px;
   background-color: ${(props) => props.theme.palette.box};
   text-align: center;
   width: 100%;

@@ -2,11 +2,10 @@ import styled from 'styled-components/macro';
 
 export default styled.input`
   font-family: inherit;
-  border: none;
+  border: ${(props) => props.theme.palette.border} solid 1px;
   text-align: center;
   padding: 0.6rem 0.8rem;
   flex-grow: 1;
-  border: transparent solid 1px;
   color: ${(props) => (props.active ? 'inherit' : props.theme.palette.lightGray)};
   background-color: ${(props) => props.theme.palette.box};
   border-radius: ${(props) => props.theme.borderRadius};

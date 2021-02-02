@@ -1,12 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Box from '../common/box';
+import Tabs from './tabs';
+import Wrapper from './styles';
+
 import ChooseTheme from './choose-theme';
+import TypingOptions from './typing-options';
+import AnotherOption from './another-option';
+
+const tabs = [
+  'Change Theme',
+  'Typing Options',
+  'Another option',
+];
+
+const tabToComponents = {
+  'Change Theme': ChooseTheme,
+  'Typing Options': TypingOptions,
+  'Another option': AnotherOption,
+};
 
 export default function Settings() {
+  const [currentTab, setCurrentTab] = useState(tabs[0]);
+  const Component = tabToComponents[currentTab];
+
   return (
     <Box title="Settings">
-      <ChooseTheme />
+      <Wrapper>
+        <Tabs tabs={tabs} currentTab={currentTab} setCurrentTab={setCurrentTab} />
+        <Component />
+      </Wrapper>
     </Box>
   );
 }

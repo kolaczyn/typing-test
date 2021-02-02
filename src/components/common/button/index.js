@@ -1,11 +1,11 @@
 import styled from 'styled-components/macro';
 
 export default styled.button`
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   border-radius: ${(props) => props.theme.borderRadius};
   box-shadow: rgba(10, 10, 10, 0.12) 0px 8px 24px;
+  border: ${(props) => props.theme.palette.border} solid 1px;
 
-  border: none;
   outline: none;
   cursor: pointer;
 
@@ -14,14 +14,13 @@ export default styled.button`
   align-items: center;
   justify-content: center;
 
-  background-color: ${(props) => props.theme.palette.box};
+  background-color: ${(props) => (props.secondary ? props.theme.palette.background : props.theme.palette.box)};
   color: ${(props) => props.theme.palette.text};
 
   &:focus {
     outline: none;
   }
 
-  &:focus,
   &:hover {
     transform: translateY(-1px);
     background-color: ${(props) => props.theme.palette.border};

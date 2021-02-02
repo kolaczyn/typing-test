@@ -23,42 +23,39 @@ export default function ChooseTheme() {
   };
 
   return (
-    <>
-      <h4>Choose your theme</h4>
-      <section>
-        {/* that's why I hate dealing with forms without a library in React */}
-        <input
-          type="radio"
-          checked={isChecked(DARK_THEME)}
-          onChange={onValueChange}
-          value={DARK_THEME}
-          id="darkTheme"
-          name="darkTheme"
-        />
-        <label htmlFor="darkTheme">Dark Theme</label>
-        <br />
+    <section>
+      {/* that's why I hate dealing with forms without a library in React */}
+      <input
+        type="radio"
+        checked={isChecked(DARK_THEME)}
+        onChange={onValueChange}
+        value={DARK_THEME}
+        id="darkTheme"
+        name="darkTheme"
+      />
+      <label htmlFor="darkTheme">Dark Theme</label>
+      <br />
 
-        <input
-          type="radio"
-          checked={isChecked(LIGHT_THEME)}
-          onChange={onValueChange}
-          value={LIGHT_THEME}
-          id="lightTheme"
-          name="lightTheme"
-        />
-        <label htmlFor="lightTheme">Light Theme</label>
-        <br />
+      <input
+        type="radio"
+        checked={isChecked(LIGHT_THEME)}
+        onChange={onValueChange}
+        value={LIGHT_THEME}
+        id="lightTheme"
+        name="lightTheme"
+      />
+      <label htmlFor="lightTheme">Light Theme</label>
+      <br />
 
-        <input
-          type="radio"
-          checked={isChecked(KILL_IT_WITH_FIRE)}
-          onChange={onValueChange}
-          value={KILL_IT_WITH_FIRE}
-          id="killItWithFire"
-          name="killItWithFire"
-        />
-        <label htmlFor="killItWithFire">Kill it with Fire</label>
-      </section>
-    </>
+      <input
+        type="radio"
+        checked={isChecked(KILL_IT_WITH_FIRE)}
+        onChange={onValueChange}
+        value={KILL_IT_WITH_FIRE}
+        id="killItWithFire"
+        name="killItWithFire"
+      />
+      <label htmlFor="killItWithFire">Kill it with Fire</label>
+    </section>
   );
 }
