@@ -3,10 +3,18 @@ import PropTypes from 'prop-types';
 
 import { Container, Header } from './styles';
 
-export default function Box({ title, children, ...props }) {
+export default function Box({
+  title, children, isExpanded, ...props
+}) {
   return (
     <Container title={title?.length} {...props}>
-      { title && <Header>{title}</Header>}
+      { title && (
+      <Header>
+        <h4>
+          {title}
+        </h4>
+      </Header>
+      )}
       {children}
     </Container>
   );
@@ -15,8 +23,10 @@ export default function Box({ title, children, ...props }) {
 Box.propTypes = {
   title: PropTypes.string,
   children: PropTypes.node.isRequired,
+  isExpanded: PropTypes.bool,
 };
 
 Box.defaultProps = {
   title: '',
+  isExpanded: false,
 };

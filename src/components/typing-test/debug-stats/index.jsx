@@ -29,7 +29,7 @@ export default function DebugStats() {
       {data.map(({ number, label }) => (
         <Element key={label}>
           <h4>{number}</h4>
-          <h6>{label}</h6>
+          <h5>{label}</h5>
         </Element>
       ))}
     </Wrapper>

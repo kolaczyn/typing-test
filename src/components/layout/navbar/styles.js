@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 import Logo from '../../common/logo/styles';
 
-export const Ul = styled.nav`
+export const Ul = styled.ul`
   display: flex;
   gap: 1.25rem;
 `;

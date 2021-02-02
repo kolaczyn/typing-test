@@ -17,12 +17,14 @@ import GeneralLayout from './components/layout/general-layout';
 import CustomThemeProvider from './providers/CustomThemeProvider';
 
 import favicon from './static/favicon.ico';
+import siteDescription from './static/fixtures/siteDescription';
 
 export default function App() {
   return (
     <>
       <Helmet>
         <title>Test Your Typing Speed</title>
+        <meta name="description" content={siteDescription} />
         <link rel="icon" type="image/png" href={favicon} sizes="64x64" />
       </Helmet>
       <CustomThemeProvider>

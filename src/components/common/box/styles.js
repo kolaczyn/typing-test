@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro';
 
 export const Container = styled.section`
+  line-height: 1.35;
   font-size: 1.35rem;
   background-color: ${(props) => props.theme.palette.box};
   border-radius: ${(props) => props.theme.borderRadius};

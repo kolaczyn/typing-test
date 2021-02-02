@@ -5,7 +5,6 @@ import Box from '../../common/box';
 export const StyledWrapper = styled(Box)`
   text-align: justify;
   user-select: none;
-  line-height: 1.3;
 `;
 
 export const Completed = styled.span`
