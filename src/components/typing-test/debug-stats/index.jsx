@@ -1,31 +1,28 @@
 import React, { useContext } from 'react';
 
-import { Wrapper, Element } from './styles';
+import { Wrapper, Element } from '../stats/styles';
 import TypingContext from '../../../contexts/typingContext';
-import calculateStats from '../../../utils/calculateStats';
+// import calculateStats from '../../utils/calculateStats';
 
-export default function Stats() {
+// TODO tell the user what's the difference between gross and net wpm. Reference:
+// https://www.100utils.com/how-to-calculate-typing-speed-wpm-and-accuracy/
+
+export default function DebugStats() {
   // TODO add show more button to show info on how is the stat calculated (formula)
   // maybe also show the history of the stat?
   const { state } = useContext(TypingContext);
-  const { typedCharacters, uncorrectedErrors, correctCharacters } = state.stats;
+  const { typedCharacters, correctCharacters, uncorrectedErrors } = state.stats;
 
-  // const { typedCharacters, correctCharacters, uncorrectedErrors } = state.stats;
   const currentTime = state.timer.currentTime === null
     ? state.timer.startingTime : state.timer.currentTime;
   const timePassed = state.timer.startingTime - currentTime;
 
-  const { grossWpm, netWpm, accuracy } = calculateStats({
-    typedCharacters, uncorrectedErrors, correctCharacters, time: timePassed,
-  });
   const data = [
-    { number: state.stats.typedCharacters, label: 'Keystrokes' },
-    { number: `${accuracy}%`, label: 'Accuracy' },
-    { number: grossWpm, label: 'Gross WPM' },
-    { number: netWpm, label: 'Net WPM' },
+    { number: typedCharacters, label: 'typedCharacters' },
+    { number: correctCharacters, label: 'correctCharacters' },
+    { number: uncorrectedErrors, label: 'uncorrectedErrors' },
+    { number: `${timePassed}s`, label: 'timePassed' },
   ];
-
-  // for debugging
 
   return (
     <Wrapper>

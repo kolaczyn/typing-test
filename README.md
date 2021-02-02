@@ -26,3 +26,9 @@
 
 1. Scoreboard
 1. Multiplayer
+
+### Bugs & Extra Features
+
+1. If user doesn't finish a word and all the typed characters are correct, app thinks that the word is error free. To fix that I should also look at the untyped characters and include them in the errors.
+1. Show currently visited subsite in the navbar.
+1. Autofocus the input after you click the restart button.
