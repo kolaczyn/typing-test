@@ -5,7 +5,7 @@ import Input from './styles';
 
 const InputField = forwardRef((props, ref) => {
   const {
-    value, active, autoFocus, onChange, noCorrection, inactiveMessage,
+    value, active, autoFocus, onChange, noCorrection, inactiveMessage, ...rest
   } = props;
 
   const correctionSettings = noCorrection && {
@@ -22,6 +22,7 @@ const InputField = forwardRef((props, ref) => {
       autoFocus={autoFocus}
       value={active ? value : inactiveMessage}
       onChange={active ? onChange : () => {}}
+      {...rest}
     />
   );
 });
@@ -29,8 +30,8 @@ const InputField = forwardRef((props, ref) => {
 export default InputField;
 
 InputField.propTypes = {
-  value: PropTypes.string.isRequired,
-  active: PropTypes.bool.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  active: PropTypes.bool,
   autoFocus: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   noCorrection: PropTypes.bool,
@@ -39,6 +40,7 @@ InputField.propTypes = {
 };
 
 InputField.defaultProps = {
+  active: false,
   autoFocus: false,
   noCorrection: false,
   inactiveMessage: '',

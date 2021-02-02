@@ -23,7 +23,8 @@ export default styled.button`
 
   &:hover {
     transform: translateY(-1px);
-    background-color: ${(props) => props.theme.palette.border};
+    /* background-color: ${(props) => props.theme.palette.border}; */
+  background-color: ${(props) => (props.secondary ? props.theme.palette.background : props.theme.palette.border)};
   }
 
   &:active {

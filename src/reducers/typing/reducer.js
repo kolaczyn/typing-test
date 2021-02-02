@@ -60,6 +60,11 @@ const typingReducer = (state, action) => {
         draft.stats.typedCharacters += action.payload;
       });
     }
+    case actions.SET_TIME_LENGTH: {
+      return produce(state, (draft) => {
+        draft.timer.startingTime = action.payload;
+      });
+    }
     case actions.TICK_TIMER: {
       return produce(state, (draft) => {
         if (action.payload !== state.timer.timerStartingMoment) return;
@@ -80,6 +85,7 @@ const typingReducer = (state, action) => {
       });
     }
     case actions.RESTART: {
+      // FIXME for now restart also restarts custom made timer length
       return initialState;
     }
     default:
