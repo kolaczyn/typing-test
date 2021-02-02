@@ -1,4 +1,6 @@
-import React, { useContext, useEffect, useCallback } from 'react';
+import React, {
+  useContext, useEffect, useCallback, useRef,
+} from 'react';
 
 import InputField from '../../common/input-field';
 import TimerButton from '../timer-button';
@@ -10,6 +12,7 @@ import startTimer from '../../../utils/startTimer';
 
 export default function InputSection() {
   const { state, dispatch } = useContext(TypingContext);
+  const inputRef = useRef(null);
   const { inputValue } = state;
   const { currentTime } = state.timer;
 
@@ -17,19 +20,19 @@ export default function InputSection() {
     dispatch({
       type: actions.RESTART,
     });
+    inputRef.current.focus();
   }, [dispatch]);
 
   useEffect(() => {
-    // TODO uncomment this in production
-    // const f5KeyCode = 116;
-    const f5KeyCode = -1;
+    const enterKeyCode = 13;
     document.onkeydown = (e) => {
-      // solve the depracation issue
-      if (e.keyCode === f5KeyCode) {
+      // TODO solve the depracation issue
+      if (e.keyCode === enterKeyCode) {
         e.preventDefault();
         handleRestart();
       }
     };
+    return () => { document.onkeydown = null; };
   }, [handleRestart]);
 
   const handleChange = (e) => {
@@ -58,6 +61,7 @@ export default function InputSection() {
     <InputSectionWrapper>
       <TimerButton />
       <InputField
+        ref={inputRef}
         value={inputValue}
         active={currentTime !== 0}
         inactiveMessage="Time's up"

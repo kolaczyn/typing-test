@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import Input from './styles';
 
-export default function InputField(props) {
+const InputField = forwardRef((props, ref) => {
   const {
     value, active, autoFocus, onChange, noCorrection, inactiveMessage,
   } = props;
@@ -18,12 +18,15 @@ export default function InputField(props) {
   return (
     <Input
       {...correctionSettings}
+      ref={ref}
       autoFocus={autoFocus}
       value={active ? value : inactiveMessage}
       onChange={active ? onChange : () => {}}
     />
   );
-}
+});
+
+export default InputField;
 
 InputField.propTypes = {
   value: PropTypes.string.isRequired,
@@ -32,6 +35,7 @@ InputField.propTypes = {
   onChange: PropTypes.func.isRequired,
   noCorrection: PropTypes.bool,
   inactiveMessage: PropTypes.string,
+
 };
 
 InputField.defaultProps = {
