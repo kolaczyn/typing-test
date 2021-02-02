@@ -6,4 +6,4 @@ const getInitialState = () => {
   // default to darkTheme
   return themeName ? nameToTheme[themeName] : darkTheme;
 };
-export default getInitialState;
+export default getInitialState();

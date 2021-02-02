@@ -1,6 +1,6 @@
 export default [
   {
-    href: 'https://github.com/kolaczyn/typing-test',
+    href: 'https://github.com/kolaczyn',
     icon: 'fab fa-github',
     label: 'github',
     target: '_blank',

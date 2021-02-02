@@ -41,7 +41,7 @@ export default function QuickStart() {
               , here&apos;s a
               {' '}
               <u>
-                <a href="https://www.100utils.com/how-to-calculate-typing-speed-wpm-and-accuracy/" rel="noreferrer">
+                <a href="https://www.100utils.com/how-to-calculate-typing-speed-wpm-and-accuracy/" rel="noreferrer" target="_blank">
                   great article
                 </a>
               </u>

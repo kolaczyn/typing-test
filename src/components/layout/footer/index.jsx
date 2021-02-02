@@ -19,11 +19,17 @@ export default function Footer() {
           <span>{copyrightNotice[1]}</span>
         </Copyright>
         <LinksWrapper>
-          {footerLinksData.map((linkData) => (
-            // FIXME {...linkData} causes me to pass
-            // linkData.label as a props, though it is not needed
-            <UnderlinkedLink key={linkData.label} {...linkData}>
-              {linkData.label}
+          {footerLinksData.map(({
+            href, icon, label, target, rel,
+          }) => (
+            <UnderlinkedLink
+              key={label}
+              href={href}
+              icon={icon}
+              target={target}
+              rel={rel}
+            >
+              {label}
             </UnderlinkedLink>
           ))}
         </LinksWrapper>

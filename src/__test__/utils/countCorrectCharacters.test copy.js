@@ -1,8 +1,7 @@
 import countCorrectChars from '../../utils/countCorrectChars';
 
 describe('countCorrectChars', () => {
-  // TODO change the label in it below
-  it('write this', () => {
+  it('correctly counts the number of correct characters', () => {
     expect(countCorrectChars('hello world', 'javascript')).toBe(0);
     expect(countCorrectChars('1234', '1234')).toBe(4);
     expect(countCorrectChars('python is fun', 'python')).toBe(6);

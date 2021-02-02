@@ -26,10 +26,8 @@ export default function InputSection() {
   }, [dispatch]);
 
   useEffect(() => {
-    const enterKeyCode = 13;
     document.onkeydown = (e) => {
-      // TODO solve the depracation issue
-      if (e.keyCode === enterKeyCode) {
+      if (e.key === 'Enter') {
         e.preventDefault();
         handleRestart();
       }
@@ -40,7 +38,6 @@ export default function InputSection() {
   const handleChange = (e) => {
     // start timer on the first key press
     if (state.stats.typedCharacters === 0) startTimer({ state, dispatch });
-    // console.log(curr.length === 1 + prev.length && curr.replace(prev, ''));
     dispatch({
       type: actions.KEYSTROKE,
       payload: e.target.value,

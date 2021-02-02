@@ -10,7 +10,6 @@ import InputField from '../../common/input-field';
 export default function TypingOptions() {
   const state = useContext(TypingStateContext);
   const dispatch = useContext(TypingDispatchContext);
-  console.log(state);
   const [value, setValue] = useState(() => state.timer.startingTime);
   const handleChange = (e) => {
     setValue(e.target.value);

@@ -70,7 +70,6 @@ const typingReducer = (state, action) => {
         if (action.payload !== state.timer.timerStartingMoment) return;
         if (state.timer.currentTime === null) draft.timer.currentTime = state.timer.startingTime;
         draft.timer.currentTime--;
-        // TODO implement
       });
     }
     case actions.SET_TIMER_STARTING_MOMENT: {

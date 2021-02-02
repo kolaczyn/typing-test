@@ -4,12 +4,7 @@ import { Wrapper, Element } from '../stats/styles';
 import TypingStateContext from '../../../contexts/TypingStateContext';
 // import calculateStats from '../../utils/calculateStats';
 
-// TODO tell the user what's the difference between gross and net wpm. Reference:
-// https://www.100utils.com/how-to-calculate-typing-speed-wpm-and-accuracy/
-
 export default function DebugStats() {
-  // TODO add show more button to show info on how is the stat calculated (formula)
-  // maybe also show the history of the stat?
   const state = useContext(TypingStateContext);
   const { typedCharacters, correctCharacters, uncorrectedErrors } = state.stats;
 
