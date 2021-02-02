@@ -6,10 +6,12 @@ import Button from '../../common/button';
 import InputSectionWrapper from './styles';
 import TypingContext from '../../../contexts/typingContext';
 import * as actions from '../../../reducers/typing/actions';
+import startTimer from '../../../utils/startTimer';
 
 export default function InputSection() {
   const { state, dispatch } = useContext(TypingContext);
   const { inputValue } = state;
+  const { currentTime } = state.timer;
 
   const handleRestart = useCallback(() => {
     dispatch({
@@ -31,6 +33,8 @@ export default function InputSection() {
   }, [handleRestart]);
 
   const handleChange = (e) => {
+    // start timer on the first key press
+    if (state.stats.typedCharacters === 0) startTimer({ state, dispatch });
     // console.log(curr.length === 1 + prev.length && curr.replace(prev, ''));
     dispatch({
       type: actions.KEYSTROKE,
@@ -55,7 +59,8 @@ export default function InputSection() {
       <TimerButton />
       <InputField
         value={inputValue}
-        active
+        active={currentTime !== 0}
+        inactiveMessage="Time's up"
         autoFocus
         onChange={handleChange}
         noCorrection

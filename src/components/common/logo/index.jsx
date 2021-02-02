@@ -28,7 +28,7 @@ export default function Logo() {
         underscoreInterval = setInterval(() => {
           if (shouldPutUnderscoreNext) {
             setLabel('TypingTest_');
-          } else setLabel('TypingTest');
+          } else setLabel('TypingTest ');
           shouldPutUnderscoreNext = !shouldPutUnderscoreNext;
         }, 515);
       }, timeSpacing * (finalLabel.length + 1));
