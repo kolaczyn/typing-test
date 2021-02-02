@@ -4,9 +4,12 @@ const [currentWord, ...unfinished] = sampleText.split(' ');
 
 const initialState = {
   inputValue: '',
-  currentTime: 8,
-  isStarted: false,
-  isTimesUp: false,
+  timer: {
+    currentTime: null,
+    startingTime: 5,
+    // it is used to determinate if the timer got reset in the meantime
+    timerStartingMoment: null,
+  },
   text: {
     // word that have been already written - regardless of if they were written correct
     finished: [],

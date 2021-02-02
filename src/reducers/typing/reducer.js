@@ -62,8 +62,15 @@ const typingReducer = (state, action) => {
     }
     case actions.TICK_TIMER: {
       return produce(state, (draft) => {
-        draft.currentTime--;
+        if (action.payload !== state.timer.timerStartingMoment) return;
+        if (state.timer.currentTime === null) draft.timer.currentTime = state.timer.startingTime;
+        draft.timer.currentTime--;
         // TODO implement
+      });
+    }
+    case actions.SET_TIMER_STARTING_MOMENT: {
+      return produce(state, (draft) => {
+        draft.timer.timerStartingMoment = action.payload;
       });
     }
     case actions.TOGGLE_ZEN_MODE: {
