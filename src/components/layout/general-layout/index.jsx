@@ -7,6 +7,7 @@ import { Body, UpperBody, OuterBody } from './styles';
 import QuickStart from '../quick-start';
 import Navbar from '../navbar';
 import Footer from '../footer';
+import ToastsSection from '../../common/toasts-section';
 
 export default function GeneralLayout({ children }) {
   return (
@@ -18,6 +19,7 @@ export default function GeneralLayout({ children }) {
           {children}
         </UpperBody>
         <Footer />
+        <ToastsSection />
       </OuterBody>
     </Body>
   );

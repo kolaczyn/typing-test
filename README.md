@@ -36,3 +36,4 @@
 1. Change the color of input field if it's inactive
 1. Add random typos in the Logo, which can sometimes get corrected
 1. Maybe wpm, accuracy should be calculated after each keystroke?
+1. Should I make it a progressive web app?
