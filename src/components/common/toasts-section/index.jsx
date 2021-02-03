@@ -25,8 +25,9 @@ export default function ToastsSection() {
     <Section>
       {toasts.map(({ id, content }) => (
         <Toast
-          handleClick={() => deleteToast(id)}
+          deleteToast={deleteToast}
           key={id}
+          id={id}
         >
           {content}
         </Toast>

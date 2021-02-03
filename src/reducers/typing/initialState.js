@@ -6,6 +6,8 @@ const [currentWord, ...unfinishedWords] = currentLine.split(' ');
 const initialState = {
   inputValue: '',
   timer: {
+    minTime: 5,
+    maxTime: 60 * 15,
     currentTime: null,
     startingTime: 60,
     // it is used to determinate if the timer got reset in the meantime
