@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import Logo from '../../common/logo';
 import UnderlinedLink from '../../common/underlined-link';
 import { Header, Ul } from './styles';
-import navbarData from '../../../static/fixtures/navbarLinks';
+import { persistentLinks, loggedOutLinks, loggedInLinks } from '../../../static/fixtures/navbarLinks';
+
+import AuthContext from '../../../contexts/AuthContext';
+
+// import app from '../../../firebase';
 
 const Nav = ({ children, ...restProps }) => (
   <nav {...restProps}>
@@ -19,11 +23,17 @@ Nav.propTypes = {
 };
 
 export default function Navbar() {
+  const { currentUser } = useContext(AuthContext);
+  // maybe there is a better way of doing this
+  // it looks like JS doesnt' allowing speading with tetrary operator
+  const otherLinks = currentUser ? loggedInLinks : loggedOutLinks;
+  const links = [...persistentLinks, ...otherLinks];
+  console.log(links);
   return (
     <Header>
       <Logo />
       <Nav>
-        {navbarData.map(({ label, to }) => (
+        {links.map(({ label, to }) => (
           <UnderlinedLink key={label} to={to}>
             {label}
           </UnderlinedLink>

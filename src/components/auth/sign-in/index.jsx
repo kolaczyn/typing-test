@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Box from '../common/box';
-import Button from '../common/button';
-import InputField from '../common/input-field';
-import app from '../../firebase';
+import Box from '../../common/box';
+import Button from '../../common/button';
+import InputField from '../../common/input-field';
+import app from '../../../firebase';
 
 export default function SignIn() {
   const history = useHistory();

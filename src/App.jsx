@@ -10,8 +10,9 @@ import {
 import TypingTest from './components/typing-test';
 import Ranking from './components/ranking';
 import Settings from './components/settings';
-import SignUp from './components/sign-up';
-import SignIn from './components/sign-in';
+import SignUp from './components/auth/sign-up';
+import SignIn from './components/auth/sign-in';
+import LogOut from './components/auth/log-out';
 import Me from './components/me';
 import NotFound from './components/not-found';
 
@@ -44,6 +45,7 @@ export default function App() {
                   <Route path="/not-found" component={NotFound} />
                   <Route path="/sign-up" component={SignUp} />
                   <Route path="/sign-in" component={SignIn} />
+                  <Route path="/log-out" component={LogOut} />
                   <Route path="/me" component={Me} />
                   <Redirect from="/" to="/not-found" />
                 </Switch>
