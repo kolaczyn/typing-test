@@ -1,14 +1,20 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+
 import Box from '../../common/box';
 import Button from '../../common/button';
 import InputField from '../../common/input-field';
 import Container from './styles';
 import app from '../../../firebase';
 
+import * as actions from '../../../reducers/toast/actions';
+import ToastDispatchContext from '../../../contexts/ToastDispatchContext';
+
 export default function SignIn() {
   const history = useHistory();
+  const dispatch = useContext(ToastDispatchContext);
+
   const [isPending, setIsPending] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,7 +31,10 @@ export default function SignIn() {
         .signInWithEmailAndPassword(email, password);
       history.push('/');
     } catch (err) {
-      alert(err);
+      dispatch({
+        type: actions.PUSH_TOAST,
+        payload: err.message,
+      });
     }
     setIsPending(false);
   };

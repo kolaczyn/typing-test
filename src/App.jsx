@@ -24,6 +24,7 @@ import favicon from './static/favicon.ico';
 import siteDescription from './static/fixtures/siteDescription';
 import TypingContextProvider from './providers/TypingContextProvider';
 import AuthProvider from './providers/AuthProvider';
+import ToastProvider from './providers/ToastProvider';
 
 export default function App() {
   return (
@@ -35,23 +36,25 @@ export default function App() {
       </Helmet>
       <CustomThemeProvider>
         <TypingContextProvider>
-          <Router>
-            <AuthProvider>
-              <GeneralLayout>
-                <Switch>
-                  <Route path="/" exact component={TypingTest} />
-                  <Route path="/ranking" component={Ranking} />
-                  <Route path="/settings" component={Settings} />
-                  <Route path="/not-found" component={NotFound} />
-                  <Route path="/sign-up" component={SignUp} />
-                  <Route path="/sign-in" component={SignIn} />
-                  <Route path="/log-out" component={LogOut} />
-                  <Route path="/me" component={Me} />
-                  <Redirect from="/" to="/not-found" />
-                </Switch>
-              </GeneralLayout>
-            </AuthProvider>
-          </Router>
+          <ToastProvider>
+            <Router>
+              <AuthProvider>
+                <GeneralLayout>
+                  <Switch>
+                    <Route path="/" exact component={TypingTest} />
+                    <Route path="/ranking" component={Ranking} />
+                    <Route path="/settings" component={Settings} />
+                    <Route path="/not-found" component={NotFound} />
+                    <Route path="/sign-up" component={SignUp} />
+                    <Route path="/sign-in" component={SignIn} />
+                    <Route path="/log-out" component={LogOut} />
+                    <Route path="/me" component={Me} />
+                    <Redirect from="/" to="/not-found" />
+                  </Switch>
+                </GeneralLayout>
+              </AuthProvider>
+            </Router>
+          </ToastProvider>
         </TypingContextProvider>
       </CustomThemeProvider>
     </>
