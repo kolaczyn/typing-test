@@ -13,7 +13,7 @@ export const Wrapper = styled.footer`
 export const LinksWrapper = styled.ul`
   display: flex;
   justify-content: space-evenly;
-  margin-top: 0.85rem;
+  margin-top: 1.5rem;
   @media only screen and (max-width: 425px) {
     // hide the icons
     justify-content: space-between;

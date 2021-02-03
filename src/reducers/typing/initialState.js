@@ -6,7 +6,7 @@ const initialState = {
   inputValue: '',
   timer: {
     currentTime: null,
-    startingTime: 5,
+    startingTime: 60,
     // it is used to determinate if the timer got reset in the meantime
     timerStartingMoment: null,
   },

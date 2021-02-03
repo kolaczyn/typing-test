@@ -11,13 +11,13 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.75rem;
-  @media only screen and (max-width: 570px) {
+  @media only screen and (max-width: 660px) {
     flex-direction: column;
     ${Logo} {
       margin-bottom: .75rem;
     }
   }
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 435px) {
     ${Ul} {
       font-size: .85rem;
     }

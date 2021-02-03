@@ -25,7 +25,7 @@ export default function TypingOptions() {
   return (
     <form>
       <label htmlFor="time">Set time</label>
-      <InputField id="time" type="number" active value={value} onChange={handleChange} />
+      <InputField id="time" min="5" type="number" active value={value} onChange={handleChange} />
       <Button onClick={submitForm} secondary>Confirm</Button>
     </form>
   );

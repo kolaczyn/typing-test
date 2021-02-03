@@ -7,8 +7,6 @@ import Container from '../../common/container';
 import UnderlinkedLink from '../../common/underlined-link';
 import { Wrapper, Copyright, LinksWrapper } from './styles';
 
-// TODO seperate this into few seperate files
-
 export default function Footer() {
   return (
     <Wrapper>

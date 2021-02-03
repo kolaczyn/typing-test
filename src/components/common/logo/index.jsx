@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Wrapper from './styles';
 
-const timeSpacing = 215;
+const timeSpacing = 195;
 const finalLabel = 'TypingTest';
 
 export default function Logo() {
@@ -22,17 +22,7 @@ export default function Logo() {
         currIdx++;
       }, timeSpacing);
 
-      let shouldPutUnderscoreNext = true;
-      let underscoreInterval = null;
-      setTimeout(() => {
-        underscoreInterval = setInterval(() => {
-          if (shouldPutUnderscoreNext) {
-            setLabel('TypingTest_');
-          } else setLabel('TypingTest ');
-          shouldPutUnderscoreNext = !shouldPutUnderscoreNext;
-        }, 515);
-      }, timeSpacing * (finalLabel.length + 1));
-      return () => clearInterval(underscoreInterval);
+      return () => clearInterval(labelInterval);
     }, 950);
   }, []);
 
