@@ -8,6 +8,7 @@ export default styled.input`
   flex-grow: 1;
   color: ${(props) => (props.active ? 'inherit' : props.theme.palette.lightGray)};
   background-color: ${(props) => props.theme.palette.box};
+  background-color: ${(props) => (props.secondary && props.theme.palette.background)};
   border-radius: ${(props) => props.theme.borderRadius};
   box-shadow: rgba(10, 10, 10, 0.12) 0px 8px 24px;
   

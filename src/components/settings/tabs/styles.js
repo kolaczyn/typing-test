@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-import Button from '../../common/button';
+import Button from '../../common/button/styles';
 
 export default styled.section`
   border-right: ${(props) => props.theme.palette.background} solid 2px;

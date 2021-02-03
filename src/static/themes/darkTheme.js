@@ -8,6 +8,7 @@ const darkTheme = {
     background: '#303030',
     lightGray: 'bisque',
     green: '#55efc4',
+    blue: '#00a1e4',
     red: '#e17055',
     text: '#fff',
   },

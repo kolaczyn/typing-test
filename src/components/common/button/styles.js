@@ -13,8 +13,10 @@ export default styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: .5rem 1rem;
 
   background-color: ${(props) => (props.secondary ? props.theme.palette.background : props.theme.palette.box)};
+  background-color: ${(props) => (props.primary && props.theme.palette.blue)};
   color: ${(props) => props.theme.palette.text};
 
   &:focus {

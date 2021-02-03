@@ -4,7 +4,7 @@ import React, {
 
 import InputField from '../../common/input-field';
 import TimerButton from '../timer-button';
-import Button from '../../common/button';
+import Button from '../../common/button/styles';
 import InputSectionWrapper from './styles';
 import TypingStateContext from '../../../contexts/TypingStateContext';
 import TypingDispatchContext from '../../../contexts/TypingDispatchContext';

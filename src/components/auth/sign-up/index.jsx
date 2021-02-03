@@ -5,9 +5,11 @@ import Box from '../../common/box';
 import Button from '../../common/button';
 import InputField from '../../common/input-field';
 import app from '../../../firebase';
+import Container from './styles';
 
 export default function SignUp() {
   const history = useHistory();
+  const [isPending, setIsPending] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -16,6 +18,7 @@ export default function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsPending(true);
       await app
         .auth()
         .createUserWithEmailAndPassword(email, password);
@@ -23,16 +26,18 @@ export default function SignUp() {
     } catch (err) {
       alert(err);
     }
+    setIsPending(false);
   };
   return (
     <Box title="Sign Up">
       <form>
-        <label htmlFor="email">Email</label>
-        <InputField type="email" id="email" value={email} onChange={handleEmailChange} />
-        <br />
-        <label htmlFor="password">Password</label>
-        <InputField type="password" id="password" value={password} onChange={handlePasswordChange} />
-        <Button onClick={handleSubmit} secondary>Sign Up</Button>
+        <Container>
+          <label htmlFor="email">Email</label>
+          <InputField secondary type="email" id="email" value={email} onChange={handleEmailChange} />
+          <label htmlFor="password">Password</label>
+          <InputField secondary type="password" id="password" value={password} onChange={handlePasswordChange} />
+          <Button primary onClick={handleSubmit} isActive={!isPending}>{isPending ? 'Please wait...' : 'Sign In'}</Button>
+        </Container>
       </form>
     </Box>
   );
