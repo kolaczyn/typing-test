@@ -23,6 +23,7 @@ const TextField = () => {
   const {
     finished, current, unfinished, isOkay,
   } = state.text;
+  const { unfinished: unfinishedLines } = state.lines;
 
   // TODO I'm keeping this here for context,
   // but it may be a better idea to split it into another file
@@ -71,6 +72,8 @@ const TextField = () => {
       </WordWrapper>
       {' '}
       <Uncompleted>{unfinished.join(' ')}</Uncompleted>
+      <br />
+      <Uncompleted>{unfinishedLines[0]}</Uncompleted>
     </Wrapper>
   );
 };

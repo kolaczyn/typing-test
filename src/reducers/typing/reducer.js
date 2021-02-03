@@ -15,44 +15,45 @@ const typingReducer = (state, action) => {
       return produce(state, (draft) => {
         // split is there in case somebody moves
         // cursor to the middle of the written word and presses space
-        const [writtenWord, ...rest] = action.payload.trim().split(' ');
-        const isSpacePressed = action.payload.includes(' ');
-        const isWordFinished = state.text.current === writtenWord;
+        const [writtenWord] = action.payload.trim().split(' ');
         const isOkay = state.text.current.startsWith(writtenWord);
+        draft.text.isOkay = isOkay;
+        draft.inputValue = writtenWord;
+      });
+    }
+    case actions.SPACE: {
+      return produce(state, (draft) => {
+        // split is there in case somebody moves
+        // cursor to the middle of the written word and presses space
+        const [writtenWord, ...rest] = action.payload.trim().split(' ');
+        const isWordFinished = state.text.current === writtenWord;
+        // don't do anything if the user keep pressing space when the input is empty
+        if (writtenWord === '') return;
 
-        // FIXME app throws an error when the test is finished
-        if (isSpacePressed) {
-          // don't do anything if the user keep pressing space when the input is empty
-          if (writtenWord === '') return;
+        // move forward with the words
+        const { finished, current: currentWord, unfinished } = state.text;
+        const current = {
+          word: currentWord,
+          isOkay: isWordFinished,
+        };
 
-          // move forward with the words
-          const { finished, current: currentWord, unfinished } = state.text;
-          const current = {
-            word: currentWord,
-            isOkay: isWordFinished,
-          };
+        [
+          draft.text.finished,
+          draft.text.current,
+          draft.text.unfinished,
+        ] = shiftToRight(finished, current, unfinished);
 
-          [
-            draft.text.finished,
-            draft.text.current,
-            draft.text.unfinished,
-          ] = shiftToRight(finished, current, unfinished);
+        draft.inputValue = rest.join('');
+        draft.text.isOkay = true;
 
-          draft.inputValue = rest.join('');
-          draft.text.isOkay = true;
-
-          draft.stats.correctCharacters += countCorrectCharacters(
-            currentWord,
-            writtenWord,
-          );
-          draft.stats.uncorrectedErrors += countIncorrectCharacters(
-            currentWord,
-            writtenWord,
-          );
-        } else {
-          draft.text.isOkay = isOkay;
-          draft.inputValue = writtenWord;
-        }
+        draft.stats.correctCharacters += countCorrectCharacters(
+          currentWord,
+          writtenWord,
+        );
+        draft.stats.uncorrectedErrors += countIncorrectCharacters(
+          currentWord,
+          writtenWord,
+        );
       });
     }
     case actions.INCREMENT_TYPED_CHARS: {

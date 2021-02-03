@@ -1,6 +1,7 @@
 import sampleText from '../../static/fixtures/sampleText';
 
-const [currentWord, ...unfinished] = sampleText.split(' ');
+const [currentLine, ...unfinishedLines] = sampleText;
+const [currentWord, ...unfinishedWords] = currentLine.split(' ');
 
 const initialState = {
   inputValue: '',
@@ -10,13 +11,18 @@ const initialState = {
     // it is used to determinate if the timer got reset in the meantime
     timerStartingMoment: null,
   },
+  lines: {
+    finished: [],
+    current: currentLine,
+    unfinished: unfinishedLines,
+  },
   text: {
     // word that have been already written - regardless of if they were written correct
     finished: [],
     // word that the player currently needs to type
     current: currentWord,
     // word that are yet to be written
-    unfinished,
+    unfinished: unfinishedWords,
     // tells if the player has maybe any error in the current word
     isOkay: true,
   },

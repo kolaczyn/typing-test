@@ -28,7 +28,7 @@ export default function Navbar() {
   // it looks like JS doesnt' allowing speading with tetrary operator
   const otherLinks = currentUser ? loggedInLinks : loggedOutLinks;
   const links = [...persistentLinks, ...otherLinks];
-  console.log(links);
+
   return (
     <Header>
       <Logo />

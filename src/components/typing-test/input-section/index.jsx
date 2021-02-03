@@ -36,12 +36,20 @@ export default function InputSection() {
   }, [handleRestart]);
 
   const handleChange = (e) => {
+    const { value } = e.target;
     // start timer on the first key press
     if (state.stats.typedCharacters === 0) startTimer({ state, dispatch });
-    dispatch({
-      type: actions.KEYSTROKE,
-      payload: e.target.value,
-    });
+    if (value.includes(' ')) {
+      dispatch({
+        type: actions.SPACE,
+        payload: value,
+      });
+    } else {
+      dispatch({
+        type: actions.KEYSTROKE,
+        payload: value,
+      });
+    }
 
     const prev = state.inputValue;
     const curr = e.target.value;
