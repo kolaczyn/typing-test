@@ -9,5 +9,6 @@ export const loggedOutLinks = [
 ];
 
 export const loggedInLinks = [
+  { label: 'stats', to: '/stats' },
   { label: 'log out', to: '/log-out' },
 ];

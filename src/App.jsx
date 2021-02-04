@@ -14,6 +14,7 @@ import SignUp from './components/auth/sign-up';
 import SignIn from './components/auth/sign-in';
 import LogOut from './components/auth/log-out';
 import Me from './components/me';
+import Stats from './components/stats';
 import NotFound from './components/not-found';
 
 import GeneralLayout from './components/layout/general-layout';
@@ -49,6 +50,7 @@ export default function App() {
                     <Route path="/sign-in" component={SignIn} />
                     <Route path="/log-out" component={LogOut} />
                     <Route path="/me" component={Me} />
+                    <Route path="/stats" component={Stats} />
                     <Redirect from="/" to="/not-found" />
                   </Switch>
                 </GeneralLayout>
