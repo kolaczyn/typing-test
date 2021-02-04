@@ -6,18 +6,18 @@ import VertSplit, { LeftSection } from '../common/vert-split';
 
 import ChooseTheme from './choose-theme';
 import TypingOptions from './typing-options';
-import AnotherOption from './another-option';
+import Account from './account';
 
 const tabs = [
   'Change Theme',
   'Typing Options',
-  'Another option',
+  'Account',
 ];
 
 const tabToComponents = {
   'Change Theme': ChooseTheme,
   'Typing Options': TypingOptions,
-  'Another option': AnotherOption,
+  Account,
 };
 
 export default function Settings() {
