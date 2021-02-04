@@ -5,13 +5,14 @@ const darkTheme = {
     box: '#fbf1c7',
     border: 'white',
     background: '#f9f5d7',
-    lightGray: '929374',
-    green: '#689d6a',
-    red: '#cc241d',
     text: '#3c3836',
+
+    green: '#689d6a',
+    blue: '#98ded9',
+    red: '#cc241d',
+    yellow: '#e8e9a1',
+    lightGray: '929374',
   },
-  containerWidth: '768px',
-  borderRadius: '0.75rem',
   themeName: LIGHT_THEME,
 };
 

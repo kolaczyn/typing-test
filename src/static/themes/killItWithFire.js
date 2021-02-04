@@ -5,13 +5,14 @@ const darkTheme = {
     box: 'green',
     border: 'pink',
     background: 'orangered',
-    lightGray: 'bisque',
-    green: '#55efc4',
-    red: '#e17055',
     text: 'white',
+
+    green: '#55efc4',
+    blue: 'blue',
+    red: '#e17055',
+    yellow: 'yellow',
+    lightGray: 'bisque',
   },
-  containerWidth: '768px',
-  borderRadius: '0.75rem',
   themeName: KILL_IT_WITH_FIRE,
 };
 
