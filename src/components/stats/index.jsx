@@ -9,16 +9,19 @@ import {
   labels, accuracyStats, netWpmStats, grossWpmStats,
 } from '../../static/sampleStats';
 
-// import { accuracyStats } from '../../static/sampleStats';
-
 const stats = ['Accuracy', 'Gross WPM', 'Net WPM'];
 
 export default function Stats() {
-  const [selectedStats, setSelectedStats] = useState(['Accuracy']);
+  const [selectedStats, setSelectedStats] = useState([...stats]);
 
   // toggle if the element is in the array
   const toggleStats = ((stat) => setSelectedStats((old) => (old.includes(stat)
     ? old.filter((el) => el !== stat) : [...old, stat])));
+  const selectedStatsData = [];
+  // TODO there must be a better way to do this
+  if (selectedStats.includes('Accuracy')) selectedStatsData.push(accuracyStats);
+  if (selectedStats.includes('Gross WPM')) selectedStatsData.push(grossWpmStats);
+  if (selectedStats.includes('Net WPM')) selectedStatsData.push(netWpmStats);
 
   return (
     <Box title="My Stats">
@@ -35,8 +38,10 @@ export default function Stats() {
           ))}
         </LeftSection>
         <section>
-          <p>{selectedStats}</p>
-          <Graph label={labels} datasets={[accuracyStats, netWpmStats, grossWpmStats]} />
+          <Graph
+            labels={labels}
+            datasets={selectedStatsData}
+          />
         </section>
       </VertSplit>
     </Box>
