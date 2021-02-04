@@ -20,15 +20,16 @@ export default function Footer() {
           {footerLinksData.map(({
             href, icon, label, target, rel,
           }) => (
-            <UnderlinkedLink
-              key={label}
-              href={href}
-              icon={icon}
-              target={target}
-              rel={rel}
-            >
-              {label}
-            </UnderlinkedLink>
+            <li key={label}>
+              <UnderlinkedLink
+                href={href}
+                icon={icon}
+                target={target}
+                rel={rel}
+              >
+                {label}
+              </UnderlinkedLink>
+            </li>
           ))}
         </LinksWrapper>
       </Container>

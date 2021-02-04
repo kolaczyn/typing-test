@@ -34,9 +34,11 @@ export default function Navbar() {
       <Logo />
       <Nav>
         {links.map(({ label, to }) => (
-          <UnderlinedLink key={label} to={to}>
-            {label}
-          </UnderlinedLink>
+          <li key={label}>
+            <UnderlinedLink to={to}>
+              {label}
+            </UnderlinedLink>
+          </li>
         ))}
       </Nav>
     </Header>

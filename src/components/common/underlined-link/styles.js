@@ -2,42 +2,43 @@ import styled from 'styled-components/macro';
 
 const transitionDuration = '115ms';
 
+export const Label = styled.span`
+  position: relative;
+`;
+
 // TODO I use these styles also in StyledLink
 // I should figure out a way to use the same code in those two places
 export default styled.a`
-  position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
 
   &:focus {
     outline: none;
   }
 
-  & > i {
+  // select the icon
+  i {
     margin-right: 0.5rem;
   }
 
   // underline on hover
-  & > p::after {
-    bottom: -2px;
+  ${Label}::after {
+    display: inline-block;
     content: '';
-    position: absolute;
-    display: block;
-    background: ${(props) => props.theme.palette.text};
-    /* TODO figure out something better than this 70% */
-    /* because it look only good because all the labels of the links have similar width */
-    /* maybe i should use sibiling selector on the icon? */
-    width: ${(props) => (props.isthereicon ? '69%' : '100%')};
-    transform: scaleX(0);
     height: 1px;
-    border-radius: 1px;
-    transition: all ${transitionDuration} ease-out;
+    width: 100%;
+    background: ${(props) => props.theme.palette.text};
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    // if it is always underlined, there is no animation, so the scale is 1; there's a normal underline
+    transform: scaleX(${(props) => (props.isalwaysunderlined ? 1 : 0)});
+    transition: all ${transitionDuration} ease-in-out;
     transform-origin: left;
   }
 
-  &:hover > p::after,
-  &:focus > p::after {
-    transition: all ${transitionDuration} ease-out;
+  &:hover > ${Label}::after, &:focus > ${Label}::after {
     transform: scaleX(1);
     transform-origin: right;
   }
