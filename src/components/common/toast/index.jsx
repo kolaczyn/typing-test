@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import Wrapper from './styles';
-import CloseButton from '../close-button';
+import Wrapper, { LeftSection, RightSection } from './styles';
 
 export default function Toast({
-  children, id, deleteToast, ...rest
+  children, id, deleteToast, type, ...rest
 }) {
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -15,8 +14,10 @@ export default function Toast({
   }, []);
   return (
     <Wrapper {...rest}>
-      <CloseButton onClick={() => deleteToast(id)} />
-      {children}
+      <LeftSection onClick={() => deleteToast(id)} type={type}>
+        ✕
+      </LeftSection>
+      <RightSection>{children}</RightSection>
     </Wrapper>
   );
 }
@@ -25,4 +26,9 @@ Toast.propTypes = {
   children: PropTypes.node.isRequired,
   id: PropTypes.number.isRequired,
   deleteToast: PropTypes.func.isRequired,
+  type: PropTypes.string,
+};
+
+Toast.defaultProps = {
+  type: 'info',
 };

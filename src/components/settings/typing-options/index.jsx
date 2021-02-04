@@ -1,15 +1,18 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useContext } from 'react';
 
-import * as actions from '../../../reducers/typing/actions';
+import * as typingActions from '../../../reducers/typing/actions';
+import * as toastActions from '../../../reducers/toast/actions';
 import TypingStateContext from '../../../contexts/TypingStateContext';
 import TypingDispatchContext from '../../../contexts/TypingDispatchContext';
 import Button from '../../common/button';
 import InputField from '../../common/input-field';
+import ToastDispatchContext from '../../../contexts/ToastDispatchContext';
 
 export default function TypingOptions() {
   const state = useContext(TypingStateContext);
-  const dispatch = useContext(TypingDispatchContext);
+  const dispatchTyping = useContext(TypingDispatchContext);
+  const dispatchToast = useContext(ToastDispatchContext);
   const [message, setMessage] = useState('Confirm');
   const [value, setValue] = useState(() => state.timer.startingTime);
   const handleChange = (e) => {
@@ -25,8 +28,15 @@ export default function TypingOptions() {
   const submitForm = (e) => {
     e.preventDefault();
     // restart the game for good measure
-    dispatch({ type: actions.RESTART });
-    dispatch({ type: actions.SET_TIME_LENGTH, payload: value });
+    dispatchTyping({ type: typingActions.RESTART });
+    dispatchTyping({ type: typingActions.SET_TIME_LENGTH, payload: value });
+    dispatchToast({
+      type: toastActions.PUSH_TOAST,
+      payload: {
+        content: 'The time has been set',
+        type: 'info',
+      },
+    });
   };
 
   return (

@@ -33,7 +33,7 @@ export default function SignIn() {
     } catch (err) {
       dispatch({
         type: actions.PUSH_TOAST,
-        payload: err.message,
+        payload: { content: err.message, type: 'danger' },
       });
     }
     setIsPending(false);

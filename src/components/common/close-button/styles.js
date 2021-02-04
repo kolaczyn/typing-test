@@ -5,13 +5,13 @@ import Button from '../button';
 export default styled(Button)`
   font-size: 1.25rem;
   font-weight: bold;
+  border: none;
   width: 2.7rem;
   height: 2.7rem;
   border-radius: 50%;
 
-  background-color: ${(props) => props.theme.palette.red};
   color: ${(props) => props.theme.palette.text};
-  border: ${(props) => props.theme.palette.background} solid 0.4rem;
+  background-color: ${(props) => props.theme.palette.red};
   transition: all 125ms ease-in;
 
   &:hover {

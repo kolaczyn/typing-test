@@ -23,10 +23,11 @@ export default function ToastsSection() {
 
   return (
     <Section>
-      {toasts.map(({ id, content }) => (
+      {toasts.map(({ id, content, type }) => (
         <Toast
           deleteToast={deleteToast}
           key={id}
+          type={type}
           id={id}
         >
           {content}

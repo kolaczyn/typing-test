@@ -14,9 +14,9 @@ export default function toastReducer(state, action) {
     }
     case actions.PUSH_TOAST: {
       return produce(state, (draft) => {
-        const content = action.payload;
+        const { content, type } = action.payload;
         const id = state.newId;
-        draft.toasts.push({ content, id });
+        draft.toasts.push({ content, id, type });
         draft.newId++;
       });
     }

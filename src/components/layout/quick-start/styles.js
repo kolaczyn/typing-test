@@ -20,6 +20,7 @@ export default styled(Box)`
   ${CloseButton} {
     position: absolute;
     right: 0;
+    border: ${(props) => props.theme.palette.background} solid 0.4rem;
     top: 0;
     transform: translate(45%, -45%);
   }
