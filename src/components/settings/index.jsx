@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Box from '../common/box';
 import Tabs from './tabs';
-import VertSplit from '../common/vert-split';
+import VertSplit, { LeftSection } from '../common/vert-split';
 
 import ChooseTheme from './choose-theme';
 import TypingOptions from './typing-options';
@@ -27,7 +27,9 @@ export default function Settings() {
   return (
     <Box title="Settings">
       <VertSplit>
-        <Tabs tabs={tabs} currentTab={currentTab} setCurrentTab={setCurrentTab} />
+        <LeftSection>
+          <Tabs tabs={tabs} currentTab={currentTab} setCurrentTab={setCurrentTab} />
+        </LeftSection>
         <Component />
       </VertSplit>
     </Box>

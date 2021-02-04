@@ -1,22 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Wrapper from './styles';
 import Button from '../../common/button';
 
 export default function Tabs({ tabs, currentTab, setCurrentTab }) {
   return (
-    <Wrapper>
+    <>
       {tabs.map((tab) => (
         <Button
-          secondary={currentTab === tab}
+          primary={currentTab === tab}
           onClick={() => setCurrentTab(tab)}
           key={tab}
         >
           {tab}
         </Button>
       ))}
-    </Wrapper>
+    </>
   );
 }
 

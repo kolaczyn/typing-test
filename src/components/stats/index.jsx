@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 
 import Box from '../common/box';
 import Button from '../common/button';
-import VertSplit from '../common/vert-split';
+import VertSplit, { LeftSection } from '../common/vert-split';
 import Graph from './graph';
 
 import {
   labels, accuracyStats, netWpmStats, grossWpmStats,
 } from '../../static/sampleStats';
+
 // import { accuracyStats } from '../../static/sampleStats';
 
 const stats = ['Accuracy', 'Gross WPM', 'Net WPM'];
@@ -22,7 +23,7 @@ export default function Stats() {
   return (
     <Box title="My Stats">
       <VertSplit>
-        <section>
+        <LeftSection>
           {stats.map((stat) => (
             <Button
               primary={selectedStats.includes(stat)}
@@ -32,7 +33,7 @@ export default function Stats() {
               {stat}
             </Button>
           ))}
-        </section>
+        </LeftSection>
         <section>
           <p>{selectedStats}</p>
           <Graph label={labels} datasets={[accuracyStats, netWpmStats, grossWpmStats]} />
