@@ -32,8 +32,10 @@ export default function Account() {
         .ref(`users/${currentUser.uid}/profile.jpg`)
         .put(file);
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(error);
     }
+    // eslint-disable-next-line no-alert
     alert(file.name);
   };
   return currentUser ? (
