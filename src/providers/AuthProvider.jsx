@@ -6,7 +6,8 @@ import app from '../firebase';
 
 export default function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
-  const [pending, setPending] = useState(true);
+  // eslint-disable-next-line no-unused-vars
+  const [_pending, setPending] = useState(true);
 
   useEffect(() => {
     app.auth().onAuthStateChanged((user) => {
@@ -15,9 +16,9 @@ export default function AuthProvider({ children }) {
     });
   }, []);
 
-  if (pending) {
-    return <h1>Please wait...</h1>;
-  }
+  // if (pending) {
+  //   return <h1>Please wait...</h1>;
+  // }
 
   return (
     <AuthContext.Provider value={{ currentUser }}>
