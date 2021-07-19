@@ -1,4 +1,11 @@
-export default [
+type FooterLinkData = {
+  href: string;
+  icon: string;
+  label: string;
+  target?: string;
+  rel?: string;
+};
+const footerLinksData: FooterLinkData[] = [
   {
     href: 'https://github.com/kolaczyn',
     icon: 'fab fa-github',
@@ -26,3 +33,5 @@ export default [
     rel: 'noreferrer',
   },
 ];
+
+export default footerLinksData;

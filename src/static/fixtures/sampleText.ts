@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-const sampleText = [
+const sampleText: string[] = [
   'Typing is the process of writing',
   'or inputting text by pressing keys',
   'on a typewriter, computer keyboard,',

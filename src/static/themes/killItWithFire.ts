@@ -1,6 +1,7 @@
 import { KILL_IT_WITH_FIRE } from '../../reducers/theme/actions';
+import ThemeType from './ThemeType';
 
-const darkTheme = {
+const darkTheme: ThemeType = {
   palette: {
     box: 'green',
     border: 'pink',

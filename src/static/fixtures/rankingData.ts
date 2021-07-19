@@ -1,4 +1,5 @@
-export const rankingData = [
+type RankingData = { wpm: number; when: string; username: string };
+export const rankingData: RankingData[] = [
   {
     wpm: 120,
     when: '1h',
@@ -51,8 +52,4 @@ export const rankingData = [
   },
 ];
 
-export const rankingDataLabels = [
-  'Username',
-  'WPM',
-  'When',
-];
+export const rankingDataLabels = ['Username', 'WPM', 'When'];

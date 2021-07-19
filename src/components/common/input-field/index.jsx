@@ -22,7 +22,7 @@ const InputField = forwardRef((props, ref) => {
       type={type}
       autoFocus={autoFocus}
       value={active ? value : inactiveMessage}
-      onChange={active ? onChange : () => {}}
+      onChange={active ? onChange : () => null}
       {...rest}
     />
   );

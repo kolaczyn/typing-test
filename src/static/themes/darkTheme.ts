@@ -1,6 +1,7 @@
 import { DARK_THEME } from '../../reducers/theme/actions';
+import ThemeType from './ThemeType';
 
-const darkTheme = {
+const darkTheme: ThemeType = {
   palette: {
     box: '#222',
     border: '#1c1e21',
