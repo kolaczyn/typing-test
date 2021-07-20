@@ -8,18 +8,22 @@ export const StyledWrapper = styled(Box)`
 `;
 
 export const Completed = styled.span`
-  color: ${(props) => props.theme.palette.green};
+  color: ${props => props.theme.palette.green};
 `;
 
 export const Uncompleted = styled.span`
-  color: ${(props) => props.theme.palette.lightGray};
+  color: ${props => props.theme.palette.lightGray};
 `;
 
 export const Wrong = styled.span`
-  color: ${(props) => props.theme.palette.red};
+  color: ${props => props.theme.palette.red};
 `;
 
-export const WordWrapper = styled.span`
+type WordWrapperProps = {
+  isOkay: boolean;
+};
+
+export const WordWrapper = styled.span<WordWrapperProps>`
   position: relative;
   &::before {
     position: absolute;
@@ -31,6 +35,7 @@ export const WordWrapper = styled.span`
     width: 100%;
     height: 2px;
     transition: background-color 0ms ease-in;
-    background-color: ${(props) => (props.isOkay ? props.theme.palette.green : props.theme.palette.red)};
+    background-color: ${props =>
+      props.isOkay ? props.theme.palette.green : props.theme.palette.red};
   }
 `;

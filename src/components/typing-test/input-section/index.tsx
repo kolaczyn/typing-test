@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useContext, useEffect, useCallback, useRef } from 'react';
 
 import InputField from '../../common/input-field';
@@ -76,6 +77,7 @@ const InputSection: React.FC = () => {
         onChange={handleChange}
         noCorrection
       />
+      {/* @ts-ignore */}
       <Button onClick={handleRestart}>
         <span className="material-icons">refresh</span>
       </Button>
