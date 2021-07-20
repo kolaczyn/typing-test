@@ -6,7 +6,7 @@ import Wrapper from './styles';
 const timeSpacing = 195;
 const finalLabel = 'TypingTest';
 
-export default function Logo() {
+const Logo: React.FC = () => {
   const [label, setLabel] = useState('_');
 
   useEffect(() => {
@@ -18,7 +18,6 @@ export default function Logo() {
       const labelInterval = setInterval(() => {
         if (currIdx > letters.length) clearInterval(labelInterval);
         else setLabel(`${letters.slice(0, currIdx).join('')}_`);
-        // eslint-disable-next-line no-plusplus
         currIdx++;
       }, timeSpacing);
 
@@ -28,9 +27,9 @@ export default function Logo() {
 
   return (
     <Link to="/">
-      <Wrapper>
-        {label}
-      </Wrapper>
+      <Wrapper>{label}</Wrapper>
     </Link>
   );
-}
+};
+
+export default Logo;

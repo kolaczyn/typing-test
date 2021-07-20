@@ -3,9 +3,20 @@ import PropTypes from 'prop-types';
 
 import Wrapper, { LeftSection, RightSection } from './styles';
 
-export default function Toast({
-  children, id, deleteToast, type, ...rest
-}) {
+type Props = {
+  id: number;
+  type?: string;
+  children: React.ReactNode;
+  deleteToast: (id: number) => void;
+};
+
+const Toast: React.FC<Props> = ({
+  children,
+  id,
+  deleteToast,
+  type,
+  ...rest
+}) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       deleteToast(id);
@@ -14,13 +25,16 @@ export default function Toast({
   }, []);
   return (
     <Wrapper {...rest}>
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
       <LeftSection onClick={() => deleteToast(id)} type={type}>
         ✕
       </LeftSection>
       <RightSection>{children}</RightSection>
     </Wrapper>
   );
-}
+};
+export default Toast;
 
 Toast.propTypes = {
   children: PropTypes.node.isRequired,

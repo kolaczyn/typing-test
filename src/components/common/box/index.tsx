@@ -3,22 +3,24 @@ import PropTypes from 'prop-types';
 
 import { Container, Header } from './styles';
 
-export default function Box({
-  title, children, isExpanded, ...props
-}) {
-  return (
-    <Container title={title?.length} {...props}>
-      { title && (
+type Props = {
+  title?: string;
+  children: React.ReactNode;
+  isExpanded?: boolean;
+};
+
+const Box: React.FC<Props> = ({ title, children, ...props }) => (
+  <Container {...props}>
+    {title && (
       <Header>
-        <h4>
-          {title}
-        </h4>
+        <h4>{title}</h4>
       </Header>
-      )}
-      {children}
-    </Container>
-  );
-}
+    )}
+    {children}
+  </Container>
+);
+
+export default Box;
 
 Box.propTypes = {
   title: PropTypes.string,

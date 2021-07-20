@@ -14,7 +14,7 @@ import SignUp from './components/auth/sign-up';
 import SignIn from './components/auth/sign-in';
 import LogOut from './components/auth/log-out';
 import Stats from './components/stats';
-import NotFound from './components/not-found';
+import NotFound from './components/not-found/index.tsx';
 
 import GeneralLayout from './components/layout/general-layout';
 

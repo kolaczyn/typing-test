@@ -3,9 +3,26 @@ import PropTypes from 'prop-types';
 
 import Input from './styles';
 
-const InputField = forwardRef((props, ref) => {
+type Props = {
+  value: string | number;
+  active?: boolean;
+  autoFocus?: boolean;
+  onChange: () => void;
+  noCorrection?: boolean;
+  inactiveMessage?: string;
+  type?: string;
+};
+
+const InputField = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const {
-    value, active, autoFocus, onChange, noCorrection, inactiveMessage, type, ...rest
+    value,
+    active,
+    autoFocus,
+    onChange,
+    noCorrection,
+    inactiveMessage,
+    type,
+    ...rest
   } = props;
 
   const correctionSettings = noCorrection && {
@@ -16,6 +33,8 @@ const InputField = forwardRef((props, ref) => {
   };
 
   return (
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     <Input
       {...correctionSettings}
       ref={ref}
