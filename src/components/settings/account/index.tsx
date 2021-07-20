@@ -53,9 +53,7 @@ const Account: React.FC = () => {
       <form onSubmit={handleAvatar}>
         <label htmlFor="change-avatar">Change profile picture</label>
         <input ref={fileRef} id="change-avatar" type="file" />
-        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-        {/* @ts-ignore */}
-        <Button primary onClick={handleAvatar}>
+        <Button primary submitType="submit">
           Submit
         </Button>
       </form>

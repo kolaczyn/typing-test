@@ -8,6 +8,7 @@ import Container from './styles';
 
 import ToastAction from '../../../reducers/toast/actions';
 import ToastDispatchContext from '../../../contexts/ToastDispatchContext';
+import { ToastType } from '../../../reducers/toast/reducer';
 
 const SignUp: React.FC = () => {
   const history = useHistory();
@@ -27,11 +28,9 @@ const SignUp: React.FC = () => {
       await app.auth().createUserWithEmailAndPassword(email, password);
       history.push('/');
     } catch (err) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       dispatch({
         type: ToastAction.PUSH_TOAST,
-        payload: { content: err.message, type: 'danger' },
+        payload: { content: err.message, type: ToastType.Danger },
       });
     }
     setIsPending(false);
@@ -46,7 +45,6 @@ const SignUp: React.FC = () => {
             // @ts-ignore
             secondary
             type="email"
-            id="email"
             value={email}
             onChange={handleEmailChange}
           />
@@ -56,12 +54,9 @@ const SignUp: React.FC = () => {
             // @ts-ignore
             secondary
             type="password"
-            id="password"
             value={password}
             onChange={handlePasswordChange}
           />
-          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-          {/* @ts-ignore */}
           <Button primary onClick={handleSubmit} isActive={!isPending}>
             {isPending ? 'Please wait...' : 'Sign In'}
           </Button>

@@ -1,9 +1,15 @@
 import { produce } from 'immer';
 import Action from './actions';
 
+export enum ToastType {
+  Info = 'info',
+  Warning = 'warning',
+  Danger = 'danger',
+}
+
 export type Toast = {
   content: string;
-  type: string;
+  type: ToastType;
   id: number;
 };
 export type ToastState = {
@@ -11,10 +17,18 @@ export type ToastState = {
   newId: number;
 };
 
-export type ToastAction = {
-  type: string;
-  payload: { content: string; type: string } | number;
-};
+export type ToastAction =
+  | {
+      type: Action.DELETE_TOAST;
+      payload: number;
+    }
+  | {
+      type: Action.PUSH_TOAST;
+      payload: {
+        content: string;
+        type: ToastType;
+      };
+    };
 
 export default function toastReducer(
   state: ToastState,
@@ -29,8 +43,6 @@ export default function toastReducer(
     }
     case Action.PUSH_TOAST: {
       return produce(state, draft => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         const { content, type } = action.payload;
         const id = state.newId;
         draft.toasts.push({ content, id, type });

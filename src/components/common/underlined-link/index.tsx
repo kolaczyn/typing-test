@@ -11,6 +11,7 @@ type Props = {
   to?: string;
   icon?: string;
   isAlwaysUnderlined?: boolean;
+  target?: '_blank';
 };
 
 // You can tell it to an icon to render,
@@ -22,23 +23,19 @@ const UnderlinedLink: React.FC<Props> = ({
   icon,
   children,
   isAlwaysUnderlined,
-  ...rest
+  target,
 }) => {
   return (
     // @ts-ignore
     <StyledLink
+      as={to ? Link : undefined}
       // render it as <Link/> instead of <a/> if needed
-      as={to && Link}
-      isalwaysunderlined={isAlwaysUnderlined ? 'yes' : ''}
+      isalwaysunderlined={isAlwaysUnderlined ? true : false}
       href={href}
       to={to}
-      // rest is mostly for target="_blank" for href
-      // TODO maybe I should move href and to into the ...rest
-      // or handle this target blank as the props above
-      // I don't like it that I have two way of doing things in here
-      {...rest}
+      target={target}
     >
-      {icon && <i className={icon} />}
+      {icon ? <i className={icon} /> : null}
       <Label>{children}</Label>
     </StyledLink>
   );
@@ -50,6 +47,7 @@ UnderlinedLink.propTypes = {
   children: PropTypes.node.isRequired,
   to: PropTypes.string,
   icon: PropTypes.string,
+  target: PropTypes.oneOf(['_blank']),
   isAlwaysUnderlined: PropTypes.bool,
 };
 

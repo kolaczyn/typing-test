@@ -6,9 +6,13 @@ export const Label = styled.span`
   position: relative;
 `;
 
+type AnchorProps = {
+  isalwaysunderlined: boolean;
+};
+
 // TODO I use these styles also in StyledLink
 // I should figure out a way to use the same code in those two places
-export default styled.a`
+export default styled.a<AnchorProps>`
   display: inline-flex;
   align-items: center;
 
@@ -27,13 +31,13 @@ export default styled.a`
     content: '';
     height: 1px;
     width: 100%;
-    background: ${(props) => props.theme.palette.text};
+    background: ${props => props.theme.palette.text};
 
     position: absolute;
     bottom: 0;
     left: 0;
     // if it is always underlined, there is no animation, so the scale is 1; there's a normal underline
-    transform: scaleX(${(props) => (props.isalwaysunderlined ? 1 : 0)});
+    transform: scaleX(${props => (props.isalwaysunderlined ? 1 : 0)});
     transition: all ${transitionDuration} ease-in-out;
     transform-origin: left;
   }

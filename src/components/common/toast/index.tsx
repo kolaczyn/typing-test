@@ -27,7 +27,7 @@ const Toast: React.FC<Props> = ({
     <Wrapper {...rest}>
       {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
       {/* @ts-ignore */}
-      <LeftSection onClick={() => deleteToast(id)} type={type}>
+      <LeftSection onClick={() => deleteToast(id)} submitType={type}>
         ✕
       </LeftSection>
       <RightSection>{children}</RightSection>

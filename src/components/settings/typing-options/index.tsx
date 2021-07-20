@@ -7,6 +7,7 @@ import TypingDispatchContext from '../../../contexts/TypingDispatchContext';
 import Button from '../../common/button';
 import InputField from '../../common/input-field';
 import ToastDispatchContext from '../../../contexts/ToastDispatchContext';
+import { ToastType } from '../../../reducers/toast/reducer';
 
 const TypingOptions: React.FC = () => {
   const state = useContext(TypingStateContext);
@@ -34,7 +35,7 @@ const TypingOptions: React.FC = () => {
       type: ToastAction.PUSH_TOAST,
       payload: {
         content: 'The time has been set',
-        type: 'info',
+        type: ToastType.Info,
       },
     });
   };
@@ -52,9 +53,12 @@ const TypingOptions: React.FC = () => {
         value={value}
         onChange={handleChange}
       />
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/* @ts-ignore */}
-      <Button primary isActive={!!message} onClick={submitForm} secondary>
+      <Button
+        primary
+        isActive={!!message}
+        onClick={e => submitForm(e)}
+        secondary
+      >
         {message}
       </Button>
     </form>

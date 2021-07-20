@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 type Props = {
   active: boolean;
-  secondary: boolean;
+  secondary?: boolean;
 };
 
 export default styled.input<Props>`

@@ -1,5 +1,3 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable no-param-reassign */
 import { produce } from 'immer';
 
 import InputAction from './actions';
@@ -9,10 +7,34 @@ import countCorrectCharacters from '../../utils/countCorrectChars';
 import countIncorrectCharacters from '../../utils/countIncorrectChars';
 import { TypingState } from './initialState';
 
-export type TypingAction = {
-  type: string;
-  payload?: string | number | Date;
-};
+export type TypingAction =
+  | {
+      type: InputAction.KEYSTROKE;
+      payload: string;
+    }
+  | {
+      type: InputAction.SPACE;
+      payload: string;
+    }
+  | {
+      type: InputAction.INCREMENT_TYPED_CHARS;
+      payload: number;
+    }
+  | {
+      type: InputAction.SET_TIME_LENGTH;
+      payload: number;
+    }
+  | {
+      type: InputAction.TICK_TIMER;
+      payload: Date;
+    }
+  | {
+      type: InputAction.SET_TIMER_STARTING_MOMENT;
+      payload: Date;
+    }
+  | {
+      type: InputAction.RESTART;
+    };
 
 const typingReducer = (
   state: TypingState,
@@ -24,8 +46,6 @@ const typingReducer = (
       return produce(state, draft => {
         // split is there in case somebody moves
         // cursor to the middle of the written word and presses space
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         const [writtenWord] = action.payload.trim().split(' ');
         const isOkay = state.text.current.startsWith(writtenWord);
         draft.text.isOkay = isOkay;
@@ -36,16 +56,12 @@ const typingReducer = (
       return produce(state, draft => {
         // split is there in case somebody moves
         // cursor to the middle of the written word and presses space
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         const [writtenWord, ...rest] = action.payload.trim().split(' ');
         const isWordFinished = state.text.current === writtenWord;
         // don't do anything if the user keep pressing space when the input is empty
         if (writtenWord === '') return;
 
         // move forward with the words
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         const { finished, current: currentWord, unfinished } = state.text;
         const current = {
           word: currentWord,
@@ -70,32 +86,24 @@ const typingReducer = (
     }
     case InputAction.INCREMENT_TYPED_CHARS: {
       return produce(state, draft => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         draft.stats.typedCharacters += action.payload;
       });
     }
     case InputAction.SET_TIME_LENGTH: {
       return produce(state, draft => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         draft.timer.startingTime = action.payload;
       });
     }
     case InputAction.TICK_TIMER: {
       return produce(state, draft => {
         if (action.payload !== state.timer.timerStartingMoment) return;
-        if (state.timer.currentTime === null)
+        if (draft.timer.currentTime === null)
           draft.timer.currentTime = state.timer.startingTime;
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         draft.timer.currentTime--;
       });
     }
     case InputAction.SET_TIMER_STARTING_MOMENT: {
       return produce(state, draft => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         draft.timer.timerStartingMoment = action.payload;
       });
     }

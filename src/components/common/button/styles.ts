@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro';
 
 type Props = {
-  secondary: boolean;
-  primary: boolean;
+  secondary?: boolean;
+  primary?: boolean;
 };
 
 export default styled.button<Props>`

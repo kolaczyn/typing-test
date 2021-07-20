@@ -91,8 +91,6 @@ const TextField: React.FC = () => {
   return (
     <Wrapper>
       <CompletedWords />
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/* @ts-ignore */}
       <WordWrapper isOkay={isOkay}>
         <CurrentWord />
       </WordWrapper>{' '}

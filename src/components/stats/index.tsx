@@ -10,6 +10,7 @@ import {
   accuracyStats,
   netWpmStats,
   grossWpmStats,
+  SampleStats,
 } from '../../static/sampleStats';
 
 const stats = ['Accuracy', 'Gross WPM', 'Net WPM'];
@@ -22,7 +23,7 @@ const Stats: React.FC = () => {
     setSelectedStats(old =>
       old.includes(stat) ? old.filter(el => el !== stat) : [...old, stat]
     );
-  const selectedStatsData = [];
+  const selectedStatsData: SampleStats[] = [];
   // TODO there must be a better way to do this
   if (selectedStats.includes('Accuracy')) selectedStatsData.push(accuracyStats);
   if (selectedStats.includes('Gross WPM'))
@@ -44,8 +45,6 @@ const Stats: React.FC = () => {
           ))}
         </LeftSection>
         <section>
-          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-          {/* @ts-ignore */}
           <Graph labels={labels} datasets={selectedStatsData} />
         </section>
       </VertSplit>

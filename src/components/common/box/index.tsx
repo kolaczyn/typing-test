@@ -10,9 +10,7 @@ type Props = {
 };
 
 const Box: React.FC<Props> = ({ title, children, ...props }) => (
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  <Container title={title?.length} {...props}>
+  <Container {...props}>
     {title && (
       <Header>
         <h4>{title}</h4>

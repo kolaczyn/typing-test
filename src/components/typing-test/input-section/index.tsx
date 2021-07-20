@@ -77,7 +77,6 @@ const InputSection: React.FC = () => {
         onChange={handleChange}
         noCorrection
       />
-      {/* @ts-ignore */}
       <Button onClick={handleRestart}>
         <span className="material-icons">refresh</span>
       </Button>
