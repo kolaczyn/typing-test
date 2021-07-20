@@ -1,6 +1,4 @@
-import React, {
-  useContext, useEffect, useCallback, useRef,
-} from 'react';
+import React, { useContext, useEffect, useCallback, useRef } from 'react';
 
 import InputField from '../../common/input-field';
 import TimerButton from '../timer-button';
@@ -11,10 +9,10 @@ import TypingDispatchContext from '../../../contexts/TypingDispatchContext';
 import * as actions from '../../../reducers/typing/actions';
 import startTimer from '../../../utils/startTimer';
 
-export default function InputSection() {
+const InputSection: React.FC = () => {
   const state = useContext(TypingStateContext);
   const dispatch = useContext(TypingDispatchContext);
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const { inputValue } = state;
   const { currentTime } = state.timer;
 
@@ -22,20 +20,22 @@ export default function InputSection() {
     dispatch({
       type: actions.RESTART,
     });
-    inputRef.current.focus();
+    inputRef.current?.focus();
   }, [dispatch]);
 
   useEffect(() => {
-    document.onkeydown = (e) => {
+    document.onkeydown = e => {
       if (e.key === 'Enter') {
         e.preventDefault();
         handleRestart();
       }
     };
-    return () => { document.onkeydown = null; };
+    return () => {
+      document.onkeydown = null;
+    };
   }, [handleRestart]);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     // start timer on the first key press
     if (state.stats.typedCharacters === 0) startTimer({ state, dispatch });
@@ -81,4 +81,5 @@ export default function InputSection() {
       </Button>
     </InputSectionWrapper>
   );
-}
+};
+export default InputSection;

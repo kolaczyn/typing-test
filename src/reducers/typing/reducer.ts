@@ -7,19 +7,21 @@ import initialState from './initialState';
 import shiftToRight from '../../utils/shiftToRight';
 import countCorrectCharacters from '../../utils/countCorrectChars';
 import countIncorrectCharacters from '../../utils/countIncorrectChars';
-import {TypingState} from './initialState'
+import { TypingState } from './initialState';
 
 export type TypingAction = {
   type: string;
-  payload: string | number | Date
+  payload?: string | number | Date;
+};
 
-}
-
-const typingReducer = (state: TypingState, action: TypingAction): TypingState => {
+const typingReducer = (
+  state: TypingState,
+  action: TypingAction
+): TypingState => {
   switch (action.type) {
     case actions.KEYSTROKE: {
       // TODO this action seems a little bloated, I should do something about it
-      return produce(state, (draft) => {
+      return produce(state, draft => {
         // split is there in case somebody moves
         // cursor to the middle of the written word and presses space
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -31,7 +33,7 @@ const typingReducer = (state: TypingState, action: TypingAction): TypingState =>
       });
     }
     case actions.SPACE: {
-      return produce(state, (draft) => {
+      return produce(state, draft => {
         // split is there in case somebody moves
         // cursor to the middle of the written word and presses space
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -50,50 +52,48 @@ const typingReducer = (state: TypingState, action: TypingAction): TypingState =>
           isOkay: isWordFinished,
         };
 
-        [
-          draft.text.finished,
-          draft.text.current,
-          draft.text.unfinished,
-        ] = shiftToRight(finished, current, unfinished);
+        [draft.text.finished, draft.text.current, draft.text.unfinished] =
+          shiftToRight(finished, current, unfinished);
 
         draft.inputValue = rest.join('');
         draft.text.isOkay = true;
 
         draft.stats.correctCharacters += countCorrectCharacters(
           currentWord,
-          writtenWord,
+          writtenWord
         );
         draft.stats.uncorrectedErrors += countIncorrectCharacters(
           currentWord,
-          writtenWord,
+          writtenWord
         );
       });
     }
     case actions.INCREMENT_TYPED_CHARS: {
-      return produce(state, (draft) => {
+      return produce(state, draft => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         draft.stats.typedCharacters += action.payload;
       });
     }
     case actions.SET_TIME_LENGTH: {
-      return produce(state, (draft) => {
+      return produce(state, draft => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         draft.timer.startingTime = action.payload;
       });
     }
     case actions.TICK_TIMER: {
-      return produce(state, (draft) => {
+      return produce(state, draft => {
         if (action.payload !== state.timer.timerStartingMoment) return;
-        if (state.timer.currentTime === null) draft.timer.currentTime = state.timer.startingTime;
+        if (state.timer.currentTime === null)
+          draft.timer.currentTime = state.timer.startingTime;
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         draft.timer.currentTime--;
       });
     }
     case actions.SET_TIMER_STARTING_MOMENT: {
-      return produce(state, (draft) => {
+      return produce(state, draft => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         draft.timer.timerStartingMoment = action.payload;

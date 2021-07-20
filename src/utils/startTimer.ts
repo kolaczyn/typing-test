@@ -1,6 +1,15 @@
+import React from 'react';
 import * as actions from '../reducers/typing/actions';
+import { TypingState } from '../reducers/typing/initialState';
+import { TypingAction } from '../reducers/typing/reducer';
 
-const startTimer = ({ state, dispatch }) => {
+const startTimer = ({
+  state,
+  dispatch,
+}: {
+  state: TypingState;
+  dispatch: React.Dispatch<TypingAction>;
+}): (() => void) => {
   const startingMoment = new Date();
   dispatch({
     type: actions.SET_TIMER_STARTING_MOMENT,

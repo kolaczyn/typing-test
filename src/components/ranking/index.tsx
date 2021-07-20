@@ -8,7 +8,7 @@ import Table from '../common/table';
 import Box from '../common/box';
 import Loader from '../common/loader';
 
-export default function Ranking() {
+const Ranking: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -19,10 +19,12 @@ export default function Ranking() {
 
   return (
     <Box title="Ranking">
-      {
-        isLoading ? <Loader />
-          : <Table labels={rankingDataLabels} data={rankingData} />
-      }
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <Table labels={rankingDataLabels} data={rankingData} />
+      )}
     </Box>
   );
-}
+};
+export default Ranking;

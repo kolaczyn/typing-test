@@ -1,12 +1,12 @@
-/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 import StyledTable, { Thead } from './styles';
+import { RankingData } from '../../../static/fixtures/rankingData';
 
 type Props = {
   labels: string[];
-  data: { username: string; wpm: string; when: string }[];
+  data: RankingData[];
 };
 
 const Table: React.FC<Props> = ({ labels, data }) =>

@@ -1,14 +1,12 @@
-import React, {
-  useContext, useRef, useState, useEffect,
-} from 'react';
+import React, { useContext, useRef, useState, useEffect } from 'react';
 import firebase from 'firebase';
 
 import Button from '../../common/button';
 import AuthContext from '../../../contexts/AuthContext';
 import UnderlinedLink from '../../common/underlined-link';
 
-export default function Account() {
-  const { currentUser } = useContext(AuthContext);
+const Account: React.FC = () => {
+  const currentUser = useContext(AuthContext)?.currentUser;
   const [imgUrl, setImgUrl] = useState('');
 
   useEffect(() => {
@@ -17,14 +15,21 @@ export default function Account() {
         .storage()
         .ref(`users/${currentUser.uid}/profile.jpg`)
         .getDownloadURL()
-        .then((url) => setImgUrl(url));
+        .then(url => setImgUrl(url));
     }
   }, []);
 
-  const fileRef = useRef(null);
-  const handleAvatar = async (e) => {
+  const fileRef = useRef<HTMLInputElement>(null);
+  const handleAvatar = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const file = fileRef.current.files[0];
+    const file = fileRef.current?.files?.[0];
+    if (
+      file === undefined ||
+      currentUser === null ||
+      currentUser === undefined
+    ) {
+      return alert("Error, user not logged in or file doesn't exist");
+    }
     try {
       await firebase
         .storage()
@@ -35,7 +40,7 @@ export default function Account() {
       console.log(error);
     }
     // eslint-disable-next-line no-alert
-    alert(file.name);
+    alert(file?.name);
   };
   return currentUser ? (
     <section>
@@ -48,7 +53,11 @@ export default function Account() {
       <form onSubmit={handleAvatar}>
         <label htmlFor="change-avatar">Change profile picture</label>
         <input ref={fileRef} id="change-avatar" type="file" />
-        <Button primary onClick={handleAvatar}>Submit</Button>
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+        {/* @ts-ignore */}
+        <Button primary onClick={handleAvatar}>
+          Submit
+        </Button>
       </form>
     </section>
   ) : (
@@ -59,7 +68,10 @@ export default function Account() {
         sign up
       </UnderlinedLink>
       {' or '}
-      <UnderlinedLink isAlwaysUnderlined to="/sign-in">sign in</UnderlinedLink>
+      <UnderlinedLink isAlwaysUnderlined to="/sign-in">
+        sign in
+      </UnderlinedLink>
     </section>
   );
-}
+};
+export default Account;

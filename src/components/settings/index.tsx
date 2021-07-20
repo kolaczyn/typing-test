@@ -8,19 +8,15 @@ import ChooseTheme from './choose-theme';
 import TypingOptions from './typing-options';
 import Account from './account';
 
-const tabs = [
-  'Change Theme',
-  'Typing Options',
-  'Account',
-];
+const tabs = ['Change Theme', 'Typing Options', 'Account'];
 
-const tabToComponents = {
+const tabToComponents: Record<string, React.FC> = {
   'Change Theme': ChooseTheme,
   'Typing Options': TypingOptions,
   Account,
 };
 
-export default function Settings() {
+const Settings: React.FC = () => {
   const [currentTab, setCurrentTab] = useState(tabs[0]);
   const Component = tabToComponents[currentTab];
 
@@ -28,10 +24,15 @@ export default function Settings() {
     <Box title="Settings">
       <VertSplit>
         <LeftSection>
-          <Tabs tabs={tabs} currentTab={currentTab} setCurrentTab={setCurrentTab} />
+          <Tabs
+            tabs={tabs}
+            currentTab={currentTab}
+            setCurrentTab={setCurrentTab}
+          />
         </LeftSection>
         <Component />
       </VertSplit>
     </Box>
   );
-}
+};
+export default Settings;

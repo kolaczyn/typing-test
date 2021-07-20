@@ -4,12 +4,14 @@ import { Wrapper, Element } from '../stats/styles';
 import TypingStateContext from '../../../contexts/TypingStateContext';
 // import calculateStats from '../../utils/calculateStats';
 
-export default function DebugStats() {
+const DebugStats: React.FC = () => {
   const state = useContext(TypingStateContext);
   const { typedCharacters, correctCharacters, uncorrectedErrors } = state.stats;
 
-  const currentTime = state.timer.currentTime === null
-    ? state.timer.startingTime : state.timer.currentTime;
+  const currentTime =
+    state.timer.currentTime === null
+      ? state.timer.startingTime
+      : state.timer.currentTime;
   const timePassed = state.timer.startingTime - currentTime;
 
   const data = [
@@ -29,4 +31,6 @@ export default function DebugStats() {
       ))}
     </Wrapper>
   );
-}
+};
+
+export default DebugStats;

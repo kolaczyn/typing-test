@@ -7,7 +7,7 @@ type Props = {
   value: string | number;
   active?: boolean;
   autoFocus?: boolean;
-  onChange: () => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   noCorrection?: boolean;
   inactiveMessage?: string;
   type?: string;

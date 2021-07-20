@@ -7,13 +7,13 @@ import {
   LIGHT_THEME,
 } from '../../../reducers/theme/actions';
 
-export default function ChooseTheme() {
+const ChooseTheme: React.FC = () => {
   const { state, dispatch } = useContext(ThemeContext);
   // I dont know why I have to call the state, but whatever
   const [checkedOption, setCheckedOption] = useState(() => state.themeName);
 
-  const isChecked = (label) => checkedOption === label;
-  const onValueChange = (e) => {
+  const isChecked = (label: string) => checkedOption === label;
+  const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCheckedOption(e.target.value);
     dispatch({
       type: e.target.value,
@@ -56,4 +56,5 @@ export default function ChooseTheme() {
       <label htmlFor="killItWithFire">Kill it with Fire</label>
     </section>
   );
-}
+};
+export default ChooseTheme;

@@ -5,7 +5,7 @@ import Stats from './stats';
 import TextField from './text-field';
 import TypingTestContainer from './styles';
 
-export default function TypingTest() {
+const TypingTest: React.FC = () => {
   return (
     <TypingTestContainer>
       <InputSection />
@@ -13,4 +13,5 @@ export default function TypingTest() {
       <Stats />
     </TypingTestContainer>
   );
-}
+};
+export default TypingTest;

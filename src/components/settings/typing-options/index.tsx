@@ -8,23 +8,24 @@ import Button from '../../common/button';
 import InputField from '../../common/input-field';
 import ToastDispatchContext from '../../../contexts/ToastDispatchContext';
 
-export default function TypingOptions() {
+const TypingOptions: React.FC = () => {
   const state = useContext(TypingStateContext);
   const dispatchTyping = useContext(TypingDispatchContext);
   const dispatchToast = useContext(ToastDispatchContext);
   const [message, setMessage] = useState('Confirm');
   const [value, setValue] = useState(() => state.timer.startingTime);
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { minTime, maxTime } = state.timer;
-    setValue(e.target.value);
-    if (minTime >= e.target.value) {
+    const selectedValue = Number(e.target.value);
+    setValue(selectedValue);
+    if (minTime >= selectedValue) {
       setMessage('The time cannot be negative');
-    } else if (e.target.value >= maxTime) {
+    } else if (selectedValue >= maxTime) {
       setMessage('The time is too long');
     } else setMessage('Confirm');
   };
 
-  const submitForm = (e) => {
+  const submitForm = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     // restart the game for good measure
     dispatchTyping({ type: typingActions.RESTART });
@@ -41,8 +42,23 @@ export default function TypingOptions() {
   return (
     <form>
       <label htmlFor="time">Set time</label>
-      <InputField id="time" min="5" type="number" active value={value} onChange={handleChange} />
-      <Button primary isActive={!!message} onClick={submitForm} secondary>{message}</Button>
+      <InputField
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        id="time"
+        min="5"
+        type="number"
+        active
+        value={value}
+        onChange={handleChange}
+      />
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
+      <Button primary isActive={!!message} onClick={submitForm} secondary>
+        {message}
+      </Button>
     </form>
   );
-}
+};
+
+export default TypingOptions;
