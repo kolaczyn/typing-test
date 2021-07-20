@@ -1,4 +1,4 @@
 import { createContext } from 'react';
-import { TypingState } from '../reducers/typing/initialState';
+import initialState, { TypingState } from '../reducers/typing/initialState';
 
-export default createContext<TypingState | null>(null);
+export default createContext<TypingState>(initialState);

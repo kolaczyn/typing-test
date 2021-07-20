@@ -1,4 +1,4 @@
-type RankingData = { wpm: number; when: string; username: string };
+export type RankingData = { wpm: number; when: string; username: string };
 export const rankingData: RankingData[] = [
   {
     wpm: 120,
