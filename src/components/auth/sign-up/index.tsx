@@ -6,7 +6,7 @@ import InputField from '../../common/input-field';
 import app from '../../../firebase';
 import Container from './styles';
 
-import * as actions from '../../../reducers/toast/actions';
+import ToastAction from '../../../reducers/toast/actions';
 import ToastDispatchContext from '../../../contexts/ToastDispatchContext';
 
 const SignUp: React.FC = () => {
@@ -30,7 +30,7 @@ const SignUp: React.FC = () => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       dispatch({
-        type: actions.PUSH_TOAST,
+        type: ToastAction.PUSH_TOAST,
         payload: { content: err.message, type: 'danger' },
       });
     }

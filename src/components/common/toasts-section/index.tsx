@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import ToastDispatchContext from '../../../contexts/ToastDispatchContext';
 import ToastStateContext from '../../../contexts/ToastStateContext';
 import Toast from '../toast';
-import * as actions from '../../../reducers/toast/actions';
+import Action from '../../../reducers/toast/actions';
 import Section from './styles';
 
 const ToastsSection: React.FC = () => {
@@ -16,7 +16,7 @@ const ToastsSection: React.FC = () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     dispatch({
-      type: actions.DELETE_TOAST,
+      type: Action.DELETE_TOAST,
       payload: id,
     });
   };

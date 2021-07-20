@@ -1,11 +1,7 @@
 import React, { useContext, useState } from 'react';
 
 import ThemeContext from '../../../contexts/ThemeContext';
-import {
-  DARK_THEME,
-  KILL_IT_WITH_FIRE,
-  LIGHT_THEME,
-} from '../../../reducers/theme/actions';
+import Action from '../../../reducers/theme/actions';
 
 const ChooseTheme: React.FC = () => {
   const { state, dispatch } = useContext(ThemeContext);
@@ -14,20 +10,21 @@ const ChooseTheme: React.FC = () => {
 
   const isChecked = (label: string) => checkedOption === label;
   const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCheckedOption(e.target.value);
+    const selectedOption = e.target.value as Action;
+    setCheckedOption(selectedOption);
     dispatch({
-      type: e.target.value,
+      type: selectedOption,
     });
   };
 
   return (
-    <section>
+    <form>
       {/* that's why I hate dealing with forms without a library in React */}
       <input
         type="radio"
-        checked={isChecked(DARK_THEME)}
+        checked={isChecked(Action.DARK_THEME)}
         onChange={onValueChange}
-        value={DARK_THEME}
+        value={Action.DARK_THEME}
         id="darkTheme"
         name="darkTheme"
       />
@@ -36,9 +33,9 @@ const ChooseTheme: React.FC = () => {
 
       <input
         type="radio"
-        checked={isChecked(LIGHT_THEME)}
+        checked={isChecked(Action.LIGHT_THEME)}
         onChange={onValueChange}
-        value={LIGHT_THEME}
+        value={Action.LIGHT_THEME}
         id="lightTheme"
         name="lightTheme"
       />
@@ -47,14 +44,14 @@ const ChooseTheme: React.FC = () => {
 
       <input
         type="radio"
-        checked={isChecked(KILL_IT_WITH_FIRE)}
+        checked={isChecked(Action.KILL_IT_WITH_FIRE)}
         onChange={onValueChange}
-        value={KILL_IT_WITH_FIRE}
+        value={Action.KILL_IT_WITH_FIRE}
         id="killItWithFire"
         name="killItWithFire"
       />
       <label htmlFor="killItWithFire">Kill it with Fire</label>
-    </section>
+    </form>
   );
 };
 export default ChooseTheme;

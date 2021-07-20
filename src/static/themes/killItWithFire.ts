@@ -1,4 +1,4 @@
-import { KILL_IT_WITH_FIRE } from '../../reducers/theme/actions';
+import Action from '../../reducers/theme/actions';
 import ThemeType from './ThemeType';
 
 const darkTheme: ThemeType = {
@@ -14,7 +14,7 @@ const darkTheme: ThemeType = {
     yellow: 'yellow',
     lightGray: 'bisque',
   },
-  themeName: KILL_IT_WITH_FIRE,
+  themeName: Action.KILL_IT_WITH_FIRE,
 };
 
 export default darkTheme;

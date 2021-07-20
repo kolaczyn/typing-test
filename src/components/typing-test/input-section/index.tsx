@@ -7,7 +7,7 @@ import Button from '../../common/button/styles';
 import InputSectionWrapper from './styles';
 import TypingStateContext from '../../../contexts/TypingStateContext';
 import TypingDispatchContext from '../../../contexts/TypingDispatchContext';
-import * as actions from '../../../reducers/typing/actions';
+import TypingAction from '../../../reducers/typing/actions';
 import startTimer from '../../../utils/startTimer';
 
 const InputSection: React.FC = () => {
@@ -19,7 +19,7 @@ const InputSection: React.FC = () => {
 
   const handleRestart = useCallback(() => {
     dispatch({
-      type: actions.RESTART,
+      type: TypingAction.RESTART,
     });
     inputRef.current?.focus();
   }, [dispatch]);
@@ -42,12 +42,12 @@ const InputSection: React.FC = () => {
     if (state.stats.typedCharacters === 0) startTimer({ state, dispatch });
     if (value.includes(' ')) {
       dispatch({
-        type: actions.SPACE,
+        type: TypingAction.SPACE,
         payload: value,
       });
     } else {
       dispatch({
-        type: actions.KEYSTROKE,
+        type: TypingAction.KEYSTROKE,
         payload: value,
       });
     }
@@ -59,7 +59,7 @@ const InputSection: React.FC = () => {
     // the user keeps pressing space
     if (delta > 0 && curr !== ' ') {
       dispatch({
-        type: actions.INCREMENT_TYPED_CHARS,
+        type: TypingAction.INCREMENT_TYPED_CHARS,
         payload: delta,
       });
     }

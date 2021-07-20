@@ -1,5 +1,5 @@
 import React from 'react';
-import * as actions from '../reducers/typing/actions';
+import Action from '../reducers/typing/actions';
 import { TypingState } from '../reducers/typing/initialState';
 import { TypingAction } from '../reducers/typing/reducer';
 
@@ -12,7 +12,7 @@ const startTimer = ({
 }): (() => void) => {
   const startingMoment = new Date();
   dispatch({
-    type: actions.SET_TIMER_STARTING_MOMENT,
+    type: Action.SET_TIMER_STARTING_MOMENT,
     payload: startingMoment,
   });
 
@@ -20,7 +20,7 @@ const startTimer = ({
   const interval = setInterval(() => {
     if (currentTime > 0) {
       dispatch({
-        type: actions.TICK_TIMER,
+        type: Action.TICK_TIMER,
         payload: startingMoment,
       });
     } else clearInterval(interval);

@@ -1,5 +1,5 @@
 import { produce } from 'immer';
-import * as actions from './actions';
+import Action from './actions';
 
 export type Toast = {
   content: string;
@@ -21,13 +21,13 @@ export default function toastReducer(
   action: ToastAction
 ): ToastState {
   switch (action.type) {
-    case actions.DELETE_TOAST: {
+    case Action.DELETE_TOAST: {
       return produce(state, (draft: ToastState) => {
         const id = action.payload;
         draft.toasts = state.toasts.filter(toast => toast.id !== id);
       });
     }
-    case actions.PUSH_TOAST: {
+    case Action.PUSH_TOAST: {
       return produce(state, draft => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore

@@ -1,2 +1,5 @@
-export const DELETE_TOAST = 'delete toast';
-export const PUSH_TOAST = 'push toast';
+enum Action {
+  DELETE_TOAST = 'delete toast',
+  PUSH_TOAST = 'push toast',
+}
+export default Action;

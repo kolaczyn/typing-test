@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 
-import * as typingActions from '../../../reducers/typing/actions';
-import * as toastActions from '../../../reducers/toast/actions';
+import TypingAction from '../../../reducers/typing/actions';
+import ToastAction from '../../../reducers/toast/actions';
 import TypingStateContext from '../../../contexts/TypingStateContext';
 import TypingDispatchContext from '../../../contexts/TypingDispatchContext';
 import Button from '../../common/button';
@@ -28,10 +28,10 @@ const TypingOptions: React.FC = () => {
   const submitForm = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     // restart the game for good measure
-    dispatchTyping({ type: typingActions.RESTART });
-    dispatchTyping({ type: typingActions.SET_TIME_LENGTH, payload: value });
+    dispatchTyping({ type: TypingAction.RESTART });
+    dispatchTyping({ type: TypingAction.SET_TIME_LENGTH, payload: value });
     dispatchToast({
-      type: toastActions.PUSH_TOAST,
+      type: ToastAction.PUSH_TOAST,
       payload: {
         content: 'The time has been set',
         type: 'info',

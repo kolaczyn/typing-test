@@ -1,4 +1,4 @@
-import { LIGHT_THEME } from '../../reducers/theme/actions';
+import Action from '../../reducers/theme/actions';
 import ThemeType from './ThemeType';
 
 const darkTheme: ThemeType = {
@@ -14,7 +14,7 @@ const darkTheme: ThemeType = {
     yellow: '#e8e9a1',
     lightGray: '929374',
   },
-  themeName: LIGHT_THEME,
+  themeName: Action.LIGHT_THEME,
 };
 
 export default darkTheme;

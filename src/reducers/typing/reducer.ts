@@ -2,7 +2,7 @@
 /* eslint-disable no-param-reassign */
 import { produce } from 'immer';
 
-import * as actions from './actions';
+import InputAction from './actions';
 import initialState from './initialState';
 import shiftToRight from '../../utils/shiftToRight';
 import countCorrectCharacters from '../../utils/countCorrectChars';
@@ -19,7 +19,7 @@ const typingReducer = (
   action: TypingAction
 ): TypingState => {
   switch (action.type) {
-    case actions.KEYSTROKE: {
+    case InputAction.KEYSTROKE: {
       // TODO this action seems a little bloated, I should do something about it
       return produce(state, draft => {
         // split is there in case somebody moves
@@ -32,7 +32,7 @@ const typingReducer = (
         draft.inputValue = writtenWord;
       });
     }
-    case actions.SPACE: {
+    case InputAction.SPACE: {
       return produce(state, draft => {
         // split is there in case somebody moves
         // cursor to the middle of the written word and presses space
@@ -68,21 +68,21 @@ const typingReducer = (
         );
       });
     }
-    case actions.INCREMENT_TYPED_CHARS: {
+    case InputAction.INCREMENT_TYPED_CHARS: {
       return produce(state, draft => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         draft.stats.typedCharacters += action.payload;
       });
     }
-    case actions.SET_TIME_LENGTH: {
+    case InputAction.SET_TIME_LENGTH: {
       return produce(state, draft => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         draft.timer.startingTime = action.payload;
       });
     }
-    case actions.TICK_TIMER: {
+    case InputAction.TICK_TIMER: {
       return produce(state, draft => {
         if (action.payload !== state.timer.timerStartingMoment) return;
         if (state.timer.currentTime === null)
@@ -92,7 +92,7 @@ const typingReducer = (
         draft.timer.currentTime--;
       });
     }
-    case actions.SET_TIMER_STARTING_MOMENT: {
+    case InputAction.SET_TIMER_STARTING_MOMENT: {
       return produce(state, draft => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
@@ -105,7 +105,7 @@ const typingReducer = (
     //     draft.isZenModeOn = !draft.isZenModeOn;
     //   });
     // }
-    case actions.RESTART: {
+    case InputAction.RESTART: {
       // FIXME for now restart also restarts custom made timer length
       return initialState;
     }
