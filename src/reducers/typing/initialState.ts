@@ -3,7 +3,42 @@ import sampleText from '../../static/fixtures/sampleText';
 const [currentLine, ...unfinishedLines] = sampleText;
 const [currentWord, ...unfinishedWords] = currentLine.split(' ');
 
-const initialState = {
+type TypingTimer = {
+  minTime: number;
+  maxTime: number;
+  currentTime: null | number;
+  startingTime: number;
+  timerStartingMoment: null | Date;
+};
+
+type TypingLines = {
+  finished: any[];
+  current: string;
+  unfinished: string[];
+};
+
+type TypingText = {
+  finished: any[];
+  current: string;
+  unfinished: string[];
+  isOkay: boolean;
+};
+
+type TypingStats = {
+  typedCharacters: number;
+  correctCharacters: number;
+  uncorrectedErrors: number;
+};
+
+export type TypingState = {
+  inputValue: string;
+  timer: TypingTimer;
+  lines: TypingLines;
+  text: TypingText;
+  stats: TypingStats;
+};
+
+const initialState: TypingState = {
   inputValue: '',
   timer: {
     minTime: 5,

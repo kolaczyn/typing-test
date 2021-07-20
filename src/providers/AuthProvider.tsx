@@ -1,31 +1,29 @@
+import firebase from 'firebase/app';
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import AuthContext from '../contexts/AuthContext';
 import app from '../firebase';
 
-export default function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState(null);
-  // eslint-disable-next-line no-unused-vars
-  const [_pending, setPending] = useState(true);
+const AuthProvider: React.FC = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState<firebase.User | null>(null);
+  const [_, setPending] = useState(true);
 
   useEffect(() => {
-    app.auth().onAuthStateChanged((user) => {
+    const unsubscribe = app.auth().onAuthStateChanged(user => {
       setCurrentUser(user);
       setPending(false);
     });
+    return unsubscribe;
   }, []);
-
-  // if (pending) {
-  //   return <h1>Please wait...</h1>;
-  // }
 
   return (
     <AuthContext.Provider value={{ currentUser }}>
       {children}
     </AuthContext.Provider>
   );
-}
+};
+export default AuthProvider;
 
 AuthProvider.propTypes = {
   children: PropTypes.node.isRequired,

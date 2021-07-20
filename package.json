@@ -26,9 +26,10 @@
   },
   "scripts": {
     "start": "BROWSER=none react-scripts start",
+    "dev": "npm start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage --watchAll",
-   "eject": "react-scripts eject"
+    "eject": "react-scripts eject"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -66,6 +67,7 @@
     ]
   },
   "devDependencies": {
+    "@types/styled-components": "^5.1.11",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.28.4",
     "eslint": "^7.19.0",

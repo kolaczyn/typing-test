@@ -1,3 +1,4 @@
-import { createContext } from 'react';
+import React, { createContext } from 'react';
+import { ToastAction } from '../reducers/toast/reducer';
 
-export default createContext(null);
+export default createContext<React.Dispatch<ToastAction> | null>(null);

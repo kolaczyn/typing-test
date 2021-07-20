@@ -3,8 +3,13 @@ import * as actions from './actions';
 import lightTheme from '../../static/themes/lightTheme';
 import darkTheme from '../../static/themes/darkTheme';
 import killItWithFire from '../../static/themes/killItWithFire';
+import ThemeType from '../../static/themes/ThemeType';
 
-const typingReducer = (state, action) => {
+export type ThemeAction = {
+  type: string;
+};
+
+const themeReducer = (state: ThemeType, action: ThemeAction): ThemeType => {
   switch (action.type) {
     case actions.LIGHT_THEME: {
       localStorage.setItem('theme', lightTheme.themeName);
@@ -23,4 +28,4 @@ const typingReducer = (state, action) => {
   }
 };
 
-export default typingReducer;
+export default themeReducer;

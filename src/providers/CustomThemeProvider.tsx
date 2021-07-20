@@ -5,7 +5,7 @@ import ThemeContext from '../contexts/ThemeContext';
 import spacingConfig from '../static/themes/spacingConfig';
 import { initialState, reducer } from '../reducers/theme';
 
-export default function CustomThemeProvider({ children }) {
+const CustomThemeProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <ThemeContext.Provider value={{ state, dispatch }}>
@@ -14,7 +14,8 @@ export default function CustomThemeProvider({ children }) {
       </ThemeProvider>
     </ThemeContext.Provider>
   );
-}
+};
+export default CustomThemeProvider;
 
 CustomThemeProvider.propTypes = {
   children: PropTypes.node.isRequired,
