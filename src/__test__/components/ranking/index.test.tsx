@@ -12,9 +12,7 @@ describe('<Ranking />', () => {
     const { container } = render(
       <ThemeProvider theme={darkTheme}>
         <Ranking />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
-
-    expect(container.firstChild).toMatchSnapshot();
   });
 });

@@ -2,13 +2,14 @@
 
 exports[`<NotFound /> renders <NotFound /> 1`] = `
 <section
-  class="styles__Container-sc-9qjjy7-0 dsJXrG"
-  title="26"
+  class="styles__Container-sc-1e9jyxw-0 btOXqn"
 >
   <header
-    class="styles__Header-sc-9qjjy7-1 ejqAhC"
+    class="styles__Header-sc-1e9jyxw-1 jetlpJ"
   >
-    404 Error — Page Not Found
+    <h4>
+      404 Error — Page Not Found
+    </h4>
   </header>
   The page no longer exists or the provided link is invalid.
 </section>

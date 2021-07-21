@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import StyledButton from './styles';
 
 type Props = {
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 const CloseButton: React.FC<Props> = ({ onClick, ...props }) => (
@@ -15,6 +15,10 @@ const CloseButton: React.FC<Props> = ({ onClick, ...props }) => (
 
 CloseButton.propTypes = {
   onClick: PropTypes.func.isRequired,
+};
+
+CloseButton.defaultProps = {
+  onClick: () => null,
 };
 
 export default CloseButton;

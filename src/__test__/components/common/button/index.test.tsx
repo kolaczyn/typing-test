@@ -2,19 +2,17 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { cleanup, render } from '@testing-library/react';
 
-import CloseButton from '../../../../components/common/close-button';
+import Button from '../../../../components/common/button/styles';
 import darkTheme from '../../../../static/themes/darkTheme';
 
 afterEach(cleanup);
 
-describe('<CloseButton />', () => {
-  it('renders <CloseButton />', () => {
+describe('<Button />', () => {
+  it('renders <Button />', () => {
     const { container } = render(
       <ThemeProvider theme={darkTheme}>
-        <CloseButton />
-      </ThemeProvider>,
+        <Button>I am a button</Button>
+      </ThemeProvider>
     );
-
-    expect(container.firstChild).toMatchSnapshot();
   });
 });

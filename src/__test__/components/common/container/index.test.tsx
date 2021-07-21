@@ -2,19 +2,17 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { cleanup, render } from '@testing-library/react';
 
-import Button from '../../../../components/common/button/styles';
+import Container from '../../../../components/common/container';
 import darkTheme from '../../../../static/themes/darkTheme';
 
 afterEach(cleanup);
 
-describe('<Button />', () => {
-  it('renders <Button />', () => {
+describe('<Container />', () => {
+  it('renders <Container />', () => {
     const { container } = render(
       <ThemeProvider theme={darkTheme}>
-        <Button>I am a button</Button>
-      </ThemeProvider>,
+        <Container>Hello world</Container>
+      </ThemeProvider>
     );
-
-    expect(container.firstChild).toMatchSnapshot();
   });
 });

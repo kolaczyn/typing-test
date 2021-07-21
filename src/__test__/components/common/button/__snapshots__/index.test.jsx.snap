@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`<Button /> renders <Button /> 1`] = `
-<button
-  class="button-sc-16cxp6v-0 eYCEva"
->
-  I am a button
-</button>
-`;
