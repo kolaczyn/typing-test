@@ -7,7 +7,7 @@ type Props = {
   isActive?: boolean;
   primary?: boolean;
   secondary?: boolean;
-  onClick?: (e: any) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   submitType?: 'button' | 'reset' | 'submit';
   children: React.ReactNode;
 };

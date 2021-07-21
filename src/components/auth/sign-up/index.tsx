@@ -21,7 +21,7 @@ const SignUp: React.FC = () => {
     setEmail(e.target.value);
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setPassword(e.target.value);
-  const handleSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       setIsPending(true);
@@ -37,7 +37,7 @@ const SignUp: React.FC = () => {
   };
   return (
     <Box title="Sign Up">
-      <form>
+      <form onSubmit={handleSubmit}>
         <Container>
           <label htmlFor="email">Email</label>
           <InputField
@@ -57,7 +57,7 @@ const SignUp: React.FC = () => {
             value={password}
             onChange={handlePasswordChange}
           />
-          <Button primary onClick={handleSubmit} isActive={!isPending}>
+          <Button primary submitType="submit" isActive={!isPending}>
             {isPending ? 'Please wait...' : 'Sign In'}
           </Button>
         </Container>

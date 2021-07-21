@@ -24,9 +24,7 @@ const SignIn: React.FC = () => {
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setPassword(e.target.value);
 
-  const handleSubmit = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       setIsPending(true);
@@ -42,7 +40,7 @@ const SignIn: React.FC = () => {
   };
   return (
     <Box title="Sign In">
-      <form>
+      <form onSubmit={handleSubmit}>
         <Container>
           <label htmlFor="email">Email</label>
           <InputField
@@ -62,9 +60,7 @@ const SignIn: React.FC = () => {
             value={password}
             onChange={handlePasswordChange}
           />
-          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-          {/* @ts-ignore */}
-          <Button primary onClick={handleSubmit} isActive={!isPending}>
+          <Button submitType="submit" primary isActive={!isPending}>
             {isPending ? 'Please wait...' : 'Sign In'}
           </Button>
         </Container>

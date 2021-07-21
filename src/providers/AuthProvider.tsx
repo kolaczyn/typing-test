@@ -7,7 +7,7 @@ import app from '../firebase';
 
 const AuthProvider: React.FC = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<firebase.User | null>(null);
-  const [_, setPending] = useState(true);
+  const [, setPending] = useState(true);
 
   useEffect(() => {
     const unsubscribe = app.auth().onAuthStateChanged(user => {

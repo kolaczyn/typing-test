@@ -11,14 +11,19 @@ type TypingTimer = {
   timerStartingMoment: null | Date;
 };
 
+export type TypedWord = {
+  isOkay: true;
+  word: string;
+};
+
 type TypingLines = {
-  finished: any[];
+  finished: TypedWord[][];
   current: string;
   unfinished: string[];
 };
 
 type TypingText = {
-  finished: any[];
+  finished: TypedWord[];
   current: string;
   unfinished: string[];
   isOkay: boolean;
