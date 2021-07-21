@@ -15,9 +15,7 @@ describe('<Logo />', () => {
         <ThemeProvider theme={darkTheme}>
           <Logo />
         </ThemeProvider>
-      </MemoryRouter>,
+      </MemoryRouter>
     );
-
-    expect(container.firstChild).toMatchSnapshot();
   });
 });

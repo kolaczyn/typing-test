@@ -1,4 +1,8 @@
-import calculateStats, { calculateGrossWpm, calculateNetWpm, calculateAccuracy } from '../../utils/calculateStats';
+import calculateStats, {
+  calculateGrossWpm,
+  calculateNetWpm,
+  calculateAccuracy,
+} from '../../utils/calculateStats';
 
 describe('calculateGrossWpm', () => {
   it('correctly calculates gross wpm', () => {
@@ -67,11 +71,13 @@ describe('calculateNetWpm', () => {
       },
     ];
 
-    testingData.forEach(({
-      typedChars, time, uncorrectedErrors, expectedResult,
-    }) => {
-      expect(calculateNetWpm(typedChars, time, uncorrectedErrors)).toBe(expectedResult);
-    });
+    testingData.forEach(
+      ({ typedChars, time, uncorrectedErrors, expectedResult }) => {
+        expect(calculateNetWpm(typedChars, time, uncorrectedErrors)).toBe(
+          expectedResult
+        );
+      }
+    );
   });
   it('correctly handles edge cases', () => {
     const testingData = [
@@ -89,55 +95,64 @@ describe('calculateNetWpm', () => {
       },
     ];
 
-    testingData.forEach(({
-      typedChars, time, uncorrectedErrors, expectedResult,
-    }) => {
-      expect(calculateNetWpm(typedChars, time, uncorrectedErrors)).toBe(expectedResult);
-    });
+    testingData.forEach(
+      ({ typedChars, time, uncorrectedErrors, expectedResult }) => {
+        expect(calculateNetWpm(typedChars, time, uncorrectedErrors)).toBe(
+          expectedResult
+        );
+      }
+    );
   });
 });
 
 describe('calculateAccuracy', () => {
   it('correctly calculates accuracy', () => {
-    const testingData = [
+    const testingData: {
+      uncorrectedErrors: number;
+      totalChars: number;
+      expectedResult: number;
+    }[] = [
       {
-        typedChars: 60,
+        uncorrectedErrors: 40,
         totalChars: 100,
         expectedResult: 60,
       },
       {
-        typedChars: 99,
+        uncorrectedErrors: 1,
         totalChars: 100,
         expectedResult: 99,
       },
       {
-        typedChars: 32,
+        uncorrectedErrors: 96,
         totalChars: 128,
         expectedResult: 25,
       },
     ];
 
-    testingData.forEach(({ typedChars, totalChars, expectedResult }) => {
-      expect(calculateAccuracy(typedChars, totalChars)).toBe(expectedResult);
+    testingData.forEach(({ uncorrectedErrors, totalChars, expectedResult }) => {
+      expect(calculateAccuracy(uncorrectedErrors, totalChars)).toBe(
+        expectedResult
+      );
     });
   });
 
   it('correctly handles edge cases', () => {
-    const testingData = [
+    const testingData: {
+      uncorrectedErrors: number;
+      totalChars: number;
+      expectedResult: number;
+    }[] = [
       {
-        typedChars: 0,
-        totalChars: 60,
-        expectedResult: 0,
-      },
-      {
-        typedChars: 0,
+        uncorrectedErrors: 0,
         totalChars: 0,
         expectedResult: 0,
       },
     ];
 
-    testingData.forEach(({ typedChars, totalChars, expectedResult }) => {
-      expect(calculateAccuracy(typedChars, totalChars)).toBe(expectedResult);
+    testingData.forEach(({ uncorrectedErrors, totalChars, expectedResult }) => {
+      expect(calculateAccuracy(uncorrectedErrors, totalChars)).toBe(
+        expectedResult
+      );
     });
   });
 });
