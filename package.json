@@ -28,7 +28,8 @@
     "start": "BROWSER=none react-scripts start",
     "dev": "npm start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage --watchAll",
+    "test": "react-scripts test --watchAll=false",
+    "test:watch": "jest --coverage --watchAll",
     "eject": "react-scripts eject"
   },
   "jest": {
