@@ -7,11 +7,18 @@ type Props = {
   onClick?: () => void;
 };
 
-const CloseButton: React.FC<Props> = ({ onClick, ...props }) => (
-  <StyledButton aria-label="close-button" onClick={onClick} {...props}>
-    ✕
-  </StyledButton>
-);
+const CloseButton: React.FC<Props> = ({ onClick, ...props }) => {
+  console.log(onClick);
+  return (
+    <StyledButton
+      aria-label="close-button"
+      onClick={() => console.log('hi')}
+      {...props}
+    >
+      ✕
+    </StyledButton>
+  );
+};
 
 CloseButton.propTypes = {
   onClick: PropTypes.func.isRequired,

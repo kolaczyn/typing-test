@@ -21,7 +21,7 @@ const Settings: React.FC = () => {
   const Component = tabToComponents[currentTab];
 
   return (
-    <Box title="Settings">
+    <Box title="Hi, what's up?">
       <VertSplit>
         <LeftSection>
           <Tabs
