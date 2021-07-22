@@ -8,7 +8,7 @@ type Props = {
 };
 
 const CloseButton: React.FC<Props> = ({ onClick, ...props }) => (
-  <StyledButton data-testid="close-button" onClick={onClick} {...props}>
+  <StyledButton aria-label="close-button" onClick={onClick} {...props}>
     ✕
   </StyledButton>
 );
