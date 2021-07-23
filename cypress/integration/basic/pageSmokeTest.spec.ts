@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('hello world', () => {
+describe('Smoke Test', () => {
   const homePageUrl = 'http://localhost:3000';
 
   const visitSubpage = (subpage: string) =>
