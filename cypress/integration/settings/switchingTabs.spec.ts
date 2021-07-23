@@ -5,9 +5,8 @@ describe('Switching Tabs', () => {
   const visitSubpage = (subpage: string) =>
     cy.visit(`${homePageUrl}${subpage}`);
 
-  visitSubpage('/settings');
-
   it('correctly toggle between tabs', () => {
+    visitSubpage('/settings');
     cy.contains(/change theme/i).click();
     cy.contains(/dark theme/i);
 
