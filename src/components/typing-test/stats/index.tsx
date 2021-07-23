@@ -34,8 +34,8 @@ const Stats: React.FC = () => {
   return (
     <Wrapper>
       {data.map(({ number, label }) => (
-        <Element key={label}>
-          <h4>{number}</h4>
+        <Element aria-label={`stats-${label.toLocaleLowerCase()}`} key={label}>
+          <h4 aria-label="number">{number}</h4>
           <h5>{label}</h5>
         </Element>
       ))}

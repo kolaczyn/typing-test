@@ -13,7 +13,7 @@ const TimerButton: React.FC = () => {
       ? state.timer.startingTime
       : state?.timer.currentTime;
   return (
-    <Button onClick={toggleIsLabelVisible}>
+    <Button onClick={toggleIsLabelVisible} aria-label="timer-button">
       {isLabelVisible ? currentTime : ''}
     </Button>
   );

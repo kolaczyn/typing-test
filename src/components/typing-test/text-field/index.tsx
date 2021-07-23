@@ -12,15 +12,8 @@ const TextField: React.FC = () => {
   const { finished, current, unfinished, isOkay } = state.text;
   const { unfinished: unfinishedLines } = state.lines;
 
-  // TODO I'm keeping this here for context,
-  // but it may be a better idea to split it into another file
-  // I think I can get away with using idx here
-  // TODO Im renaming isOkay to isWordOkay because of eslint
-  // is telling me about another variablei n the same scope
-  // I should probably make so the names are not the same
-
   return (
-    <TextFieldWrapper>
+    <TextFieldWrapper aria-label="text-field">
       <CompletedWords finished={finished} />
       <WordWrapper isOkay={isOkay}>
         <CurrentWord inputValue={inputValue} current={current} />
