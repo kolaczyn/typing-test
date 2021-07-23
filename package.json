@@ -77,6 +77,7 @@
     "@types/styled-components": "^5.1.11",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.28.4",
+    "chai-colors": "^1.0.1",
     "chance": "^1.1.7",
     "cypress": "^8.0.0",
     "eslint": "^7.19.0",

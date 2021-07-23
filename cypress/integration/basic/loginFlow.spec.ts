@@ -10,7 +10,7 @@ const userCredentials: { email: string; password: string } = {
   password: chance.word({ length: 20 }),
 };
 
-describe('hello world', () => {
+describe('Login Flow', () => {
   it('can register, and it redirects to home page', () => {
     visitSubpage('/sign-up');
 
