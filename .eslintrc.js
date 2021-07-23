@@ -17,5 +17,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint'],
-  rules: {},
+  rules: {
+    'cypress/no-unnecessary-waiting': 'off',
+  },
 };

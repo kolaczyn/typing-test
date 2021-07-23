@@ -69,6 +69,7 @@ const InputSection: React.FC = () => {
     <InputSectionWrapper>
       <TimerButton />
       <InputField
+        aria-label="typing-test-input-field"
         ref={inputRef}
         value={inputValue}
         active={currentTime !== 0}
@@ -77,7 +78,7 @@ const InputSection: React.FC = () => {
         onChange={handleChange}
         noCorrection
       />
-      <Button onClick={handleRestart}>
+      <Button aria-label="restart-button" onClick={handleRestart}>
         <span className="material-icons">refresh</span>
       </Button>
     </InputSectionWrapper>

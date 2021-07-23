@@ -12,7 +12,7 @@ type Props = {
 };
 
 const GeneralLayout: React.FC<Props> = ({ children }) => (
-  <Body>
+  <Body data-test-id="body">
     <OuterBody>
       <UpperBody>
         <Navbar />

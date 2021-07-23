@@ -9,7 +9,12 @@ const CompletedWords: React.FC<Props> = ({ finished }) => (
   <>
     {finished.map(({ isOkay: isWordOkay, word }, idx) => {
       const Component = isWordOkay ? Completed : Wrong;
-      return <Component key={idx}>{`${word} `}</Component>;
+      return (
+        <Component
+          aria-label={`word-${isWordOkay ? 'okay' : 'wrong'}`}
+          key={idx}
+        >{`${word} `}</Component>
+      );
     })}
   </>
 );

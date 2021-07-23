@@ -2,12 +2,13 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyC_lefinF9TkRS-QEijuGP8rCLm41Whcq4',
-  authDomain: 'typingtest-d1f3c.firebaseapp.com',
-  projectId: 'typingtest-d1f3c',
-  storageBucket: 'typingtest-d1f3c.appspot.com',
-  messagingSenderId: '379302047831',
-  appId: '1:379302047831:web:787171eebca0a9ac1c7312',
+  apiKey: 'AIzaSyBSHy2PvxPyhqcJPR1l4tnJQwGnVV6e52Y',
+  authDomain: 'typing-test-62b10.firebaseapp.com',
+  projectId: 'typing-test-62b10',
+  storageBucket: 'typing-test-62b10.appspot.com',
+  messagingSenderId: '616405068548',
+  appId: '1:616405068548:web:0e0d3ded93350da339be51',
+  measurementId: 'G-KQ7E031QHZ',
 };
 
 const app = firebase.initializeApp(firebaseConfig);
