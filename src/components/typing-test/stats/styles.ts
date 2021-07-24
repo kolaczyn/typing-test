@@ -7,7 +7,7 @@ import Box from '../../common/box';
 export const Wrapper = styled.section`
   // FIXME I kinda hard-coded the gap between the stats and the section directly above here.
   /* I should move it somewhere else in the future */
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.75rem;

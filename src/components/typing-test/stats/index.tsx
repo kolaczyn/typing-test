@@ -1,13 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { Wrapper, Element } from './styles';
 import TypingStateContext from '../../../contexts/TypingStateContext';
 import calculateStats from '../../../utils/calculateStats';
+import Button from '../../common/button';
+import useIsGameOver from '../../../hooks/useIsGameOver';
 
 const Stats: React.FC = () => {
   // TODO add show more button to show info on how is the stat calculated (formula)
   // maybe also show the history of the stat?
   const state = useContext(TypingStateContext);
+  const isGameOver = useIsGameOver();
+  const [isStatsHidden, setIsStatsHidden] = useState(false);
   const { typedCharacters, uncorrectedErrors } = state.stats;
 
   // const { typedCharacters, correctCharacters, uncorrectedErrors } = state.stats;
@@ -29,17 +33,30 @@ const Stats: React.FC = () => {
     { number: netWpm, label: 'Net WPM' },
   ];
 
-  // for debugging
+  const shouldHideStats = !isGameOver && isStatsHidden;
 
   return (
-    <Wrapper>
-      {data.map(({ number, label }) => (
-        <Element aria-label={`stats-${label.toLocaleLowerCase()}`} key={label}>
-          <h4 aria-label="number">{number}</h4>
-          <h5>{label}</h5>
-        </Element>
-      ))}
-    </Wrapper>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <Button
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        style={{ alignSelf: 'center' }}
+        onClick={() => setIsStatsHidden(old => !old)}
+      >
+        {shouldHideStats ? 'Hide Stats' : 'Show Stats'}
+      </Button>
+      <Wrapper style={{ display: shouldHideStats ? 'none' : '' }}>
+        {data.map(({ number, label }) => (
+          <Element
+            aria-label={`stats-${label.toLocaleLowerCase()}`}
+            key={label}
+          >
+            <h4 aria-label="number">{number}</h4>
+            <h5>{label}</h5>
+          </Element>
+        ))}
+      </Wrapper>
+    </div>
   );
 };
 export default Stats;

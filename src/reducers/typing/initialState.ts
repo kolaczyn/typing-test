@@ -1,7 +1,6 @@
 import sampleText from '../../static/fixtures/sampleText';
 
-const [currentLine, ...unfinishedLines] = sampleText;
-const [currentWord, ...unfinishedWords] = currentLine.split(' ');
+const [currentWord, ...unfinishedWords] = sampleText.split(' ');
 
 type TypingTimer = {
   minTime: number;
@@ -14,12 +13,6 @@ type TypingTimer = {
 export type TypedWord = {
   isOkay: true;
   word: string;
-};
-
-type TypingLines = {
-  finished: TypedWord[][];
-  current: string;
-  unfinished: string[];
 };
 
 type TypingText = {
@@ -38,7 +31,6 @@ type TypingStats = {
 export type TypingState = {
   inputValue: string;
   timer: TypingTimer;
-  lines: TypingLines;
   text: TypingText;
   stats: TypingStats;
 };
@@ -49,14 +41,9 @@ const initialState: TypingState = {
     minTime: 5,
     maxTime: 60 * 15,
     currentTime: null,
-    startingTime: 60,
+    startingTime: 10,
     // it is used to determinate if the timer got reset in the meantime
     timerStartingMoment: null,
-  },
-  lines: {
-    finished: [],
-    current: currentLine,
-    unfinished: unfinishedLines,
   },
   text: {
     // word that have been already written - regardless of if they were written correct

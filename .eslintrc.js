@@ -19,5 +19,6 @@ module.exports = {
   plugins: ['react', '@typescript-eslint'],
   rules: {
     'cypress/no-unnecessary-waiting': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
   },
 };

@@ -10,7 +10,6 @@ const TextField: React.FC = () => {
   const state = useContext(TypingStateContext);
   const { inputValue } = state;
   const { finished, current, unfinished, isOkay } = state.text;
-  const { unfinished: unfinishedLines } = state.lines;
 
   return (
     <TextFieldWrapper aria-label="text-field">
@@ -20,7 +19,6 @@ const TextField: React.FC = () => {
       </WordWrapper>{' '}
       <Uncompleted>{unfinished.join(' ')}</Uncompleted>
       <br />
-      <Uncompleted>{unfinishedLines[0]}</Uncompleted>
     </TextFieldWrapper>
   );
 };
