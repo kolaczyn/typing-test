@@ -19,7 +19,7 @@ const StatsPage: React.FC = () => {
         <Spinner />
       ) : (
         <>
-          <MyStats stats={latestStats} />
+          <MyStats stats={[...latestStats].reverse()} />
           <div style={{ marginBottom: '1rem' }} />
           <Logs stats={latestStats} />
         </>

@@ -2,8 +2,9 @@
 import React from 'react';
 import { Stats } from '../../customTypes';
 import useToggleSelectedScoreData, {
-  statLabels,
+  statNames,
 } from '../../hooks/useToggleSelectedScoreData';
+import { statNameToDisplayName } from '../../utils/mapStatsToGraphData';
 import Box from '../common/box';
 import Button from '../common/button';
 import VertSplit, { LeftSection } from '../common/vert-split';
@@ -20,13 +21,13 @@ const MyStats: React.FC<Props> = ({ stats }) => {
     <Box title="Graph">
       <VertSplit>
         <LeftSection>
-          {statLabels.map(stat => (
+          {statNames.map(statName => (
             <Button
-              primary={selectedStats.includes(stat)}
-              onClick={() => toggleStats(stat)}
-              key={stat}
+              primary={selectedStats.includes(statName)}
+              onClick={() => toggleStats(statName)}
+              key={statName}
             >
-              {stat}
+              {statNameToDisplayName[statName]}
             </Button>
           ))}
         </LeftSection>

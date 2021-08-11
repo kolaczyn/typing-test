@@ -7,14 +7,16 @@ export type GraphLineData = {
   borderWidth: number;
 };
 
-type StatName = 'accuracy' | 'grossWpm' | 'netWpm';
+export type StatName = 'accuracy' | 'grossWpm' | 'netWpm' | 'keystrokes';
 
-const statNameToDisplayName: Record<StatName, string> = {
+export const statNameToDisplayName: Record<StatName, string> = {
   accuracy: 'Accuracy',
   grossWpm: 'Gross WPM',
   netWpm: 'Net WPM',
+  keystrokes: 'Keystrokes',
 };
 const statNameToColor: Record<StatName, string> = {
+  keystrokes: 'pink',
   accuracy: 'red',
   grossWpm: 'blue',
   netWpm: 'green',
@@ -33,7 +35,12 @@ const getDataSet = (statName: StatName) => (data: number[]) => ({
 const mapStatsToGraphData = (
   stats: Stats[]
 ): { datasets: Record<StatName, GraphLineData>; labels: string[] } => {
-  const statNames: StatName[] = ['accuracy', 'grossWpm', 'netWpm'];
+  const statNames: StatName[] = [
+    'accuracy',
+    'grossWpm',
+    'netWpm',
+    'keystrokes',
+  ];
 
   // @ts-ignore
   const datasets: Record<StatName, GraphLineData> = {};
