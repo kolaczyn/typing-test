@@ -1,13 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { Stats } from '../../customTypes';
-import {
-  accuracyStats,
-  grossWpmStats,
-  labels,
-  netWpmStats,
-  SampleStats,
-} from '../../static/sampleStats';
+import mapStatsToGraphData, {
+  GraphLineData,
+} from '../../utils/mapStatsToGraphData';
 import Box from '../common/box';
 import Button from '../common/button';
 import VertSplit, { LeftSection } from '../common/vert-split';
@@ -27,14 +23,15 @@ const MyStats: React.FC<Props> = ({ stats }) => {
     setSelectedStats(old =>
       old.includes(stat) ? old.filter(el => el !== stat) : [...old, stat]
     );
-  const selectedStatsData: SampleStats[] = [];
+  const selectedStatsData: GraphLineData[] = [];
+  const {
+    datasets: { accuracy, grossWpm, netWpm },
+    labels,
+  } = mapStatsToGraphData(stats);
   // TODO there must be a better way to do this
-  if (selectedStats.includes('Accuracy'))
-    selectedStatsData.push(accuracyStats(stats.map(s => s.accuracy)));
-  if (selectedStats.includes('Gross WPM'))
-    selectedStatsData.push(grossWpmStats(stats.map(s => s.grossWpm)));
-  if (selectedStats.includes('Net WPM'))
-    selectedStatsData.push(netWpmStats(stats.map(s => s.netWpm)));
+  if (selectedStats.includes('Accuracy')) selectedStatsData.push(accuracy);
+  if (selectedStats.includes('Gross WPM')) selectedStatsData.push(grossWpm);
+  if (selectedStats.includes('Net WPM')) selectedStatsData.push(netWpm);
   return (
     <Box title="Graph">
       <VertSplit>
@@ -50,11 +47,7 @@ const MyStats: React.FC<Props> = ({ stats }) => {
           ))}
         </LeftSection>
         <section>
-          {/* <Graph labels={labels} datasets={stats} /> */}
-          <Graph
-            labels={stats.map(s => new Date(s.createdAt).getHours().toString())}
-            datasets={selectedStatsData}
-          />
+          <Graph labels={labels} datasets={selectedStatsData} />
         </section>
       </VertSplit>
     </Box>
