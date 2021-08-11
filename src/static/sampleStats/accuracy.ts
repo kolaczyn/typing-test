@@ -1,9 +1,9 @@
 import { SampleStats } from '.';
 
-const accuracyStates: SampleStats = {
+const accuracyStates: (d: number[]) => SampleStats = d => ({
   label: 'Accuracy',
-  data: [70, 75, 78, 91, 90, 89],
+  data: d,
   borderColor: 'red',
   borderWidth: 1,
-};
+});
 export default accuracyStates;

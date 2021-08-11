@@ -1,9 +1,9 @@
 import { SampleStats } from '.';
 
-const grossWpmStats: SampleStats = {
+const grossWpmStats: (d: number[]) => SampleStats = d => ({
   label: 'Gross WPM',
-  data: [120, 90, 121, 140, 123, 125],
+  data: d,
   borderColor: 'blue',
   borderWidth: 1,
-};
+});
 export default grossWpmStats;

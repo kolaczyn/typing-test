@@ -1,9 +1,9 @@
 import { SampleStats } from '.';
 
-const netWpmStats: SampleStats = {
+const netWpmStats: (d: number[]) => SampleStats = d => ({
   label: 'Net WPM',
-  data: [110, 85, 111, 120, 120, 105],
+  data: d,
   borderColor: 'green',
   borderWidth: 1,
-};
+});
 export default netWpmStats;

@@ -11,7 +11,7 @@ import {
 import Box from '../common/box';
 import Button from '../common/button';
 import VertSplit, { LeftSection } from '../common/vert-split';
-import Graph from './graph';
+import Graph from './Graph';
 
 const statLabels = ['Accuracy', 'Gross WPM', 'Net WPM'];
 
@@ -19,7 +19,7 @@ type Props = {
   stats: Stats[];
 };
 
-const MyStats: React.FC<Props> = () => {
+const MyStats: React.FC<Props> = ({ stats }) => {
   const [selectedStats, setSelectedStats] = useState([...statLabels]);
 
   // toggle if the element is in the array
@@ -29,12 +29,14 @@ const MyStats: React.FC<Props> = () => {
     );
   const selectedStatsData: SampleStats[] = [];
   // TODO there must be a better way to do this
-  if (selectedStats.includes('Accuracy')) selectedStatsData.push(accuracyStats);
+  if (selectedStats.includes('Accuracy'))
+    selectedStatsData.push(accuracyStats(stats.map(s => s.accuracy)));
   if (selectedStats.includes('Gross WPM'))
-    selectedStatsData.push(grossWpmStats);
-  if (selectedStats.includes('Net WPM')) selectedStatsData.push(netWpmStats);
+    selectedStatsData.push(grossWpmStats(stats.map(s => s.grossWpm)));
+  if (selectedStats.includes('Net WPM'))
+    selectedStatsData.push(netWpmStats(stats.map(s => s.netWpm)));
   return (
-    <Box title="My Stats">
+    <Box title="Graph">
       <VertSplit>
         <LeftSection>
           {statLabels.map(stat => (
@@ -48,7 +50,11 @@ const MyStats: React.FC<Props> = () => {
           ))}
         </LeftSection>
         <section>
-          <Graph labels={labels} datasets={selectedStatsData} />
+          {/* <Graph labels={labels} datasets={stats} /> */}
+          <Graph
+            labels={stats.map(s => new Date(s.createdAt).getHours().toString())}
+            datasets={selectedStatsData}
+          />
         </section>
       </VertSplit>
     </Box>
