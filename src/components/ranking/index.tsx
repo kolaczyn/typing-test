@@ -1,28 +1,30 @@
-import React, { useState, useEffect } from 'react';
-
-import {
-  rankingData,
-  rankingDataLabels,
-} from '../../static/fixtures/rankingData';
-import Table from '../common/table';
+import React, { useEffect, useState } from 'react';
+import { Stats } from '../../customTypes';
 import Box from '../common/box';
 import Loader from '../common/loader';
+import Table from '../common/table';
+import fetchRankingData from './fetchRankingData';
+import firebaseDataToTableData from './firebaseDataToTableData';
 
 const Ranking: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [rankingData, setRankingData] = useState<null | Stats[]>(null);
 
   useEffect(() => {
-    // simulate 1.5 seconds of loading
-    const timeout = setTimeout(() => setIsLoading(false), 1500);
-    return () => clearTimeout(timeout);
+    (async () => {
+      const fetchedData = await fetchRankingData();
+      setRankingData(fetchedData);
+    })();
   }, []);
 
   return (
     <Box title="Ranking">
-      {isLoading ? (
+      {rankingData === null ? (
         <Loader />
       ) : (
-        <Table labels={rankingDataLabels} data={rankingData} />
+        <Table
+          labels={['User', 'WPM', 'When']}
+          data={firebaseDataToTableData(rankingData)}
+        />
       )}
     </Box>
   );

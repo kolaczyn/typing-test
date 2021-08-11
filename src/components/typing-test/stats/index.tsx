@@ -37,13 +37,18 @@ const Stats: React.FC = () => {
   const shouldHideStats = !isGameOver && isStatsHidden;
   const sendStatsToBackend = async () => {
     const { currentUser } = app.auth();
-    if (currentUser === null || currentUser.uid === undefined) {
+    if (
+      currentUser === null ||
+      currentUser.uid === undefined ||
+      currentUser.email === null
+    ) {
       return;
     }
     const dataToSend: {
       keystrokes: number;
       accuracy: number;
       grossWpm: number;
+      userMail: string;
       netWpm: number;
       userId: string;
       createdAt: number;
@@ -52,18 +57,12 @@ const Stats: React.FC = () => {
       accuracy,
       grossWpm,
       netWpm,
+      userMail: currentUser.email,
       userId: currentUser.uid,
       createdAt: new Date().getTime(),
     };
-    console.log(currentUser.uid);
     const ref = app.firestore().collection('userScore');
     await ref.add(dataToSend);
-    // await ref.doc(uid).set(
-    //   {
-    //     [timestamp]: dataToSend,
-    //   },
-    //   { merge: true }
-    // );
   };
   if (isGameOver) sendStatsToBackend();
 

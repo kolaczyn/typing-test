@@ -7,7 +7,6 @@ const fetchUserLatestScore = async (): Promise<Stats[]> => {
     return [];
   }
   const scoresRef = app.firestore().collection('userScore');
-  console.log(scoresRef);
   const out = await scoresRef
     .where('userId', '==', userId)
     .orderBy('createdAt', 'desc')

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import StyledTable, { Thead } from './styles';
-import { RankingData } from '../../../static/fixtures/rankingData';
+import { RankingData } from '../../../customTypes';
 
 type Props = {
   labels: string[];
@@ -21,8 +21,8 @@ const Table: React.FC<Props> = ({ labels, data }) =>
         </tr>
       </Thead>
       <tbody>
-        {data.map(({ username, wpm, when }, idx) => (
-          <tr key={username}>
+        {data.map(({ username, wpm, when, id }, idx) => (
+          <tr key={id}>
             <td>{`${idx + 1}.`}</td>
             <td>{username}</td>
             <td>{wpm}</td>
