@@ -1,37 +1,21 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import { Stats } from '../../customTypes';
-import mapStatsToGraphData, {
-  GraphLineData,
-} from '../../utils/mapStatsToGraphData';
+import useToggleSelectedScoreData, {
+  statLabels,
+} from '../../hooks/useToggleSelectedScoreData';
 import Box from '../common/box';
 import Button from '../common/button';
 import VertSplit, { LeftSection } from '../common/vert-split';
 import Graph from './Graph';
-
-const statLabels = ['Accuracy', 'Gross WPM', 'Net WPM'];
 
 type Props = {
   stats: Stats[];
 };
 
 const MyStats: React.FC<Props> = ({ stats }) => {
-  const [selectedStats, setSelectedStats] = useState([...statLabels]);
-
-  // toggle if the element is in the array
-  const toggleStats = (stat: string) =>
-    setSelectedStats(old =>
-      old.includes(stat) ? old.filter(el => el !== stat) : [...old, stat]
-    );
-  const selectedStatsData: GraphLineData[] = [];
-  const {
-    datasets: { accuracy, grossWpm, netWpm },
-    labels,
-  } = mapStatsToGraphData(stats);
-  // TODO there must be a better way to do this
-  if (selectedStats.includes('Accuracy')) selectedStatsData.push(accuracy);
-  if (selectedStats.includes('Gross WPM')) selectedStatsData.push(grossWpm);
-  if (selectedStats.includes('Net WPM')) selectedStatsData.push(netWpm);
+  const { selectedStats, toggleStats, labels, selectedStatsData } =
+    useToggleSelectedScoreData(stats);
   return (
     <Box title="Graph">
       <VertSplit>
