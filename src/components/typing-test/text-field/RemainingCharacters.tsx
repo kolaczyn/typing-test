@@ -1,6 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { Uncompleted, UncompletedCurrentWord } from './styles';
+import React from 'react';
+import { UncompletedCurrentWord } from './styles';
 
 type Props = { current: string; input: string[] };
 
