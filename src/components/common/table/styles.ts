@@ -22,6 +22,7 @@ export default StyledTable;
 
 export const Thead = styled.thead`
   color: ${props => props.theme.palette.lightGray};
+  font-weight: bold;
   /* padding-bottom: 5rem; */
   height: 5rem;
 `;

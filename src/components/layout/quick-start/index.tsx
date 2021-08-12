@@ -22,8 +22,7 @@ const GeneralLayout: React.FC = () => {
       <Section>
         <p>
           I made this site to practice writing websites in React with a lot of
-          reactivity. I added a lot of features to <i>show off</i>, which you
-          may find distracting. You can disable them in the{' '}
+          reactivity. I added a lot of features to <i>show off</i>.
           <UnderlinedLink isAlwaysUnderlined to="/settings">
             settings
           </UnderlinedLink>
@@ -42,10 +41,6 @@ const GeneralLayout: React.FC = () => {
             great article
           </UnderlinedLink>{' '}
           explaining it.
-        </p>
-        <p>
-          I have a lot more features planned, like top scores and statics
-          breakdown, so it would be cool to see you come back here soon.
         </p>
         <p>
           If you want to report a bug, or just want to leave some kind words,

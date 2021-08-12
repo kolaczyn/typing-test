@@ -10,6 +10,7 @@ type ThemeType = {
     red: string;
     yellow: string;
     lightGray: string;
+    darkGray?: string;
   };
   themeName: string;
 };

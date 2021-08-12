@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Uncompleted } from './styles';
+import { Uncompleted, UncompletedCurrentWord } from './styles';
 
 type Props = { current: string; input: string[] };
 
@@ -10,7 +10,7 @@ const RemainingCharacters: React.FC<Props> = ({ current, input }) => (
       .split('') // make it array
       .slice(input.length) // look only at the characters that weren't written yet
       .map((char, idx) => (
-        <Uncompleted key={idx}>{char}</Uncompleted>
+        <UncompletedCurrentWord key={idx}>{char}</UncompletedCurrentWord>
       ))}
   </>
 );

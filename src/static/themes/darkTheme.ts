@@ -1,18 +1,20 @@
 import Action from '../../reducers/theme/actions';
 import ThemeType from './ThemeType';
 
+// https://flatuicolors.com/palette/defo
 const darkTheme: ThemeType = {
   palette: {
-    box: '#222',
-    border: '#1c1e21',
-    background: '#303030',
-    text: '#fff',
+    box: '#2c3e50',
+    border: '#27394B',
+    background: '#34495e',
+    text: '#ecf0f1',
 
-    green: '#55efc4',
-    blue: '#00a1e4',
-    red: '#e17055',
-    yellow: '#e8e9a1',
-    lightGray: 'bisque',
+    green: '#2ecc71',
+    blue: '#3498db',
+    red: '#f96454',
+    yellow: '#f1c40f',
+    lightGray: '#bdc3c7',
+    darkGray: '#bdc3c7',
   },
   themeName: Action.DARK_THEME,
 };

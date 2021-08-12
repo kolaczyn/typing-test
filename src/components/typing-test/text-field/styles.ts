@@ -12,7 +12,11 @@ export const Completed = styled.span`
 `;
 
 export const Uncompleted = styled.span`
-  color: ${props => props.theme.palette.lightGray};
+  color: ${props => props.theme.palette.darkGray};
+`;
+
+export const UncompletedCurrentWord = styled.span`
+  color: ${props => props.theme.palette.text};
 `;
 
 export const Wrong = styled.span`
