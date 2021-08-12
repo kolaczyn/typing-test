@@ -1,55 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Stats } from '../../customTypes';
+import fetchUserLatestScore from '../../fetch/fetchUserLatestScore';
+import app from '../../firebase';
+import Spinner from '../common/loader';
+import EmptyScoreMessage from './EmptyScoreMessage';
+import PleaseLogInMessage from './PleaseLogInMessage';
+import Logs from './Logs';
+import MyStats from './MyStats';
 
-import Box from '../common/box';
-import Button from '../common/button';
-import VertSplit, { LeftSection } from '../common/vert-split';
-import Graph from './graph';
-
-import {
-  labels,
-  accuracyStats,
-  netWpmStats,
-  grossWpmStats,
-  SampleStats,
-} from '../../static/sampleStats';
-
-const stats = ['Accuracy', 'Gross WPM', 'Net WPM'];
-
-const Stats: React.FC = () => {
-  const [selectedStats, setSelectedStats] = useState([...stats]);
-
-  // toggle if the element is in the array
-  const toggleStats = (stat: string) =>
-    setSelectedStats(old =>
-      old.includes(stat) ? old.filter(el => el !== stat) : [...old, stat]
-    );
-  const selectedStatsData: SampleStats[] = [];
-  // TODO there must be a better way to do this
-  if (selectedStats.includes('Accuracy')) selectedStatsData.push(accuracyStats);
-  if (selectedStats.includes('Gross WPM'))
-    selectedStatsData.push(grossWpmStats);
-  if (selectedStats.includes('Net WPM')) selectedStatsData.push(netWpmStats);
-
+const StatsPage: React.FC = () => {
+  const [latestStats, setLatestStats] = useState<Stats[] | null>(null);
+  useEffect(() => {
+    (async () => {
+      const fetchedStats = await fetchUserLatestScore();
+      setLatestStats(fetchedStats);
+    })();
+  }, []);
+  if (app.auth().currentUser === null) return <PleaseLogInMessage />;
   return (
-    <Box title="My Stats">
-      <VertSplit>
-        <LeftSection>
-          {stats.map(stat => (
-            <Button
-              primary={selectedStats.includes(stat)}
-              onClick={() => toggleStats(stat)}
-              key={stat}
-            >
-              {stat}
-            </Button>
-          ))}
-        </LeftSection>
-        <section>
-          <Graph labels={labels} datasets={selectedStatsData} />
-        </section>
-      </VertSplit>
-    </Box>
+    <div>
+      {latestStats === null ? (
+        <Spinner />
+      ) : latestStats.length === 0 ? (
+        <EmptyScoreMessage />
+      ) : (
+        <>
+          <MyStats stats={[...latestStats].reverse()} />
+          <div style={{ marginBottom: '1rem' }} />
+          <Logs stats={latestStats} />
+        </>
+      )}
+    </div>
   );
 };
 
-export default Stats;
+export default StatsPage;
